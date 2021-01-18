@@ -1,0 +1,2 @@
+include ':test-app-local-dependency'
+rootProject.name='ffmpeg-kit-android-test'
