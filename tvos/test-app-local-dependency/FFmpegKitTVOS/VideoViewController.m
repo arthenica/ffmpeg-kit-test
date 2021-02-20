@@ -27,7 +27,7 @@
 @interface VideoViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *header;
-@property (strong, nonatomic) IBOutlet UIPickerView *videoCodecPicker;
+@property (strong, nonatomic) IBOutlet UITextField *videoCodecText;
 @property (strong, nonatomic) IBOutlet UIButton *encodeButton;
 @property (strong, nonatomic) IBOutlet UILabel *videoPlayerFrame;
 
@@ -37,7 +37,6 @@
 
     // Video codec data
     NSArray *codecData;
-    NSInteger selectedCodec;
     
     // Video player references
     AVQueuePlayer *player;
@@ -47,39 +46,34 @@
     // Loading view
     UIAlertController *alertController;
     UIActivityIndicatorView* indicator;
-
+    
     Statistics *statistics;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // VIDEO CODEC PICKER INIT
-    codecData = @[@"mpeg4", @"h264 (x264)", @"h264 (openh264)", @"h264 (videotoolbox)", @"x265", @"xvid", @"vp8", @"vp9", @"aom", @"kvazaar", @"theora", @"hap"];
-    selectedCodec = 0;
-    
-    self.videoCodecPicker.dataSource = self;
-    self.videoCodecPicker.delegate = self;
-
     // STYLE UPDATE
+    [Util applyEditTextStyle: self.videoCodecText];
     [Util applyButtonStyle: self.encodeButton];
-    [Util applyPickerViewStyle: self.videoCodecPicker];
     [Util applyVideoPlayerFrameStyle: self.videoPlayerFrame];
     [Util applyHeaderStyle: self.header];
 
     // VIDEO PLAYER INIT
     player = [[AVQueuePlayer alloc] init];
     playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    playerLayer.videoGravity = AVLayerVideoGravityResize;
     activeItem = nil;
-    
-    CGRect rectangularFrame = self.view.layer.bounds;
-    rectangularFrame.size.width = self.view.layer.bounds.size.width - 40;
-    rectangularFrame.origin.x = 20;
-    rectangularFrame.origin.y = self.encodeButton.layer.bounds.origin.y + 120;
-    
+
+    // SETTING VIDEO FRAME POSITION
+    CGRect rectangularFrame = CGRectMake(self.videoPlayerFrame.frame.origin.x + 20,
+                                         self.videoPlayerFrame.frame.origin.y + 20,
+                                         self.videoPlayerFrame.frame.size.width - 40,
+                                         self.videoPlayerFrame.frame.size.height - 40);
+
     playerLayer.frame = rectangularFrame;
     [self.view.layer addSublayer:playerLayer];
-
+    
     alertController = nil;
     statistics = nil;
 
@@ -90,31 +84,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-/**
- * The number of columns of data
- */
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-/**
- * The number of rows of data
- */
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return codecData.count;
-}
-
-/**
- * The data to return for the row and component (column) that's being passed in
- */
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return codecData[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    selectedCodec = row;
 }
 
 - (IBAction)encodeVideo:(id)sender {
@@ -131,7 +100,7 @@
 
     [[NSFileManager defaultManager] removeItemAtPath:videoFile error:NULL];
 
-    NSString *videoCodec = codecData[selectedCodec];
+    NSString *videoCodec = [self.videoCodecText text];
 
     NSLog(@"Testing VIDEO encoding with '%@' codec\n", videoCodec);
 
@@ -193,7 +162,7 @@
 }
 
 - (NSString*)getSelectedVideoCodec {
-    NSString *videoCodec = codecData[selectedCodec];
+    NSString *videoCodec = [self.videoCodecText text];
     
     // VIDEO CODEC PICKER HAS BASIC NAMES, FFMPEG NEEDS LONGER AND EXACT CODEC NAMES.
     // APPLYING NECESSARY TRANSFORMATION HERE
@@ -223,7 +192,7 @@
 }
 
 - (NSString*)getVideoPath {
-    NSString *videoCodec = codecData[selectedCodec];
+    NSString *videoCodec = [self.videoCodecText text];
     
     NSString *extension;
     if ([videoCodec isEqualToString:@"vp8"] || [videoCodec isEqualToString:@"vp9"]) {
@@ -245,7 +214,7 @@
 }
 
 - (NSString*)getCustomOptions {
-    NSString *videoCodec = codecData[selectedCodec];
+    NSString *videoCodec = [self.videoCodecText text];
 
     if ([videoCodec isEqualToString:@"x265"]) {
         return @"-crf 28 -preset fast ";

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ffmpeg-kit-icon-v4-1280x768.png",
+      "idiom" : "tv"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
