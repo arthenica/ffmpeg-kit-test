@@ -27,7 +27,6 @@
 
 @interface ConcurrentExecutionViewController ()
 
-@property (strong, nonatomic) IBOutlet UITextView *outputText;
 @property (strong, nonatomic) IBOutlet UILabel *header;
 @property (strong, nonatomic) IBOutlet UIButton *encode1Button;
 @property (strong, nonatomic) IBOutlet UIButton *encode2Button;
@@ -36,6 +35,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *cancel2Button;
 @property (strong, nonatomic) IBOutlet UIButton *cancel3Button;
 @property (strong, nonatomic) IBOutlet UIButton *cancelAllButton;
+@property (strong, nonatomic) IBOutlet UITextView *outputText;
 
 @end
 
@@ -59,7 +59,7 @@
     [Util applyOutputTextStyle: self.outputText];
     [Util applyHeaderStyle: self.header];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
+    addUIAction(^{
         [self setActive];
     });
 }

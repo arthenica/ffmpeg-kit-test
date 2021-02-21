@@ -70,7 +70,7 @@
     alertController = nil;
     statistics = nil;
 
-    dispatch_async(dispatch_get_main_queue(), ^{
+    addUIAction(^{
         [self setActive];
     });
 }

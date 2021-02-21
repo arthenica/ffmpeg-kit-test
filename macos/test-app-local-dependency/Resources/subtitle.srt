@@ -1,0 +1,11 @@
+1
+00:00:00,021 --> 00:00:04,000
+Machu Picchu is a 15th-century Inca citadel, located in the Eastern Cordillera of southern Peru.
+
+2
+00:00:04,001 --> 00:00:06,927
+The Great Pyramid and the Pyramid of Khafre are the largest pyramids built in ancient Egypt.
+
+3
+00:00:06,928 --> 00:00:09,000
+Stonehenge is a prehistoric monument in Wiltshire, England, two miles (3 km) west of Amesbury.

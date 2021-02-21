@@ -83,7 +83,7 @@ typedef enum {
     
     sessionId = 0;
 
-    dispatch_async(dispatch_get_main_queue(), ^{
+    addUIAction(^{
         [self setActive];
     });
 }
@@ -209,7 +209,7 @@ typedef enum {
 }
 
 - (void)setActive {
-    NSLog(@"Audio Tab Activated");
+    NSLog(@"Subtitle Tab Activated");
     [self enableLogCallback];
     [self enableStatisticsCallback];
 }

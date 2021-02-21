@@ -23,70 +23,70 @@
 		3457454C2113B8AD00059043 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3457454A2113B8AD00059043 /* AudioViewController.m */; };
 		3457454F2113B8D300059043 /* SubtitleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3457454D2113B8D300059043 /* SubtitleViewController.h */; };
 		345745502113B8D300059043 /* SubtitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3457454E2113B8D300059043 /* SubtitleViewController.m */; };
+		345CFC4425EBD16700F34F36 /* libvorbisfile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0925EBD16600F34F36 /* libvorbisfile.xcframework */; };
+		345CFC4525EBD16700F34F36 /* libavformat.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0A25EBD16600F34F36 /* libavformat.xcframework */; };
+		345CFC4625EBD16700F34F36 /* dav1d.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0B25EBD16600F34F36 /* dav1d.xcframework */; };
+		345CFC4725EBD16700F34F36 /* x264.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0C25EBD16600F34F36 /* x264.xcframework */; };
+		345CFC4825EBD16700F34F36 /* libavfilter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0D25EBD16600F34F36 /* libavfilter.xcframework */; };
+		345CFC4925EBD16700F34F36 /* lame.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0E25EBD16600F34F36 /* lame.xcframework */; };
+		345CFC4A25EBD16700F34F36 /* chromaprint.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC0F25EBD16600F34F36 /* chromaprint.xcframework */; };
+		345CFC4B25EBD16700F34F36 /* libopencore-amrnb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1025EBD16600F34F36 /* libopencore-amrnb.xcframework */; };
+		345CFC4C25EBD16700F34F36 /* freetype.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1125EBD16600F34F36 /* freetype.xcframework */; };
+		345CFC4D25EBD16700F34F36 /* libtheora.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1225EBD16600F34F36 /* libtheora.xcframework */; };
+		345CFC4E25EBD16700F34F36 /* libvorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1325EBD16600F34F36 /* libvorbis.xcframework */; };
+		345CFC4F25EBD16700F34F36 /* libvidstab.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1425EBD16600F34F36 /* libvidstab.xcframework */; };
+		345CFC5025EBD16700F34F36 /* libswresample.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1525EBD16600F34F36 /* libswresample.xcframework */; };
+		345CFC5125EBD16700F34F36 /* libsamplerate.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1625EBD16600F34F36 /* libsamplerate.xcframework */; };
+		345CFC5225EBD16700F34F36 /* libvorbisenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1725EBD16600F34F36 /* libvorbisenc.xcframework */; };
+		345CFC5325EBD16700F34F36 /* libavcodec.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1825EBD16600F34F36 /* libavcodec.xcframework */; };
+		345CFC5425EBD16700F34F36 /* libvpx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1925EBD16600F34F36 /* libvpx.xcframework */; };
+		345CFC5525EBD16700F34F36 /* opus.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1A25EBD16600F34F36 /* opus.xcframework */; };
+		345CFC5625EBD16700F34F36 /* shine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1B25EBD16600F34F36 /* shine.xcframework */; };
+		345CFC5725EBD16700F34F36 /* vo-amrwbenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1C25EBD16600F34F36 /* vo-amrwbenc.xcframework */; };
+		345CFC5825EBD16700F34F36 /* libwebpdemux.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1D25EBD16600F34F36 /* libwebpdemux.xcframework */; };
+		345CFC5925EBD16700F34F36 /* jpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1E25EBD16600F34F36 /* jpeg.xcframework */; };
+		345CFC5A25EBD16700F34F36 /* libtheoradec.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC1F25EBD16600F34F36 /* libtheoradec.xcframework */; };
+		345CFC5B25EBD16700F34F36 /* x265.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2025EBD16600F34F36 /* x265.xcframework */; };
+		345CFC5C25EBD16700F34F36 /* libavutil.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2125EBD16600F34F36 /* libavutil.xcframework */; };
+		345CFC5D25EBD16700F34F36 /* libnettle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2225EBD16700F34F36 /* libnettle.xcframework */; };
+		345CFC5E25EBD16700F34F36 /* libsndfile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2325EBD16700F34F36 /* libsndfile.xcframework */; };
+		345CFC5F25EBD16700F34F36 /* kvazaar.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2425EBD16700F34F36 /* kvazaar.xcframework */; };
+		345CFC6025EBD16700F34F36 /* openh264.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2525EBD16700F34F36 /* openh264.xcframework */; };
+		345CFC6125EBD16700F34F36 /* fontconfig.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2625EBD16700F34F36 /* fontconfig.xcframework */; };
+		345CFC6225EBD16700F34F36 /* harfbuzz.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2725EBD16700F34F36 /* harfbuzz.xcframework */; };
+		345CFC6325EBD16700F34F36 /* rubberband.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2825EBD16700F34F36 /* rubberband.xcframework */; };
+		345CFC6425EBD16700F34F36 /* fribidi.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2925EBD16700F34F36 /* fribidi.xcframework */; };
+		345CFC6525EBD16700F34F36 /* gnutls.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2A25EBD16700F34F36 /* gnutls.xcframework */; };
+		345CFC6625EBD16700F34F36 /* libaom.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2B25EBD16700F34F36 /* libaom.xcframework */; };
+		345CFC6725EBD16700F34F36 /* tiff.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2C25EBD16700F34F36 /* tiff.xcframework */; };
+		345CFC6825EBD16700F34F36 /* leptonica.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2D25EBD16700F34F36 /* leptonica.xcframework */; };
+		345CFC6925EBD16700F34F36 /* tesseract.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2E25EBD16700F34F36 /* tesseract.xcframework */; };
+		345CFC6A25EBD16700F34F36 /* expat.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC2F25EBD16700F34F36 /* expat.xcframework */; };
+		345CFC6B25EBD16700F34F36 /* twolame.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3025EBD16700F34F36 /* twolame.xcframework */; };
+		345CFC6C25EBD16700F34F36 /* libogg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3125EBD16700F34F36 /* libogg.xcframework */; };
+		345CFC6D25EBD16700F34F36 /* libilbc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3225EBD16700F34F36 /* libilbc.xcframework */; };
+		345CFC6E25EBD16700F34F36 /* libass.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3325EBD16700F34F36 /* libass.xcframework */; };
+		345CFC6F25EBD16700F34F36 /* ffmpegkit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3425EBD16700F34F36 /* ffmpegkit.xcframework */; };
+		345CFC7025EBD16700F34F36 /* libwebpmux.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3525EBD16700F34F36 /* libwebpmux.xcframework */; };
+		345CFC7125EBD16700F34F36 /* libwebp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3625EBD16700F34F36 /* libwebp.xcframework */; };
+		345CFC7225EBD16700F34F36 /* libpng.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3725EBD16700F34F36 /* libpng.xcframework */; };
+		345CFC7325EBD16700F34F36 /* libhogweed.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3825EBD16700F34F36 /* libhogweed.xcframework */; };
+		345CFC7425EBD16700F34F36 /* sdl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3925EBD16700F34F36 /* sdl.xcframework */; };
+		345CFC7525EBD16700F34F36 /* libswscale.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3A25EBD16700F34F36 /* libswscale.xcframework */; };
+		345CFC7625EBD16700F34F36 /* libavdevice.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3B25EBD16700F34F36 /* libavdevice.xcframework */; };
+		345CFC7725EBD16700F34F36 /* soxr.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3C25EBD16700F34F36 /* soxr.xcframework */; };
+		345CFC7825EBD16700F34F36 /* libxml2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3D25EBD16700F34F36 /* libxml2.xcframework */; };
+		345CFC7925EBD16700F34F36 /* libtheoraenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3E25EBD16700F34F36 /* libtheoraenc.xcframework */; };
+		345CFC7A25EBD16700F34F36 /* speex.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC3F25EBD16700F34F36 /* speex.xcframework */; };
+		345CFC7B25EBD16700F34F36 /* gmp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC4025EBD16700F34F36 /* gmp.xcframework */; };
+		345CFC7C25EBD16700F34F36 /* giflib.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC4125EBD16700F34F36 /* giflib.xcframework */; };
+		345CFC7D25EBD16700F34F36 /* xvidcore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC4225EBD16700F34F36 /* xvidcore.xcframework */; };
+		345CFC7E25EBD16700F34F36 /* snappy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345CFC4325EBD16700F34F36 /* snappy.xcframework */; };
 		345E16AA24CB93D1007275F0 /* ConcurrentExecutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 345E16A824CB93D1007275F0 /* ConcurrentExecutionViewController.m */; };
 		345E16AB24CB93D1007275F0 /* ConcurrentExecutionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 345E16A924CB93D1007275F0 /* ConcurrentExecutionViewController.h */; };
 		348439ED20B2EFAF001A3990 /* pyramid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 348439EA20B2EFAF001A3990 /* pyramid.jpg */; };
 		3487ABA5220CEAA300A40E8D /* PipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3487ABA3220CEAA200A40E8D /* PipeViewController.m */; };
 		3487ABA6220CEAA300A40E8D /* PipeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3487ABA4220CEAA200A40E8D /* PipeViewController.h */; };
-		34943E2B25DB48C3002B5C1E /* libkvazaar.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF025DB48AD002B5C1E /* libkvazaar.xcframework */; };
-		34943E2C25DB48C3002B5C1E /* libwebpmux.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF125DB48AD002B5C1E /* libwebpmux.xcframework */; };
-		34943E2D25DB48C3002B5C1E /* libvorbisenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF225DB48AD002B5C1E /* libvorbisenc.xcframework */; };
-		34943E2E25DB48C3002B5C1E /* libspeex.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF325DB48AD002B5C1E /* libspeex.xcframework */; };
-		34943E2F25DB48C3002B5C1E /* libgif.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF425DB48AD002B5C1E /* libgif.xcframework */; };
-		34943E3025DB48C3002B5C1E /* libopenh264.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF525DB48AD002B5C1E /* libopenh264.xcframework */; };
-		34943E3125DB48C3002B5C1E /* libgmp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF625DB48AE002B5C1E /* libgmp.xcframework */; };
-		34943E3225DB48C3002B5C1E /* libjpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF725DB48AE002B5C1E /* libjpeg.xcframework */; };
-		34943E3325DB48C3002B5C1E /* libavcodec.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF825DB48B1002B5C1E /* libavcodec.xcframework */; };
-		34943E3425DB48C3002B5C1E /* libvidstab.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DF925DB48B1002B5C1E /* libvidstab.xcframework */; };
-		34943E3525DB48C3002B5C1E /* libswscale.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFA25DB48B2002B5C1E /* libswscale.xcframework */; };
-		34943E3625DB48C3002B5C1E /* libswresample.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFB25DB48B2002B5C1E /* libswresample.xcframework */; };
-		34943E3725DB48C3002B5C1E /* libsnappy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFC25DB48B2002B5C1E /* libsnappy.xcframework */; };
-		34943E3825DB48C3002B5C1E /* libwebpdemux.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFD25DB48B2002B5C1E /* libwebpdemux.xcframework */; };
-		34943E3925DB48C3002B5C1E /* libgnutls.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFE25DB48B3002B5C1E /* libgnutls.xcframework */; };
-		34943E3A25DB48C3002B5C1E /* libxvidcore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943DFF25DB48B3002B5C1E /* libxvidcore.xcframework */; };
-		34943E3B25DB48C3002B5C1E /* libSDL2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0025DB48B3002B5C1E /* libSDL2.xcframework */; };
-		34943E3C25DB48C3002B5C1E /* libsoxr.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0125DB48B3002B5C1E /* libsoxr.xcframework */; };
-		34943E3D25DB48C3002B5C1E /* libnettle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0225DB48B4002B5C1E /* libnettle.xcframework */; };
-		34943E3E25DB48C3002B5C1E /* libavformat.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0325DB48B5002B5C1E /* libavformat.xcframework */; };
-		34943E3F25DB48C3002B5C1E /* libpng.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0425DB48B5002B5C1E /* libpng.xcframework */; };
-		34943E4025DB48C3002B5C1E /* librubberband.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0525DB48B5002B5C1E /* librubberband.xcframework */; };
-		34943E4125DB48C3002B5C1E /* libass.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0625DB48B5002B5C1E /* libass.xcframework */; };
-		34943E4225DB48C3002B5C1E /* libavutil.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0725DB48B6002B5C1E /* libavutil.xcframework */; };
-		34943E4325DB48C3002B5C1E /* libvpx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0825DB48B7002B5C1E /* libvpx.xcframework */; };
-		34943E4425DB48C3002B5C1E /* libxml2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0925DB48B8002B5C1E /* libxml2.xcframework */; };
-		34943E4525DB48C3002B5C1E /* libx264.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0A25DB48B8002B5C1E /* libx264.xcframework */; };
-		34943E4625DB48C3002B5C1E /* libwebp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0B25DB48B8002B5C1E /* libwebp.xcframework */; };
-		34943E4725DB48C3002B5C1E /* ffmpegkit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0C25DB48B9002B5C1E /* ffmpegkit.xcframework */; };
-		34943E4825DB48C3002B5C1E /* libtheoradec.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0D25DB48B9002B5C1E /* libtheoradec.xcframework */; };
-		34943E4925DB48C3002B5C1E /* libogg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0E25DB48B9002B5C1E /* libogg.xcframework */; };
-		34943E4A25DB48C3002B5C1E /* libvorbis.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E0F25DB48B9002B5C1E /* libvorbis.xcframework */; };
-		34943E4B25DB48C3002B5C1E /* libharfbuzz.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1025DB48BA002B5C1E /* libharfbuzz.xcframework */; };
-		34943E4C25DB48C3002B5C1E /* libvorbisfile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1125DB48BA002B5C1E /* libvorbisfile.xcframework */; };
-		34943E4D25DB48C3002B5C1E /* libopencore-amrnb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1225DB48BA002B5C1E /* libopencore-amrnb.xcframework */; };
-		34943E4E25DB48C3002B5C1E /* libopus.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1325DB48BA002B5C1E /* libopus.xcframework */; };
-		34943E4F25DB48C3002B5C1E /* libtesseract.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1425DB48BB002B5C1E /* libtesseract.xcframework */; };
-		34943E5025DB48C3002B5C1E /* libfribidi.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1525DB48BB002B5C1E /* libfribidi.xcframework */; };
-		34943E5125DB48C3002B5C1E /* libdav1d.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1625DB48BC002B5C1E /* libdav1d.xcframework */; };
-		34943E5225DB48C3002B5C1E /* libsamplerate.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1725DB48BC002B5C1E /* libsamplerate.xcframework */; };
-		34943E5325DB48C3002B5C1E /* libsndfile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1825DB48BC002B5C1E /* libsndfile.xcframework */; };
-		34943E5425DB48C3002B5C1E /* libtheora.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1925DB48BD002B5C1E /* libtheora.xcframework */; };
-		34943E5525DB48C3002B5C1E /* libchromaprint.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1A25DB48BD002B5C1E /* libchromaprint.xcframework */; };
-		34943E5625DB48C3002B5C1E /* libavfilter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1B25DB48BE002B5C1E /* libavfilter.xcframework */; };
-		34943E5725DB48C3002B5C1E /* libfontconfig.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1C25DB48BE002B5C1E /* libfontconfig.xcframework */; };
-		34943E5825DB48C3002B5C1E /* libhogweed.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1D25DB48BE002B5C1E /* libhogweed.xcframework */; };
-		34943E5925DB48C3002B5C1E /* libavdevice.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1E25DB48BF002B5C1E /* libavdevice.xcframework */; };
-		34943E5A25DB48C3002B5C1E /* libexpat.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E1F25DB48BF002B5C1E /* libexpat.xcframework */; };
-		34943E5B25DB48C3002B5C1E /* libtheoraenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2025DB48BF002B5C1E /* libtheoraenc.xcframework */; };
-		34943E5C25DB48C3002B5C1E /* libtiff.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2125DB48BF002B5C1E /* libtiff.xcframework */; };
-		34943E5D25DB48C3002B5C1E /* libx265.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2225DB48C0002B5C1E /* libx265.xcframework */; };
-		34943E5E25DB48C3002B5C1E /* libfreetype.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2325DB48C0002B5C1E /* libfreetype.xcframework */; };
-		34943E5F25DB48C3002B5C1E /* libaom.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2425DB48C1002B5C1E /* libaom.xcframework */; };
-		34943E6025DB48C3002B5C1E /* libmp3lame.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2525DB48C2002B5C1E /* libmp3lame.xcframework */; };
-		34943E6125DB48C3002B5C1E /* libshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2625DB48C2002B5C1E /* libshine.xcframework */; };
-		34943E6225DB48C3002B5C1E /* libvo-amrwbenc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2725DB48C2002B5C1E /* libvo-amrwbenc.xcframework */; };
-		34943E6325DB48C3002B5C1E /* libilbc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2825DB48C2002B5C1E /* libilbc.xcframework */; };
-		34943E6425DB48C3002B5C1E /* libtwolame.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2925DB48C2002B5C1E /* libtwolame.xcframework */; };
-		34943E6525DB48C3002B5C1E /* liblept.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34943E2A25DB48C3002B5C1E /* liblept.xcframework */; };
 		34943E6825DB499E002B5C1E /* FFmpegKitTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 34943E6625DB499E002B5C1E /* FFmpegKitTest.h */; };
 		34943E6925DB499E002B5C1E /* FFmpegKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34943E6725DB499E002B5C1E /* FFmpegKitTest.m */; };
 		34BB547C2109D44800606B7C /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BB547B2109D44800606B7C /* Constants.m */; };
@@ -146,71 +146,71 @@
 		3457454A2113B8AD00059043 /* AudioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioViewController.m; sourceTree = "<group>"; };
 		3457454D2113B8D300059043 /* SubtitleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubtitleViewController.h; sourceTree = "<group>"; };
 		3457454E2113B8D300059043 /* SubtitleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubtitleViewController.m; sourceTree = "<group>"; };
+		345CFC0925EBD16600F34F36 /* libvorbisfile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbisfile.xcframework; sourceTree = "<group>"; };
+		345CFC0A25EBD16600F34F36 /* libavformat.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavformat.xcframework; sourceTree = "<group>"; };
+		345CFC0B25EBD16600F34F36 /* dav1d.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = dav1d.xcframework; sourceTree = "<group>"; };
+		345CFC0C25EBD16600F34F36 /* x264.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = x264.xcframework; sourceTree = "<group>"; };
+		345CFC0D25EBD16600F34F36 /* libavfilter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavfilter.xcframework; sourceTree = "<group>"; };
+		345CFC0E25EBD16600F34F36 /* lame.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = lame.xcframework; sourceTree = "<group>"; };
+		345CFC0F25EBD16600F34F36 /* chromaprint.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = chromaprint.xcframework; sourceTree = "<group>"; };
+		345CFC1025EBD16600F34F36 /* libopencore-amrnb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "libopencore-amrnb.xcframework"; sourceTree = "<group>"; };
+		345CFC1125EBD16600F34F36 /* freetype.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = freetype.xcframework; sourceTree = "<group>"; };
+		345CFC1225EBD16600F34F36 /* libtheora.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheora.xcframework; sourceTree = "<group>"; };
+		345CFC1325EBD16600F34F36 /* libvorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbis.xcframework; sourceTree = "<group>"; };
+		345CFC1425EBD16600F34F36 /* libvidstab.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvidstab.xcframework; sourceTree = "<group>"; };
+		345CFC1525EBD16600F34F36 /* libswresample.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libswresample.xcframework; sourceTree = "<group>"; };
+		345CFC1625EBD16600F34F36 /* libsamplerate.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsamplerate.xcframework; sourceTree = "<group>"; };
+		345CFC1725EBD16600F34F36 /* libvorbisenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbisenc.xcframework; sourceTree = "<group>"; };
+		345CFC1825EBD16600F34F36 /* libavcodec.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavcodec.xcframework; sourceTree = "<group>"; };
+		345CFC1925EBD16600F34F36 /* libvpx.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvpx.xcframework; sourceTree = "<group>"; };
+		345CFC1A25EBD16600F34F36 /* opus.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = opus.xcframework; sourceTree = "<group>"; };
+		345CFC1B25EBD16600F34F36 /* shine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = shine.xcframework; sourceTree = "<group>"; };
+		345CFC1C25EBD16600F34F36 /* vo-amrwbenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "vo-amrwbenc.xcframework"; sourceTree = "<group>"; };
+		345CFC1D25EBD16600F34F36 /* libwebpdemux.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebpdemux.xcframework; sourceTree = "<group>"; };
+		345CFC1E25EBD16600F34F36 /* jpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = jpeg.xcframework; sourceTree = "<group>"; };
+		345CFC1F25EBD16600F34F36 /* libtheoradec.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheoradec.xcframework; sourceTree = "<group>"; };
+		345CFC2025EBD16600F34F36 /* x265.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = x265.xcframework; sourceTree = "<group>"; };
+		345CFC2125EBD16600F34F36 /* libavutil.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavutil.xcframework; sourceTree = "<group>"; };
+		345CFC2225EBD16700F34F36 /* libnettle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libnettle.xcframework; sourceTree = "<group>"; };
+		345CFC2325EBD16700F34F36 /* libsndfile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsndfile.xcframework; sourceTree = "<group>"; };
+		345CFC2425EBD16700F34F36 /* kvazaar.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = kvazaar.xcframework; sourceTree = "<group>"; };
+		345CFC2525EBD16700F34F36 /* openh264.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = openh264.xcframework; sourceTree = "<group>"; };
+		345CFC2625EBD16700F34F36 /* fontconfig.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = fontconfig.xcframework; sourceTree = "<group>"; };
+		345CFC2725EBD16700F34F36 /* harfbuzz.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = harfbuzz.xcframework; sourceTree = "<group>"; };
+		345CFC2825EBD16700F34F36 /* rubberband.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = rubberband.xcframework; sourceTree = "<group>"; };
+		345CFC2925EBD16700F34F36 /* fribidi.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = fribidi.xcframework; sourceTree = "<group>"; };
+		345CFC2A25EBD16700F34F36 /* gnutls.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = gnutls.xcframework; sourceTree = "<group>"; };
+		345CFC2B25EBD16700F34F36 /* libaom.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libaom.xcframework; sourceTree = "<group>"; };
+		345CFC2C25EBD16700F34F36 /* tiff.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = tiff.xcframework; sourceTree = "<group>"; };
+		345CFC2D25EBD16700F34F36 /* leptonica.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = leptonica.xcframework; sourceTree = "<group>"; };
+		345CFC2E25EBD16700F34F36 /* tesseract.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = tesseract.xcframework; sourceTree = "<group>"; };
+		345CFC2F25EBD16700F34F36 /* expat.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = expat.xcframework; sourceTree = "<group>"; };
+		345CFC3025EBD16700F34F36 /* twolame.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = twolame.xcframework; sourceTree = "<group>"; };
+		345CFC3125EBD16700F34F36 /* libogg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libogg.xcframework; sourceTree = "<group>"; };
+		345CFC3225EBD16700F34F36 /* libilbc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libilbc.xcframework; sourceTree = "<group>"; };
+		345CFC3325EBD16700F34F36 /* libass.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libass.xcframework; sourceTree = "<group>"; };
+		345CFC3425EBD16700F34F36 /* ffmpegkit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ffmpegkit.xcframework; sourceTree = "<group>"; };
+		345CFC3525EBD16700F34F36 /* libwebpmux.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebpmux.xcframework; sourceTree = "<group>"; };
+		345CFC3625EBD16700F34F36 /* libwebp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebp.xcframework; sourceTree = "<group>"; };
+		345CFC3725EBD16700F34F36 /* libpng.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libpng.xcframework; sourceTree = "<group>"; };
+		345CFC3825EBD16700F34F36 /* libhogweed.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libhogweed.xcframework; sourceTree = "<group>"; };
+		345CFC3925EBD16700F34F36 /* sdl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = sdl.xcframework; sourceTree = "<group>"; };
+		345CFC3A25EBD16700F34F36 /* libswscale.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libswscale.xcframework; sourceTree = "<group>"; };
+		345CFC3B25EBD16700F34F36 /* libavdevice.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavdevice.xcframework; sourceTree = "<group>"; };
+		345CFC3C25EBD16700F34F36 /* soxr.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = soxr.xcframework; sourceTree = "<group>"; };
+		345CFC3D25EBD16700F34F36 /* libxml2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libxml2.xcframework; sourceTree = "<group>"; };
+		345CFC3E25EBD16700F34F36 /* libtheoraenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheoraenc.xcframework; sourceTree = "<group>"; };
+		345CFC3F25EBD16700F34F36 /* speex.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = speex.xcframework; sourceTree = "<group>"; };
+		345CFC4025EBD16700F34F36 /* gmp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = gmp.xcframework; sourceTree = "<group>"; };
+		345CFC4125EBD16700F34F36 /* giflib.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = giflib.xcframework; sourceTree = "<group>"; };
+		345CFC4225EBD16700F34F36 /* xvidcore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = xvidcore.xcframework; sourceTree = "<group>"; };
+		345CFC4325EBD16700F34F36 /* snappy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = snappy.xcframework; sourceTree = "<group>"; };
 		345E16A824CB93D1007275F0 /* ConcurrentExecutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcurrentExecutionViewController.m; sourceTree = "<group>"; };
 		345E16A924CB93D1007275F0 /* ConcurrentExecutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcurrentExecutionViewController.h; sourceTree = "<group>"; };
 		346B8266244878C000971D55 /* FFmpegKitIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FFmpegKitIOS.entitlements; sourceTree = "<group>"; };
 		348439EA20B2EFAF001A3990 /* pyramid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pyramid.jpg; sourceTree = "<group>"; };
 		3487ABA3220CEAA200A40E8D /* PipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PipeViewController.m; sourceTree = "<group>"; };
 		3487ABA4220CEAA200A40E8D /* PipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PipeViewController.h; sourceTree = "<group>"; };
-		34943DF025DB48AD002B5C1E /* libkvazaar.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libkvazaar.xcframework; sourceTree = "<group>"; };
-		34943DF125DB48AD002B5C1E /* libwebpmux.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebpmux.xcframework; sourceTree = "<group>"; };
-		34943DF225DB48AD002B5C1E /* libvorbisenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbisenc.xcframework; sourceTree = "<group>"; };
-		34943DF325DB48AD002B5C1E /* libspeex.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libspeex.xcframework; sourceTree = "<group>"; };
-		34943DF425DB48AD002B5C1E /* libgif.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libgif.xcframework; sourceTree = "<group>"; };
-		34943DF525DB48AD002B5C1E /* libopenh264.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libopenh264.xcframework; sourceTree = "<group>"; };
-		34943DF625DB48AE002B5C1E /* libgmp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libgmp.xcframework; sourceTree = "<group>"; };
-		34943DF725DB48AE002B5C1E /* libjpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libjpeg.xcframework; sourceTree = "<group>"; };
-		34943DF825DB48B1002B5C1E /* libavcodec.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavcodec.xcframework; sourceTree = "<group>"; };
-		34943DF925DB48B1002B5C1E /* libvidstab.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvidstab.xcframework; sourceTree = "<group>"; };
-		34943DFA25DB48B2002B5C1E /* libswscale.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libswscale.xcframework; sourceTree = "<group>"; };
-		34943DFB25DB48B2002B5C1E /* libswresample.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libswresample.xcframework; sourceTree = "<group>"; };
-		34943DFC25DB48B2002B5C1E /* libsnappy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsnappy.xcframework; sourceTree = "<group>"; };
-		34943DFD25DB48B2002B5C1E /* libwebpdemux.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebpdemux.xcframework; sourceTree = "<group>"; };
-		34943DFE25DB48B3002B5C1E /* libgnutls.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libgnutls.xcframework; sourceTree = "<group>"; };
-		34943DFF25DB48B3002B5C1E /* libxvidcore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libxvidcore.xcframework; sourceTree = "<group>"; };
-		34943E0025DB48B3002B5C1E /* libSDL2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libSDL2.xcframework; sourceTree = "<group>"; };
-		34943E0125DB48B3002B5C1E /* libsoxr.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsoxr.xcframework; sourceTree = "<group>"; };
-		34943E0225DB48B4002B5C1E /* libnettle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libnettle.xcframework; sourceTree = "<group>"; };
-		34943E0325DB48B5002B5C1E /* libavformat.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavformat.xcframework; sourceTree = "<group>"; };
-		34943E0425DB48B5002B5C1E /* libpng.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libpng.xcframework; sourceTree = "<group>"; };
-		34943E0525DB48B5002B5C1E /* librubberband.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = librubberband.xcframework; sourceTree = "<group>"; };
-		34943E0625DB48B5002B5C1E /* libass.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libass.xcframework; sourceTree = "<group>"; };
-		34943E0725DB48B6002B5C1E /* libavutil.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavutil.xcframework; sourceTree = "<group>"; };
-		34943E0825DB48B7002B5C1E /* libvpx.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvpx.xcframework; sourceTree = "<group>"; };
-		34943E0925DB48B8002B5C1E /* libxml2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libxml2.xcframework; sourceTree = "<group>"; };
-		34943E0A25DB48B8002B5C1E /* libx264.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libx264.xcframework; sourceTree = "<group>"; };
-		34943E0B25DB48B8002B5C1E /* libwebp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libwebp.xcframework; sourceTree = "<group>"; };
-		34943E0C25DB48B9002B5C1E /* ffmpegkit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ffmpegkit.xcframework; sourceTree = "<group>"; };
-		34943E0D25DB48B9002B5C1E /* libtheoradec.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheoradec.xcframework; sourceTree = "<group>"; };
-		34943E0E25DB48B9002B5C1E /* libogg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libogg.xcframework; sourceTree = "<group>"; };
-		34943E0F25DB48B9002B5C1E /* libvorbis.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbis.xcframework; sourceTree = "<group>"; };
-		34943E1025DB48BA002B5C1E /* libharfbuzz.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libharfbuzz.xcframework; sourceTree = "<group>"; };
-		34943E1125DB48BA002B5C1E /* libvorbisfile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libvorbisfile.xcframework; sourceTree = "<group>"; };
-		34943E1225DB48BA002B5C1E /* libopencore-amrnb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "libopencore-amrnb.xcframework"; sourceTree = "<group>"; };
-		34943E1325DB48BA002B5C1E /* libopus.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libopus.xcframework; sourceTree = "<group>"; };
-		34943E1425DB48BB002B5C1E /* libtesseract.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtesseract.xcframework; sourceTree = "<group>"; };
-		34943E1525DB48BB002B5C1E /* libfribidi.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libfribidi.xcframework; sourceTree = "<group>"; };
-		34943E1625DB48BC002B5C1E /* libdav1d.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libdav1d.xcframework; sourceTree = "<group>"; };
-		34943E1725DB48BC002B5C1E /* libsamplerate.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsamplerate.xcframework; sourceTree = "<group>"; };
-		34943E1825DB48BC002B5C1E /* libsndfile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libsndfile.xcframework; sourceTree = "<group>"; };
-		34943E1925DB48BD002B5C1E /* libtheora.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheora.xcframework; sourceTree = "<group>"; };
-		34943E1A25DB48BD002B5C1E /* libchromaprint.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libchromaprint.xcframework; sourceTree = "<group>"; };
-		34943E1B25DB48BE002B5C1E /* libavfilter.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavfilter.xcframework; sourceTree = "<group>"; };
-		34943E1C25DB48BE002B5C1E /* libfontconfig.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libfontconfig.xcframework; sourceTree = "<group>"; };
-		34943E1D25DB48BE002B5C1E /* libhogweed.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libhogweed.xcframework; sourceTree = "<group>"; };
-		34943E1E25DB48BF002B5C1E /* libavdevice.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libavdevice.xcframework; sourceTree = "<group>"; };
-		34943E1F25DB48BF002B5C1E /* libexpat.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libexpat.xcframework; sourceTree = "<group>"; };
-		34943E2025DB48BF002B5C1E /* libtheoraenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtheoraenc.xcframework; sourceTree = "<group>"; };
-		34943E2125DB48BF002B5C1E /* libtiff.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtiff.xcframework; sourceTree = "<group>"; };
-		34943E2225DB48C0002B5C1E /* libx265.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libx265.xcframework; sourceTree = "<group>"; };
-		34943E2325DB48C0002B5C1E /* libfreetype.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libfreetype.xcframework; sourceTree = "<group>"; };
-		34943E2425DB48C1002B5C1E /* libaom.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libaom.xcframework; sourceTree = "<group>"; };
-		34943E2525DB48C2002B5C1E /* libmp3lame.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libmp3lame.xcframework; sourceTree = "<group>"; };
-		34943E2625DB48C2002B5C1E /* libshine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libshine.xcframework; sourceTree = "<group>"; };
-		34943E2725DB48C2002B5C1E /* libvo-amrwbenc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = "libvo-amrwbenc.xcframework"; sourceTree = "<group>"; };
-		34943E2825DB48C2002B5C1E /* libilbc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libilbc.xcframework; sourceTree = "<group>"; };
-		34943E2925DB48C2002B5C1E /* libtwolame.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libtwolame.xcframework; sourceTree = "<group>"; };
-		34943E2A25DB48C3002B5C1E /* liblept.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = liblept.xcframework; sourceTree = "<group>"; };
 		34943E6625DB499E002B5C1E /* FFmpegKitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFmpegKitTest.h; sourceTree = "<group>"; };
 		34943E6725DB499E002B5C1E /* FFmpegKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFmpegKitTest.m; sourceTree = "<group>"; };
 		34BB547B2109D44800606B7C /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
@@ -249,73 +249,73 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				345CFC6E25EBD16700F34F36 /* libass.xcframework in Frameworks */,
+				345CFC7125EBD16700F34F36 /* libwebp.xcframework in Frameworks */,
+				345CFC5525EBD16700F34F36 /* opus.xcframework in Frameworks */,
+				345CFC6425EBD16700F34F36 /* fribidi.xcframework in Frameworks */,
+				345CFC7525EBD16700F34F36 /* libswscale.xcframework in Frameworks */,
+				345CFC7D25EBD16700F34F36 /* xvidcore.xcframework in Frameworks */,
+				345CFC7625EBD16700F34F36 /* libavdevice.xcframework in Frameworks */,
+				345CFC6A25EBD16700F34F36 /* expat.xcframework in Frameworks */,
+				345CFC5225EBD16700F34F36 /* libvorbisenc.xcframework in Frameworks */,
+				345CFC5325EBD16700F34F36 /* libavcodec.xcframework in Frameworks */,
+				345CFC7825EBD16700F34F36 /* libxml2.xcframework in Frameworks */,
 				34CB451A25DDF26A00CF2282 /* GameController.framework in Frameworks */,
+				345CFC5625EBD16700F34F36 /* shine.xcframework in Frameworks */,
+				345CFC5925EBD16700F34F36 /* jpeg.xcframework in Frameworks */,
+				345CFC7E25EBD16700F34F36 /* snappy.xcframework in Frameworks */,
+				345CFC4F25EBD16700F34F36 /* libvidstab.xcframework in Frameworks */,
+				345CFC5425EBD16700F34F36 /* libvpx.xcframework in Frameworks */,
+				345CFC4625EBD16700F34F36 /* dav1d.xcframework in Frameworks */,
 				34CB451825DDF25300CF2282 /* Accelerate.framework in Frameworks */,
+				345CFC4E25EBD16700F34F36 /* libvorbis.xcframework in Frameworks */,
+				345CFC5D25EBD16700F34F36 /* libnettle.xcframework in Frameworks */,
+				345CFC5A25EBD16700F34F36 /* libtheoradec.xcframework in Frameworks */,
+				345CFC6625EBD16700F34F36 /* libaom.xcframework in Frameworks */,
+				345CFC6225EBD16700F34F36 /* harfbuzz.xcframework in Frameworks */,
+				345CFC6725EBD16700F34F36 /* tiff.xcframework in Frameworks */,
+				345CFC4B25EBD16700F34F36 /* libopencore-amrnb.xcframework in Frameworks */,
+				345CFC6B25EBD16700F34F36 /* twolame.xcframework in Frameworks */,
+				345CFC4825EBD16700F34F36 /* libavfilter.xcframework in Frameworks */,
+				345CFC4925EBD16700F34F36 /* lame.xcframework in Frameworks */,
+				345CFC4A25EBD16700F34F36 /* chromaprint.xcframework in Frameworks */,
+				345CFC7725EBD16700F34F36 /* soxr.xcframework in Frameworks */,
+				345CFC5825EBD16700F34F36 /* libwebpdemux.xcframework in Frameworks */,
+				345CFC7A25EBD16700F34F36 /* speex.xcframework in Frameworks */,
+				345CFC5F25EBD16700F34F36 /* kvazaar.xcframework in Frameworks */,
+				345CFC6025EBD16700F34F36 /* openh264.xcframework in Frameworks */,
+				345CFC7425EBD16700F34F36 /* sdl.xcframework in Frameworks */,
+				345CFC4725EBD16700F34F36 /* x264.xcframework in Frameworks */,
+				345CFC4D25EBD16700F34F36 /* libtheora.xcframework in Frameworks */,
+				345CFC5C25EBD16700F34F36 /* libavutil.xcframework in Frameworks */,
+				345CFC7325EBD16700F34F36 /* libhogweed.xcframework in Frameworks */,
 				34CB451625DDF24200CF2282 /* CoreMotion.framework in Frameworks */,
 				34CB451425DDF22800CF2282 /* VideoToolbox.framework in Frameworks */,
+				345CFC5025EBD16700F34F36 /* libswresample.xcframework in Frameworks */,
+				345CFC6925EBD16700F34F36 /* tesseract.xcframework in Frameworks */,
+				345CFC7B25EBD16700F34F36 /* gmp.xcframework in Frameworks */,
+				345CFC7925EBD16700F34F36 /* libtheoraenc.xcframework in Frameworks */,
+				345CFC5E25EBD16700F34F36 /* libsndfile.xcframework in Frameworks */,
+				345CFC6C25EBD16700F34F36 /* libogg.xcframework in Frameworks */,
+				345CFC6D25EBD16700F34F36 /* libilbc.xcframework in Frameworks */,
+				345CFC6325EBD16700F34F36 /* rubberband.xcframework in Frameworks */,
+				345CFC5725EBD16700F34F36 /* vo-amrwbenc.xcframework in Frameworks */,
+				345CFC6125EBD16700F34F36 /* fontconfig.xcframework in Frameworks */,
 				34CB451225DDF20300CF2282 /* libbz2.tbd in Frameworks */,
+				345CFC4C25EBD16700F34F36 /* freetype.xcframework in Frameworks */,
 				34CB451025DDF1F900CF2282 /* libc++.tbd in Frameworks */,
 				34CB450E25DDF1EF00CF2282 /* libiconv.tbd in Frameworks */,
+				345CFC7225EBD16700F34F36 /* libpng.xcframework in Frameworks */,
+				345CFC6525EBD16700F34F36 /* gnutls.xcframework in Frameworks */,
+				345CFC4425EBD16700F34F36 /* libvorbisfile.xcframework in Frameworks */,
+				345CFC7C25EBD16700F34F36 /* giflib.xcframework in Frameworks */,
+				345CFC7025EBD16700F34F36 /* libwebpmux.xcframework in Frameworks */,
+				345CFC5B25EBD16700F34F36 /* x265.xcframework in Frameworks */,
+				345CFC6825EBD16700F34F36 /* leptonica.xcframework in Frameworks */,
+				345CFC5125EBD16700F34F36 /* libsamplerate.xcframework in Frameworks */,
+				345CFC6F25EBD16700F34F36 /* ffmpegkit.xcframework in Frameworks */,
 				34CB450C25DDF1E600CF2282 /* libz.tbd in Frameworks */,
-				34943E3925DB48C3002B5C1E /* libgnutls.xcframework in Frameworks */,
-				34943E3F25DB48C3002B5C1E /* libpng.xcframework in Frameworks */,
-				34943E5125DB48C3002B5C1E /* libdav1d.xcframework in Frameworks */,
-				34943E3E25DB48C3002B5C1E /* libavformat.xcframework in Frameworks */,
-				34943E4425DB48C3002B5C1E /* libxml2.xcframework in Frameworks */,
-				34943E5B25DB48C3002B5C1E /* libtheoraenc.xcframework in Frameworks */,
-				34943E6025DB48C3002B5C1E /* libmp3lame.xcframework in Frameworks */,
-				34943E5D25DB48C3002B5C1E /* libx265.xcframework in Frameworks */,
-				34943E2E25DB48C3002B5C1E /* libspeex.xcframework in Frameworks */,
-				34943E4225DB48C3002B5C1E /* libavutil.xcframework in Frameworks */,
-				34943E4A25DB48C3002B5C1E /* libvorbis.xcframework in Frameworks */,
-				34943E5C25DB48C3002B5C1E /* libtiff.xcframework in Frameworks */,
-				34943E3C25DB48C3002B5C1E /* libsoxr.xcframework in Frameworks */,
-				34943E3D25DB48C3002B5C1E /* libnettle.xcframework in Frameworks */,
-				34943E3825DB48C3002B5C1E /* libwebpdemux.xcframework in Frameworks */,
-				34943E6425DB48C3002B5C1E /* libtwolame.xcframework in Frameworks */,
-				34943E5525DB48C3002B5C1E /* libchromaprint.xcframework in Frameworks */,
-				34943E4525DB48C3002B5C1E /* libx264.xcframework in Frameworks */,
-				34943E6125DB48C3002B5C1E /* libshine.xcframework in Frameworks */,
-				34943E3325DB48C3002B5C1E /* libavcodec.xcframework in Frameworks */,
-				34943E4825DB48C3002B5C1E /* libtheoradec.xcframework in Frameworks */,
-				34943E4725DB48C3002B5C1E /* ffmpegkit.xcframework in Frameworks */,
-				34943E5225DB48C3002B5C1E /* libsamplerate.xcframework in Frameworks */,
-				34943E4E25DB48C3002B5C1E /* libopus.xcframework in Frameworks */,
-				34943E5325DB48C3002B5C1E /* libsndfile.xcframework in Frameworks */,
-				34943E3B25DB48C3002B5C1E /* libSDL2.xcframework in Frameworks */,
-				34943E4D25DB48C3002B5C1E /* libopencore-amrnb.xcframework in Frameworks */,
-				34943E3625DB48C3002B5C1E /* libswresample.xcframework in Frameworks */,
-				34943E2B25DB48C3002B5C1E /* libkvazaar.xcframework in Frameworks */,
-				34943E3725DB48C3002B5C1E /* libsnappy.xcframework in Frameworks */,
-				34943E3225DB48C3002B5C1E /* libjpeg.xcframework in Frameworks */,
-				34943E6225DB48C3002B5C1E /* libvo-amrwbenc.xcframework in Frameworks */,
-				34943E2D25DB48C3002B5C1E /* libvorbisenc.xcframework in Frameworks */,
-				34943E3025DB48C3002B5C1E /* libopenh264.xcframework in Frameworks */,
-				34943E6525DB48C3002B5C1E /* liblept.xcframework in Frameworks */,
-				34943E4125DB48C3002B5C1E /* libass.xcframework in Frameworks */,
-				34943E5925DB48C3002B5C1E /* libavdevice.xcframework in Frameworks */,
-				34943E3425DB48C3002B5C1E /* libvidstab.xcframework in Frameworks */,
-				34943E5F25DB48C3002B5C1E /* libaom.xcframework in Frameworks */,
-				34943E3125DB48C3002B5C1E /* libgmp.xcframework in Frameworks */,
-				34943E4025DB48C3002B5C1E /* librubberband.xcframework in Frameworks */,
-				34943E6325DB48C3002B5C1E /* libilbc.xcframework in Frameworks */,
-				34943E2F25DB48C3002B5C1E /* libgif.xcframework in Frameworks */,
-				34943E5625DB48C3002B5C1E /* libavfilter.xcframework in Frameworks */,
-				34943E5025DB48C3002B5C1E /* libfribidi.xcframework in Frameworks */,
-				34943E4C25DB48C3002B5C1E /* libvorbisfile.xcframework in Frameworks */,
-				34943E4F25DB48C3002B5C1E /* libtesseract.xcframework in Frameworks */,
-				34943E4B25DB48C3002B5C1E /* libharfbuzz.xcframework in Frameworks */,
-				34943E4625DB48C3002B5C1E /* libwebp.xcframework in Frameworks */,
-				34943E3525DB48C3002B5C1E /* libswscale.xcframework in Frameworks */,
-				34943E5425DB48C3002B5C1E /* libtheora.xcframework in Frameworks */,
-				34943E5A25DB48C3002B5C1E /* libexpat.xcframework in Frameworks */,
-				34943E2C25DB48C3002B5C1E /* libwebpmux.xcframework in Frameworks */,
-				34943E4925DB48C3002B5C1E /* libogg.xcframework in Frameworks */,
-				34943E4325DB48C3002B5C1E /* libvpx.xcframework in Frameworks */,
-				34943E5725DB48C3002B5C1E /* libfontconfig.xcframework in Frameworks */,
-				34943E3A25DB48C3002B5C1E /* libxvidcore.xcframework in Frameworks */,
-				34943E5E25DB48C3002B5C1E /* libfreetype.xcframework in Frameworks */,
-				34943E5825DB48C3002B5C1E /* libhogweed.xcframework in Frameworks */,
+				345CFC4525EBD16700F34F36 /* libavformat.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +339,65 @@
 		3498DC65209F7F1C005F5883 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				345CFC0F25EBD16600F34F36 /* chromaprint.xcframework */,
+				345CFC0B25EBD16600F34F36 /* dav1d.xcframework */,
+				345CFC2F25EBD16700F34F36 /* expat.xcframework */,
+				345CFC3425EBD16700F34F36 /* ffmpegkit.xcframework */,
+				345CFC2625EBD16700F34F36 /* fontconfig.xcframework */,
+				345CFC1125EBD16600F34F36 /* freetype.xcframework */,
+				345CFC2925EBD16700F34F36 /* fribidi.xcframework */,
+				345CFC4125EBD16700F34F36 /* giflib.xcframework */,
+				345CFC4025EBD16700F34F36 /* gmp.xcframework */,
+				345CFC2A25EBD16700F34F36 /* gnutls.xcframework */,
+				345CFC2725EBD16700F34F36 /* harfbuzz.xcframework */,
+				345CFC1E25EBD16600F34F36 /* jpeg.xcframework */,
+				345CFC2425EBD16700F34F36 /* kvazaar.xcframework */,
+				345CFC0E25EBD16600F34F36 /* lame.xcframework */,
+				345CFC2D25EBD16700F34F36 /* leptonica.xcframework */,
+				345CFC2B25EBD16700F34F36 /* libaom.xcframework */,
+				345CFC3325EBD16700F34F36 /* libass.xcframework */,
+				345CFC1825EBD16600F34F36 /* libavcodec.xcframework */,
+				345CFC3B25EBD16700F34F36 /* libavdevice.xcframework */,
+				345CFC0D25EBD16600F34F36 /* libavfilter.xcframework */,
+				345CFC0A25EBD16600F34F36 /* libavformat.xcframework */,
+				345CFC2125EBD16600F34F36 /* libavutil.xcframework */,
+				345CFC3825EBD16700F34F36 /* libhogweed.xcframework */,
+				345CFC3225EBD16700F34F36 /* libilbc.xcframework */,
+				345CFC2225EBD16700F34F36 /* libnettle.xcframework */,
+				345CFC3125EBD16700F34F36 /* libogg.xcframework */,
+				345CFC1025EBD16600F34F36 /* libopencore-amrnb.xcframework */,
+				345CFC3725EBD16700F34F36 /* libpng.xcframework */,
+				345CFC1625EBD16600F34F36 /* libsamplerate.xcframework */,
+				345CFC2325EBD16700F34F36 /* libsndfile.xcframework */,
+				345CFC1525EBD16600F34F36 /* libswresample.xcframework */,
+				345CFC3A25EBD16700F34F36 /* libswscale.xcframework */,
+				345CFC1225EBD16600F34F36 /* libtheora.xcframework */,
+				345CFC1F25EBD16600F34F36 /* libtheoradec.xcframework */,
+				345CFC3E25EBD16700F34F36 /* libtheoraenc.xcframework */,
+				345CFC1425EBD16600F34F36 /* libvidstab.xcframework */,
+				345CFC1325EBD16600F34F36 /* libvorbis.xcframework */,
+				345CFC1725EBD16600F34F36 /* libvorbisenc.xcframework */,
+				345CFC0925EBD16600F34F36 /* libvorbisfile.xcframework */,
+				345CFC1925EBD16600F34F36 /* libvpx.xcframework */,
+				345CFC3625EBD16700F34F36 /* libwebp.xcframework */,
+				345CFC1D25EBD16600F34F36 /* libwebpdemux.xcframework */,
+				345CFC3525EBD16700F34F36 /* libwebpmux.xcframework */,
+				345CFC3D25EBD16700F34F36 /* libxml2.xcframework */,
+				345CFC2525EBD16700F34F36 /* openh264.xcframework */,
+				345CFC1A25EBD16600F34F36 /* opus.xcframework */,
+				345CFC2825EBD16700F34F36 /* rubberband.xcframework */,
+				345CFC3925EBD16700F34F36 /* sdl.xcframework */,
+				345CFC1B25EBD16600F34F36 /* shine.xcframework */,
+				345CFC4325EBD16700F34F36 /* snappy.xcframework */,
+				345CFC3C25EBD16700F34F36 /* soxr.xcframework */,
+				345CFC3F25EBD16700F34F36 /* speex.xcframework */,
+				345CFC2E25EBD16700F34F36 /* tesseract.xcframework */,
+				345CFC2C25EBD16700F34F36 /* tiff.xcframework */,
+				345CFC3025EBD16700F34F36 /* twolame.xcframework */,
+				345CFC1C25EBD16600F34F36 /* vo-amrwbenc.xcframework */,
+				345CFC0C25EBD16600F34F36 /* x264.xcframework */,
+				345CFC2025EBD16600F34F36 /* x265.xcframework */,
+				345CFC4225EBD16700F34F36 /* xvidcore.xcframework */,
 				34CB451925DDF26A00CF2282 /* GameController.framework */,
 				34CB451725DDF25300CF2282 /* Accelerate.framework */,
 				34CB451525DDF24200CF2282 /* CoreMotion.framework */,
@@ -347,65 +406,6 @@
 				34CB450F25DDF1F900CF2282 /* libc++.tbd */,
 				34CB450D25DDF1EF00CF2282 /* libiconv.tbd */,
 				34CB450B25DDF1E600CF2282 /* libz.tbd */,
-				34943E0C25DB48B9002B5C1E /* ffmpegkit.xcframework */,
-				34943E2425DB48C1002B5C1E /* libaom.xcframework */,
-				34943E0625DB48B5002B5C1E /* libass.xcframework */,
-				34943DF825DB48B1002B5C1E /* libavcodec.xcframework */,
-				34943E1E25DB48BF002B5C1E /* libavdevice.xcframework */,
-				34943E1B25DB48BE002B5C1E /* libavfilter.xcframework */,
-				34943E0325DB48B5002B5C1E /* libavformat.xcframework */,
-				34943E0725DB48B6002B5C1E /* libavutil.xcframework */,
-				34943E1A25DB48BD002B5C1E /* libchromaprint.xcframework */,
-				34943E1625DB48BC002B5C1E /* libdav1d.xcframework */,
-				34943E1F25DB48BF002B5C1E /* libexpat.xcframework */,
-				34943E1C25DB48BE002B5C1E /* libfontconfig.xcframework */,
-				34943E2325DB48C0002B5C1E /* libfreetype.xcframework */,
-				34943E1525DB48BB002B5C1E /* libfribidi.xcframework */,
-				34943DF425DB48AD002B5C1E /* libgif.xcframework */,
-				34943DF625DB48AE002B5C1E /* libgmp.xcframework */,
-				34943DFE25DB48B3002B5C1E /* libgnutls.xcframework */,
-				34943E1025DB48BA002B5C1E /* libharfbuzz.xcframework */,
-				34943E1D25DB48BE002B5C1E /* libhogweed.xcframework */,
-				34943E2825DB48C2002B5C1E /* libilbc.xcframework */,
-				34943DF725DB48AE002B5C1E /* libjpeg.xcframework */,
-				34943DF025DB48AD002B5C1E /* libkvazaar.xcframework */,
-				34943E2A25DB48C3002B5C1E /* liblept.xcframework */,
-				34943E2525DB48C2002B5C1E /* libmp3lame.xcframework */,
-				34943E0225DB48B4002B5C1E /* libnettle.xcframework */,
-				34943E0E25DB48B9002B5C1E /* libogg.xcframework */,
-				34943E1225DB48BA002B5C1E /* libopencore-amrnb.xcframework */,
-				34943DF525DB48AD002B5C1E /* libopenh264.xcframework */,
-				34943E1325DB48BA002B5C1E /* libopus.xcframework */,
-				34943E0425DB48B5002B5C1E /* libpng.xcframework */,
-				34943E0525DB48B5002B5C1E /* librubberband.xcframework */,
-				34943E1725DB48BC002B5C1E /* libsamplerate.xcframework */,
-				34943E0025DB48B3002B5C1E /* libSDL2.xcframework */,
-				34943E2625DB48C2002B5C1E /* libshine.xcframework */,
-				34943DFC25DB48B2002B5C1E /* libsnappy.xcframework */,
-				34943E1825DB48BC002B5C1E /* libsndfile.xcframework */,
-				34943E0125DB48B3002B5C1E /* libsoxr.xcframework */,
-				34943DF325DB48AD002B5C1E /* libspeex.xcframework */,
-				34943DFB25DB48B2002B5C1E /* libswresample.xcframework */,
-				34943DFA25DB48B2002B5C1E /* libswscale.xcframework */,
-				34943E1425DB48BB002B5C1E /* libtesseract.xcframework */,
-				34943E1925DB48BD002B5C1E /* libtheora.xcframework */,
-				34943E0D25DB48B9002B5C1E /* libtheoradec.xcframework */,
-				34943E2025DB48BF002B5C1E /* libtheoraenc.xcframework */,
-				34943E2125DB48BF002B5C1E /* libtiff.xcframework */,
-				34943E2925DB48C2002B5C1E /* libtwolame.xcframework */,
-				34943DF925DB48B1002B5C1E /* libvidstab.xcframework */,
-				34943E2725DB48C2002B5C1E /* libvo-amrwbenc.xcframework */,
-				34943E0F25DB48B9002B5C1E /* libvorbis.xcframework */,
-				34943DF225DB48AD002B5C1E /* libvorbisenc.xcframework */,
-				34943E1125DB48BA002B5C1E /* libvorbisfile.xcframework */,
-				34943E0825DB48B7002B5C1E /* libvpx.xcframework */,
-				34943E0B25DB48B8002B5C1E /* libwebp.xcframework */,
-				34943DFD25DB48B2002B5C1E /* libwebpdemux.xcframework */,
-				34943DF125DB48AD002B5C1E /* libwebpmux.xcframework */,
-				34943E0A25DB48B8002B5C1E /* libx264.xcframework */,
-				34943E2225DB48C0002B5C1E /* libx265.xcframework */,
-				34943E0925DB48B8002B5C1E /* libxml2.xcframework */,
-				34943DFF25DB48B3002B5C1E /* libxvidcore.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

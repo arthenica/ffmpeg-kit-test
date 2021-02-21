@@ -26,6 +26,7 @@
 #include "VidStabViewController.h"
 #include "PipeViewController.h"
 #include "ConcurrentExecutionViewController.h"
+#include "OtherViewController.h"
 
 @interface TabBarController () <UITabBarControllerDelegate>
 
@@ -69,6 +70,9 @@
     } else if ([viewController isKindOfClass:[ConcurrentExecutionViewController class]]) {
         ConcurrentExecutionViewController* concurrentExecutionView = (ConcurrentExecutionViewController*)viewController;
         [concurrentExecutionView setActive];
+    } else if ([viewController isKindOfClass:[OtherViewController class]]) {
+        OtherViewController* otherView = (OtherViewController*)viewController;
+        [otherView setActive];
     }
 }
 

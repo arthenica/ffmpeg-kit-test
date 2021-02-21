@@ -83,7 +83,7 @@
     stabilizedVideoPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     [self.stabilizedVideoPlayerFrame.layer addSublayer:stabilizedVideoPlayerLayer];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    addUIAction(^{
         [self setActive];
     });
 }
