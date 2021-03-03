@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top|center"
+    android:orientation="vertical"
+    tools:context=".HttpsTabFragment">
+
+    <EditText
+        android:id="@+id/urlText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/https_text_input_placeholder"
+        android:inputType="textUri"
+        android:singleLine="true"
+        tools:ignore="Autofill" />
+
+    <LinearLayout
+        android:id="@+id/getInfoButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/getInfoFromUrlButton"
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/https_get_info_from_url_button_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/getRandomInfoButton1"
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/https_get_random_info_button_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/getRandomInfoButton2"
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/https_get_random_info_button_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/getInfoAndFailButton"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/https_get_info_and_fail_button_text"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/outputText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_output_frame"
+        android:fontFamily="sans-serif"
+        android:gravity="bottom"
+        android:overScrollMode="ifContentScrolls"
+        android:padding="6dp"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:typeface="sans" />
+
+</LinearLayout>

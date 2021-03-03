@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        localConfig {
+            keyAlias 'androiddebugkey'
+            storeFile file(System.getProperty("user.home") + '/.android/debug.keystore')
+            storePassword 'android'
+            keyPassword 'android'
+        }
+    }
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.arthenica.ffmpegkit.test"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 240440
+        versionName "4.4"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.localConfig
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            universalApk false
+        }
+    }
+}
+
+ext.abiCodes = ['x86': 1, 'x86_64': 2, 'armeabi-v7a': 3, 'arm64-v8a': 4]
+
+import com.android.build.OutputFile
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each {
+        output ->
+            def baseAbiVersionCode = project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
+            output.versionCodeOverride = baseAbiVersionCode + variant.versionCode
+    }
+}
+
+dependencies {
+    implementation 'com.arthenica:ffmpeg-kit-full:4.4.LTS'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+}
