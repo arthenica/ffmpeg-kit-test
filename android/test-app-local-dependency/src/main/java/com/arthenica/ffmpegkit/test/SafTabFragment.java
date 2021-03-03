@@ -154,7 +154,7 @@ public class SafTabFragment extends Fragment {
 
         Log.d(TAG, String.format("FFprobe process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
-        if (ReturnCode.isSuccess(session.getReturnCode())) {
+        if (!ReturnCode.isSuccess(session.getReturnCode())) {
             Popup.show(requireContext(), "Command failed. Please check output for the details.");
         }
         inUri = null;
