@@ -1,0 +1,28 @@
+{
+  "images" : [
+    {
+      "filename" : "ffmpeg-kit-icon-v4-1920x720-1.png",
+      "idiom" : "tv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ffmpeg-kit-icon-v4-3840x1440-1.png",
+      "idiom" : "tv",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ffmpeg-kit-icon-v4-1920x720-2.png",
+      "idiom" : "tv-marketing",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ffmpeg-kit-icon-v4-3840x1440.png",
+      "idiom" : "tv-marketing",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

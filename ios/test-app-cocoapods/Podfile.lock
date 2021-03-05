@@ -1,0 +1,16 @@
+PODS:
+  - ffmpeg-kit-ios-full (4.4)
+
+DEPENDENCIES:
+  - ffmpeg-kit-ios-full (= 4.4)
+
+SPEC REPOS:
+  trunk:
+    - ffmpeg-kit-ios-full
+
+SPEC CHECKSUMS:
+  ffmpeg-kit-ios-full: af29316ac513b7551dd0693ec3fc1ce9700823df
+
+PODFILE CHECKSUM: 0527f90c89606f52f6a73f4b832ea571a0cfffb8
+
+COCOAPODS: 1.10.1
