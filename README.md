@@ -3,6 +3,7 @@
 Test applications for [FFmpegKit](https://github.com/tanersener/ffmpeg-kit)
 
 - `Android` under the [android](https://github.com/tanersener/ffmpeg-kit-test/tree/main/android) folder
+- `Flutter` under the [flutter](https://github.com/tanersener/ffmpeg-kit-test/tree/main/flutter) folder
 - `iOS` under the [ios](https://github.com/tanersener/ffmpeg-kit-test/tree/main/ios) folder
 - `macOS` under the [macos](https://github.com/tanersener/ffmpeg-kit-test/tree/main/macos) folder
 - `React Native` under the [react-native](https://github.com/tanersener/ffmpeg-kit-test/tree/main/react-native) folder
@@ -20,6 +21,8 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform |  FFmpegKit Version | Tag|
 | :----: | :----: |:----: |
+| Flutter | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0) |
+| Flutter | 4.5.0-LTS | [4.5.0-LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0.lts) |
 | React Native | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.0) |
 | Android | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5) |
 | Android | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.lts) |
