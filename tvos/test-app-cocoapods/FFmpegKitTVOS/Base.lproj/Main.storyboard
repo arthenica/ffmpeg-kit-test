@@ -909,6 +909,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ijY-Sd-6tH"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cbQ-aT-Gcf" firstAttribute="leading" secondItem="ijY-Sd-6tH" secondAttribute="leading" constant="30" id="0dP-J4-KMY"/>
                             <constraint firstItem="f7O-6x-bsn" firstAttribute="leading" secondItem="PXO-rZ-PXJ" secondAttribute="trailing" constant="30" id="2O6-vn-rBS"/>
