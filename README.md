@@ -12,3 +12,9 @@ burning subtitles, video stabilisation, pipe operations, concurrent command exec
 
 Android application also includes a Storage Access Framework (SAF) tab to demonstrate how SAF uris can be used with 
 `FFmpegKit`.
+
+### License
+
+`FFmpegKit Test` repository is licensed under the [MIT License](https://opensource.org/licenses/MIT), fonts used by 
+the applications are licensed under the [SIL Open Font License](https://opensource.org/licenses/OFL-1.1), other 
+digital assets are published in the public domain.
