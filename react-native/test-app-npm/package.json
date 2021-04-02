@@ -1,0 +1,46 @@
+{
+  "name": "ffmpeg-kit-react-native-test",
+  "version": "4.5.0",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-picker/picker": "^2.1.0",
+    "@react-navigation/material-top-tabs": "^5.3.10",
+    "@react-navigation/native": "^5.8.10",
+    "ffmpeg-kit-react-native": "4.5.0",
+    "node-fetch": "^2.6.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-native": "^0.65.1",
+    "react-native-fs": "^2.16.6",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-screens": "^2.16.1",
+    "react-native-tab-view": "^2.15.2",
+    "react-native-video": "^5.1.0-alpha8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.16.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "react-native-codegen": "^0.0.8",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "resolutions": {
+    "**/**/minimist": "^1.2.2"
+  }
+}
