@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "ffmpeg-kit-test";
 
-    public static final int REQUEST_EXTERNAL_STORAGE = 1;
+    public static final int REQUEST_PERMISSIONS = 1;
     public static String[] PERMISSIONS_ALL = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA
@@ -134,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     PERMISSIONS_ALL,
-                    REQUEST_EXTERNAL_STORAGE);
+                    REQUEST_PERMISSIONS);
         }
         permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     PERMISSIONS_ALL,
-                    REQUEST_EXTERNAL_STORAGE);
+                    REQUEST_PERMISSIONS);
         }
 
         try {
