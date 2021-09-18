@@ -190,8 +190,8 @@
                             if ([stream getCodec] != nil) {
                                 [self appendOutput:[NSString stringWithFormat:@"Stream codec: %@\n", [stream getCodec]]];
                             }
-                            if ([stream getFullCodec] != nil) {
-                                [self appendOutput:[NSString stringWithFormat:@"Stream full codec: %@\n", [stream getFullCodec]]];
+                            if ([stream getCodecLong] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Stream codec long: %@\n", [stream getCodecLong]]];
                             }
                             if ([stream getFormat] != nil) {
                                 [self appendOutput:[NSString stringWithFormat:@"Stream format: %@\n", [stream getFormat]]];

@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -38,7 +41,6 @@ import androidx.fragment.app.Fragment;
 
 import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
-import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
 import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.util.ResourcesUtil;
@@ -47,9 +49,6 @@ import com.arthenica.smartexception.java.Exceptions;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class OtherTabFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -167,20 +166,10 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
                                 }
                             });
                         }
-                    }, new LogCallback() {
-
-                        @Override
-                        public void apply(final com.arthenica.ffmpegkit.Log log) {
-                            MainActivity.addUIAction(new Callable<Object>() {
-
-                                @Override
-                                public Object call() {
-                                    appendOutput(log.getMessage());
-                                    return null;
-                                }
-                            });
-                        }
-                    }, null);
+                    }, log -> MainActivity.addUIAction(() -> {
+                        appendOutput(log.getMessage());
+                        return null;
+                    }), null);
 
                 } else {
                     Popup.show(requireContext(), "Creating AUDIO sample failed. Please check logs for the details.");
@@ -202,13 +191,10 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
             public void apply(final Session session) {
                 Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
             }
-        }, new LogCallback() {
-
-            @Override
-            public void apply(final com.arthenica.ffmpegkit.Log log) {
-                Log.d(TAG, log.getMessage());
-            }
-        }, null);
+        }, log -> MainActivity.addUIAction(() -> {
+            appendOutput(log.getMessage());
+            return null;
+        }), null);
     }
 
     protected void testWebp() {
@@ -236,20 +222,10 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
                         Popup.show(requireContext(), "Encode webp failed. Please check logs for the details.");
                     }
                 }
-            }, new LogCallback() {
-
-                @Override
-                public void apply(final com.arthenica.ffmpegkit.Log log) {
-                    MainActivity.addUIAction(new Callable<Object>() {
-
-                        @Override
-                        public Object call() {
-                            appendOutput(log.getMessage());
-                            return null;
-                        }
-                    });
-                }
-            }, null);
+            }, log -> MainActivity.addUIAction(() -> {
+                appendOutput(log.getMessage());
+                return null;
+            }), null);
 
         } catch (IOException e) {
             Log.e(TAG, String.format("Encode webp failed %s.", Exceptions.getStackTraceString(e)));

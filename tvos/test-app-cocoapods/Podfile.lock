@@ -1,16 +1,16 @@
 PODS:
-  - ffmpeg-kit-tvos-full (4.4)
+  - ffmpeg-kit-tvos-full (4.5)
 
 DEPENDENCIES:
-  - ffmpeg-kit-tvos-full (= 4.4)
+  - ffmpeg-kit-tvos-full (= 4.5)
 
 SPEC REPOS:
   trunk:
     - ffmpeg-kit-tvos-full
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-tvos-full: 1c64af7fd2662e7df291da79de8ed160a956f402
+  ffmpeg-kit-tvos-full: 497f584341421ee3c58a0cdb874f1d516b79c4fe
 
-PODFILE CHECKSUM: a0aee203651cd9f8513d07ce8686639f82a04654
+PODFILE CHECKSUM: a4a33809a239849498d8a1bd52857b295cde10f5
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

@@ -93,7 +93,7 @@
     
     NSLog(@"FFprobe process started with arguments\n'%@'.\n", ffprobeCommand);
     
-    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKit parseArguments:ffprobeCommand] withExecuteCallback:^(id<Session> session) {
+    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withExecuteCallback:^(id<Session> session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 

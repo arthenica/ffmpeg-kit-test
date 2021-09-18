@@ -102,8 +102,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSString *resourceFolder = [[NSBundle mainBundle] resourcePath];
     NSDictionary *fontNameMapping = @{@"MyFontName" : @"Doppio One"};
 
-    [FFmpegKitConfig setFontDirectory:resourceFolder with:fontNameMapping];
-    [FFmpegKitConfig setFontDirectory:resourceFolder with:nil];
+    [FFmpegKitConfig setFontDirectoryList:[[NSArray alloc] initWithObjects:resourceFolder, @"/System/Library/Fonts", nil] with:fontNameMapping];
 
     [FFmpegKitConfig ignoreSignal:SIGXCPU];
     [FFmpegKitConfig setLogLevel:LevelAVLogInfo];

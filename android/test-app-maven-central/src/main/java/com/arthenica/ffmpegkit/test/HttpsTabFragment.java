@@ -251,8 +251,8 @@ public class HttpsTabFragment extends Fragment {
                                 if (stream.getCodec() != null) {
                                     appendOutput("Stream codec: " + stream.getCodec() + "\n");
                                 }
-                                if (stream.getFullCodec() != null) {
-                                    appendOutput("Stream full codec: " + stream.getFullCodec() + "\n");
+                                if (stream.getCodecLong() != null) {
+                                    appendOutput("Stream codec long: " + stream.getCodecLong() + "\n");
                                 }
                                 if (stream.getFormat() != null) {
                                     appendOutput("Stream format: " + stream.getFormat() + "\n");

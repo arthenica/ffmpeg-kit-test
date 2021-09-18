@@ -152,7 +152,7 @@ public class CommandTabFragment extends Fragment {
 
         android.util.Log.d(MainActivity.TAG, String.format("FFprobe process started with arguments:\n'%s'", ffprobeCommand));
 
-        FFprobeSession session = new FFprobeSession(FFmpegKit.parseArguments(ffprobeCommand), new ExecuteCallback() {
+        FFprobeSession session = new FFprobeSession(FFmpegKitConfig.parseArguments(ffprobeCommand), new ExecuteCallback() {
 
             @Override
             public void apply(final Session session) {

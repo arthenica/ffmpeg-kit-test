@@ -470,7 +470,7 @@ void assertVideoStream(StreamInformation *stream, NSNumber *index, NSString *cod
     assertString(@"video", [stream getType]);
 
     assertString(codec, [stream getCodec]);
-    assertString(fullCodec, [stream getFullCodec]);
+    assertString(fullCodec, [stream getCodecLong]);
     
     assertString(format, [stream getFormat]);
     
@@ -493,7 +493,7 @@ void assertAudioStream(StreamInformation *stream, NSNumber *index, NSString *cod
     assertString(@"audio", [stream getType]);
 
     assertString(codec, [stream getCodec]);
-    assertString(fullCodec, [stream getFullCodec]);
+    assertString(fullCodec, [stream getCodecLong]);
 
     assertString(sampleRate, [stream getSampleRate]);
     assertString(channelLayout, [stream getChannelLayout]);
