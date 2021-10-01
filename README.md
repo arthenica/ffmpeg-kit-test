@@ -20,7 +20,7 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform |  FFmpegKit Version | Tag|
 | :----: | :----: |:----: |
-| React Native | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5) |
+| React Native | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.0) |
 | iOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5) |
 | iOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.lts) |
 | macOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5) |
