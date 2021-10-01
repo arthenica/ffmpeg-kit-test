@@ -247,6 +247,8 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
     public void setActive() {
         android.util.Log.i(MainActivity.TAG, "Other Tab Activated");
+        FFmpegKitConfig.enableLogCallback(null);
+        FFmpegKitConfig.enableStatisticsCallback(null);
         Popup.show(requireContext(), getString(R.string.other_test_tooltip_text));
     }
 

@@ -83,7 +83,7 @@
 }
 
 - (void)enableLogCallback {
-    [FFmpegKitConfig enableLogCallback: ^(Log* log){
+    [FFmpegKitConfig enableLogCallback:^(Log* log){
         addUIAction(^{
             NSLog(@"%@", [log getMessage]);
         });
