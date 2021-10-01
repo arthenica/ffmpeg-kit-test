@@ -21,12 +21,17 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 |  Platform |  FFmpegKit Version | Tag|
 | :----: | :----: |:----: |
 | React Native | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.0) |
+| Android | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5) |
+| Android | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.lts) |
 | iOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5) |
 | iOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.lts) |
 | macOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5) |
 | macOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5.lts) |
 | tvOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5) |
 | tvOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5.lts) |
+| - | - | - |
+| Android | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4) |
+| Android | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4.lts) |
 | iOS | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4) |
 | iOS | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4.lts) |
 | macOS | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.4) |
