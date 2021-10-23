@@ -1,0 +1,26 @@
+name: ffmpeg_kit_flutter_test
+description: Demonstrates how to use the ffmpeg_kit_flutter plugin.
+version: 4.5.0
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ffmpeg_kit_flutter_video: 4.5.0-LTS
+  cupertino_icons: ^1.0.3
+  path_provider: ^2.0.5
+  path: ^1.8.0
+  fluttertoast: ^8.0.8
+  video_player: ^2.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
