@@ -167,7 +167,7 @@ public class SafTabFragment extends Fragment {
         final File image1File = new File(requireContext().getCacheDir(), "machupicchu.jpg");
         final File image2File = new File(requireContext().getCacheDir(), "pyramid.jpg");
         final File image3File = new File(requireContext().getCacheDir(), "stonehenge.jpg");
-        final String videoPath = FFmpegKitConfig.getSafParameterForWrite(requireContext(), outUri);
+        final String videoPath = FFmpegKitConfig.getSafParameter(requireContext(), outUri, "w");
 
         try {
             String selectedCodec = getCodec(videoPath);
@@ -307,7 +307,7 @@ public class SafTabFragment extends Fragment {
             default:
 
                 // kvazaar, mpeg4, x264, xvid
-                return "";
+                return "-movflags faststart ";
         }
     }
 

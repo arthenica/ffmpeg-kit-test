@@ -307,7 +307,7 @@ public class SafTabFragment extends Fragment {
             default:
 
                 // kvazaar, mpeg4, x264, xvid
-                return "";
+                return "-movflags faststart ";
         }
     }
 
