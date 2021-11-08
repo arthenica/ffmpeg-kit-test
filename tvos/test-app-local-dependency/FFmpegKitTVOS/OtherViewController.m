@@ -77,7 +77,7 @@
 
     NSLog(@"Creating audio sample with '%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
@@ -89,7 +89,7 @@
 
             NSLog(@"FFmpeg process started with arguments\n'%@'.\n", chromaprintCommand);
             
-            [FFmpegKit executeAsync:chromaprintCommand withExecuteCallback:^(id<Session> session) {
+            [FFmpegKit executeAsync:chromaprintCommand withCompleteCallback:^(FFmpegSession* session) {
                 
                 NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
@@ -109,7 +109,7 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
     } withLogCallback:^(Log *log) {
         addUIAction(^{
@@ -130,7 +130,7 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 

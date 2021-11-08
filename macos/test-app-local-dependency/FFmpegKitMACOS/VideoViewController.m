@@ -130,7 +130,7 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    id<Session> session = [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session){
+    FFmpegSession* session = [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session){
         SessionState state = [session getState];
         ReturnCode *returnCode = [session getReturnCode];
 

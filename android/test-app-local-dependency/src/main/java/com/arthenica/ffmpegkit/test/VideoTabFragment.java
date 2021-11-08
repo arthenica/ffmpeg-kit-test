@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,13 +42,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
 import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.Statistics;
 import com.arthenica.ffmpegkit.StatisticsCallback;
 import com.arthenica.ffmpegkit.util.DialogUtil;
@@ -55,10 +57,6 @@ import com.arthenica.smartexception.java.Exceptions;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class VideoTabFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private VideoView videoView;
@@ -148,18 +146,18 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
 
             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-            final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(final Session session) {
+                public void apply(final FFmpegSession session) {
                     final ReturnCode returnCode = session.getReturnCode();
 
                     hideProgressDialog();
 
-                    MainActivity.addUIAction(new Callable<Object>() {
+                    MainActivity.addUIAction(new Runnable() {
 
                         @Override
-                        public Object call() {
+                        public void run() {
                             if (ReturnCode.isSuccess(returnCode)) {
                                 Log.d(TAG, String.format("Encode completed successfully in %d milliseconds; playing video.", session.getDuration()));
                                 playVideo();
@@ -167,8 +165,6 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
                                 Popup.show(requireContext(), "Encode failed. Please check logs for the details.");
                                 Log.d(TAG, String.format("Encode failed with state %s and rc %s.%s", session.getState(), returnCode, notNull(session.getFailStackTrace(), "\n")));
                             }
-
-                            return null;
                         }
                     });
                 }
@@ -345,12 +341,11 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
     protected void hideProgressDialog() {
         progressDialog.dismiss();
 
-        MainActivity.addUIAction(new Callable<Object>() {
+        MainActivity.addUIAction(new Runnable() {
 
             @Override
-            public Object call() {
+            public void run() {
                 VideoTabFragment.this.progressDialog = DialogUtil.createProgressDialog(requireContext(), "Encoding video");
-                return null;
             }
         });
     }

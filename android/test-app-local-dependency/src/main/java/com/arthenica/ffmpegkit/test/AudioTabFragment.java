@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -36,21 +39,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
 import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.SessionState;
 import com.arthenica.ffmpegkit.util.DialogUtil;
 
 import java.io.File;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class AudioTabFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private AlertDialog progressDialog;
@@ -105,12 +103,11 @@ public class AudioTabFragment extends Fragment implements AdapterView.OnItemSele
 
             @Override
             public void apply(final com.arthenica.ffmpegkit.Log log) {
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         appendOutput(log.getMessage());
-                        return null;
                     }
                 });
             }
@@ -153,19 +150,19 @@ public class AudioTabFragment extends Fragment implements AdapterView.OnItemSele
 
         android.util.Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-        FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
             @Override
-            public void apply(final Session session) {
+            public void apply(final FFmpegSession session) {
                 final SessionState state = session.getState();
                 final ReturnCode returnCode = session.getReturnCode();
 
                 hideProgressDialog();
 
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         if (ReturnCode.isSuccess(returnCode)) {
                             Popup.show(requireContext(), "Encode completed successfully.");
                             android.util.Log.d(TAG, "Encode completed successfully.");
@@ -173,8 +170,6 @@ public class AudioTabFragment extends Fragment implements AdapterView.OnItemSele
                             Popup.show(requireContext(), "Encode failed. Please check logs for the details.");
                             android.util.Log.d(TAG, String.format("Encode failed with state %s and rc %s.%s", state, returnCode, notNull(session.getFailStackTrace(), "\n")));
                         }
-
-                        return null;
                     }
                 });
             }

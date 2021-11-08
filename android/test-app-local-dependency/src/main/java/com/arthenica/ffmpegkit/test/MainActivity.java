@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -53,9 +54,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,30 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Exceptions.registerRootPackage("com.arthenica");
     }
 
-    protected static final Queue<Callable<Object>> actionQueue = new ConcurrentLinkedQueue<>();
-
-    protected static final Handler handler = new Handler();
-
-    protected static final Runnable runnable = new Runnable() {
-
-        @Override
-        public void run() {
-            Callable<Object> callable;
-
-            do {
-                callable = actionQueue.poll();
-                if (callable != null) {
-                    try {
-                        callable.call();
-                    } catch (final Exception e) {
-                        android.util.Log.e(TAG, String.format("Running UI action received error.%s.", Exceptions.getStackTraceString(e)));
-                    }
-                }
-            } while (callable != null);
-
-            handler.postDelayed(this, 250);
-        }
-    };
+    protected static final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -127,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPager = findViewById(R.id.pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), this));
 
-        waitForUIAction();
-
         // VERIFY PERMISSIONS
         int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -157,13 +130,6 @@ public class MainActivity extends AppCompatActivity {
         FFmpegKitConfig.setLogLevel(Level.AV_LOG_INFO);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        handler.removeCallbacks(runnable);
-    }
-
     public static void listFFmpegSessions() {
         List<FFmpegSession> ffmpegSessions = FFmpegKit.listSessions();
         Log.d(TAG, "Listing FFmpeg sessions.");
@@ -181,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void listFFprobeSessions() {
-        List<FFprobeSession> ffprobeSessions = FFprobeKit.listSessions();
+        List<FFprobeSession> ffprobeSessions = FFprobeKit.listFFprobeSessions();
         Log.d(TAG, "Listing FFprobe sessions.");
         for (int i = 0; i < ffprobeSessions.size(); i++) {
             FFprobeSession session = ffprobeSessions.get(i);
@@ -196,12 +162,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "Listed FFprobe sessions.");
     }
 
-    public static void waitForUIAction() {
-        handler.postDelayed(runnable, 250);
-    }
-
-    public static void addUIAction(final Callable<Object> callable) {
-        actionQueue.add(callable);
+    public static void addUIAction(final Runnable runnable) {
+        handler.post(runnable);
     }
 
     protected void registerAppFont() throws IOException {
