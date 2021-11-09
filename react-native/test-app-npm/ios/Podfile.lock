@@ -514,7 +514,7 @@ SPEC CHECKSUMS:
   FBLazyVector: 33c82491102f20ecddb6c6a2c273696ace3191e0
   FBReactNativeSpec: df8f81d2a7541ee6755a047b398a5cb5a72acd0e
   ffmpeg-kit-ios-video: 2ba0edaebbc1ac0d7966cdba90901764d8621ed6
-  ffmpeg-kit-react-native: 9aaad3964e165aa62d155c821a6357bcdecf4ffd
+  ffmpeg-kit-react-native: 03655a7f2d1ede5c465c9ce3ab25817aeac04a8c
   Flipper: b1fddf9a17c32097b2b4c806ad158b2f36bb2692
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 57ffbe81ef95306cc9e69c4aa3aeeeeb58a6a28c
