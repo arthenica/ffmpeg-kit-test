@@ -22,6 +22,7 @@
 
 import 'dart:math';
 
+import 'package:ffmpeg_kit_flutter/chapter.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:ffmpeg_kit_flutter/ffprobe_kit.dart';
 import 'package:ffmpeg_kit_flutter/media_information_session.dart';
@@ -238,6 +239,37 @@ class HttpsTab {
           if (tags != null) {
             tags.forEach((key, value) {
               this.appendOutput("Stream tag: ${key}:${tags[key]}\n");
+            });
+          }
+        }
+      }
+
+      List<Chapter> chapters = information.getChapters();
+      for (var i = 0; i < chapters.length; ++i) {
+        Chapter chapter = chapters[i];
+        if (chapter.getId() != null) {
+          appendOutput("Chapter id: ${chapter.getId()}\n");
+        }
+        if (chapter.getTimeBase() != null) {
+          appendOutput("Chapter time base: ${chapter.getTimeBase()}\n");
+        }
+        if (chapter.getStart() != null) {
+          appendOutput("Chapter start: ${chapter.getStart()}\n");
+        }
+        if (chapter.getStartTime() != null) {
+          appendOutput("Chapter start time: ${chapter.getStartTime()}\n");
+        }
+        if (chapter.getEnd() != null) {
+          appendOutput("Chapter end: ${chapter.getEnd()}\n");
+        }
+        if (chapter.getEndTime() != null) {
+          appendOutput("Chapter end time: ${chapter.getEndTime()}\n");
+        }
+        if (chapter.getTags() != null) {
+          final tags = chapter.getTags();
+          if (tags != null) {
+            tags.forEach((key, value) {
+              this.appendOutput("Chapter tag: ${key}:${tags[key]}\n");
             });
           }
         }
