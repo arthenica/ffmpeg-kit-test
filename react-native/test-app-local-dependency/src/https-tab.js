@@ -200,6 +200,37 @@ export default class HttpsTab extends React.Component {
                     }
                 }
             }
+
+            let chapters = information.getChapters();
+            if (chapters !== undefined) {
+                for (let i = 0; i < chapters.length; ++i) {
+                    let chapter = chapters[i];
+                    if (chapter.getId() != null) {
+                        this.appendOutput(`Chapter id: ${chapter.getId()}\n`);
+                    }
+                    if (chapter.getTimeBase() != null) {
+                        this.appendOutput(`Chapter time base: ${chapter.getTimeBase()}\n`);
+                    }
+                    if (chapter.getStart() != null) {
+                        this.appendOutput(`Chapter start: ${chapter.getStart()}\n`);
+                    }
+                    if (chapter.getStartTime() != null) {
+                        this.appendOutput(`Chapter start time: ${chapter.getStartTime()}\n`);
+                    }
+                    if (chapter.getEnd() != null) {
+                        this.appendOutput(`Chapter end: ${chapter.getEnd()}\n`);
+                    }
+                    if (chapter.getEndTime() != null) {
+                        this.appendOutput(`Chapter end time: ${chapter.getEndTime()}\n`);
+                    }
+                    if (chapter.getTags() !== undefined) {
+                        let tags = chapter.getTags();
+                        Object.keys(tags).forEach((key) => {
+                            this.appendOutput(`Chapter tag: ${key}:${tags[key]}\n`);
+                        });
+                    }
+                }
+            }
         }
     }
 
