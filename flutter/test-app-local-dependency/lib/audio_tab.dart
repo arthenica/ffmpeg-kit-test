@@ -92,7 +92,7 @@ class AudioTab {
 
         ffprint("FFmpeg process started with arguments:\n'${ffmpegCommand}'.");
 
-        FFmpegKit.executeAsync(ffmpegCommand, (Session session) async {
+        FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
           final state =
               FFmpegKitConfig.sessionStateToString(await session.getState());
           final returnCode = await session.getReturnCode();
@@ -125,7 +125,7 @@ class AudioTab {
 
       ffprint("Creating audio sample with '$ffmpegCommand'.");
 
-      FFmpegKit.executeAsync(ffmpegCommand, (session) async {
+      FFmpegKit.execute(ffmpegCommand).then((session) async {
         final state =
             FFmpegKitConfig.sessionStateToString(await session.getState());
         final returnCode = await session.getReturnCode();

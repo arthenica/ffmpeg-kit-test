@@ -127,11 +127,10 @@ class HttpsTab {
     }
 
     // EXECUTE
-    FFprobeKit.getMediaInformationAsync(testUrl, this.createNewExecuteCallback);
+    FFprobeKit.getMediaInformationAsync(testUrl, this.createNewCompleteCallback);
   }
 
-  void createNewExecuteCallback(Session session) async {
-    final mediaInformationSession = session as MediaInformationSession;
+  void createNewCompleteCallback(MediaInformationSession mediaInformationSession) async {
     var information = mediaInformationSession.getMediaInformation();
 
     if (information == null) {

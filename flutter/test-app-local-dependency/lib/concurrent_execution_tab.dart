@@ -87,7 +87,7 @@ class ConcurrentExecutionTab {
                 "mpeg4",
                 "");
 
-            FFmpegKit.executeAsync(ffmpegCommand, (Session session) async {
+            FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
               final sessionId = await session.getSessionId();
               final state = FFmpegKitConfig.sessionStateToString(
                   await session.getState());

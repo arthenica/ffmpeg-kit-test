@@ -97,7 +97,7 @@ class SubtitleTab implements PlayerTab {
 
                 _state = _State.CREATING;
 
-                FFmpegKit.executeAsync(ffmpegCommand, (Session session) async {
+                FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
                   final state = FFmpegKitConfig.sessionStateToString(
                       await session.getState());
                   final returnCode = await session.getReturnCode();

@@ -93,7 +93,7 @@ class VideoTab implements PlayerTab {
 
             FFmpegKit.executeAsync(
                     ffmpegCommand,
-                    (Session session) async {
+                    (FFmpegSession session) async {
                       final state = FFmpegKitConfig.sessionStateToString(
                           await session.getState());
                       final returnCode = await session.getReturnCode();
