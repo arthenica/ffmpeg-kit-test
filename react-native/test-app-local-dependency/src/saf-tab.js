@@ -64,7 +64,7 @@ export default class SafTab extends React.Component {
 
                         ffprint(`FFprobe process started with arguments:\n\'${ffprobeCommand}\'.`);
 
-                        FFprobeKit.executeAsync(ffprobeCommand, async (session) => {
+                        FFprobeKit.execute(ffprobeCommand).then(async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
                             const returnCode = await session.getReturnCode();
                             const failStackTrace = await session.getFailStackTrace();
@@ -146,8 +146,7 @@ export default class SafTab extends React.Component {
     }
 
     render() {
-        return (
-            <View style={styles.screenStyle}>
+        return (<View style={styles.screenStyle}>
                 <View style={styles.headerViewStyle}>
                     <Text style={styles.headerTextStyle}>
                         FFmpegKit ReactNative
@@ -181,8 +180,7 @@ export default class SafTab extends React.Component {
                         <Text style={styles.outputTextStyle}>{this.state.outputText}</Text>
                     </ScrollView>
                 </View>
-            </View>
-        );
+            </View>);
     };
 
 }

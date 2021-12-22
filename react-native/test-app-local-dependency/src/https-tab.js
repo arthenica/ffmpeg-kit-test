@@ -96,10 +96,10 @@ export default class HttpsTab extends React.Component {
         }
 
         // EXECUTE
-        FFprobeKit.getMediaInformationAsync(testUrl, this.createNewExecuteCallback);
+        FFprobeKit.getMediaInformationAsync(testUrl, this.createNewCompleteCallback);
     };
 
-    createNewExecuteCallback = async (session) => {
+    createNewCompleteCallback = async (session) => {
         const information = await session.getMediaInformation();
 
         if (information === undefined) {
