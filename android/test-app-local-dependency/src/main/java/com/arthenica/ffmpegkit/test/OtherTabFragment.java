@@ -119,6 +119,9 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
             case "webp":
                 testWebp();
                 break;
+            case "zscale":
+                testZscale();
+                break;
         }
     }
 
@@ -229,6 +232,35 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
             Log.e(TAG, String.format("Encode webp failed %s.", Exceptions.getStackTraceString(e)));
             Popup.show(requireContext(), "Encode webp failed");
         }
+    }
+
+    protected void testZscale() {
+        final File videoFile = new File(requireContext().getFilesDir(), "video.mp4");
+        final File zscaledVideoFile = new File(requireContext().getFilesDir(), "video.zscaled.mp4");
+
+        Log.d(TAG, "Testing 'zscale' filter with video file created on the Video tab");
+
+        final String ffmpegCommand = Video.generateZscaleVideoScript(videoFile.getAbsolutePath(), zscaledVideoFile.getAbsolutePath());
+
+        Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
+
+            @Override
+            public void apply(FFmpegSession session) {
+                Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
+
+                MainActivity.addUIAction(() -> {
+                    if (ReturnCode.isSuccess(session.getReturnCode())) {
+                        Popup.show(requireContext(), "zscale completed successfully.");
+                    } else {
+                        Popup.show(requireContext(), "zscale failed. Please check logs for the details.");
+                    }
+                });
+            }
+        }, log -> MainActivity.addUIAction(() -> {
+            appendOutput(log.getMessage());
+        }), null);
     }
 
     public File getChromaprintSampleFile() {

@@ -109,7 +109,7 @@
 
     [self showProgressDialog:@"Encoding video\n\n"];
 
-    NSString* ffmpegCommand = [Video generateVideoEncodeScript:image1:image2:image3:videoFile:[self getSelectedVideoCodec]:[self getCustomOptions]];
+    NSString* ffmpegCommand = [Video generateVideoEncodeScriptWithCustomPixelFormat:image1:image2:image3:videoFile:[self getSelectedVideoCodec]:[self getPixelFormat]:[self getCustomOptions]];
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
@@ -162,6 +162,19 @@
     [newVideo addObserver:self forKeyPath:@"status" options:options context:nil];
 
     [player insertItem:newVideo afterItem:nil];
+}
+
+- (NSString*)getPixelFormat {
+    NSString *videoCodec = [self.videoCodecText text];
+
+    NSString *pixelFormat;
+    if ([videoCodec isEqualToString:@"x265"]) {
+        pixelFormat = @"yuv420p10le";
+    } else {
+        pixelFormat = @"yuv420p";
+    }
+
+    return pixelFormat;
 }
 
 - (NSString*)getSelectedVideoCodec {

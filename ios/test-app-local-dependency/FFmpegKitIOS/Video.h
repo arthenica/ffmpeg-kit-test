@@ -31,7 +31,11 @@
 
 + (NSString*)generateVideoEncodeScript:(NSString *)image1 :(NSString *)image2 :(NSString *)image3 :(NSString *)videoFile :(NSString *)videoCodec :(NSString *)customOptions;
 
++ (NSString*)generateVideoEncodeScriptWithCustomPixelFormat:(NSString *)image1 :(NSString *)image2 :(NSString *)image3 :(NSString *)videoFile :(NSString *)videoCodec :(NSString *)pixelFormat :(NSString *)customOptions;
+
 + (NSString*)generateShakingVideoScript:(NSString *)image1 :(NSString *)image2 :(NSString *)image3 :(NSString *)videoFile;
+
++ (NSString*)generateZscaleVideoScript:(NSString *)inputVideoFilePath :(NSString *)outputVideoFilePath;
 
 @end
 

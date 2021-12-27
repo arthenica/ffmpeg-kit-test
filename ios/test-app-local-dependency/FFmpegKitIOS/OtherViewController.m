@@ -23,6 +23,7 @@
 #include <ffmpegkit/FFmpegKitConfig.h>
 #include <ffmpegkit/FFmpegKit.h>
 #include "OtherViewController.h"
+#include "Video.h"
 
 @interface OtherViewController ()
 
@@ -42,7 +43,7 @@
     [super viewDidLoad];
     
     // OTHER TEST PICKER INIT
-    testData = @[@"chromaprint", @"dav1d", @"webp"];
+    testData = @[@"chromaprint", @"dav1d", @"webp", @"zscale"];
     selectedTest = 0;
     
     self.otherTestPicker.dataSource = self;
@@ -100,6 +101,9 @@
         break;
         case 2:
             [self testWebp];
+        break;
+        case 3:
+            [self testZscale];
         break;
     }
 }
@@ -164,6 +168,28 @@
     NSLog(@"Testing 'webp' codec\n");
 
     NSString *ffmpegCommand = [NSString stringWithFormat:@"-hide_banner -y -i %@ %@", imageFile, outputFile];
+
+    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
+
+        NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
+
+    } withLogCallback:^(Log *log) {
+        addUIAction(^{
+            [self appendOutput: [log getMessage]];
+        });
+    } withStatisticsCallback:nil];
+}
+
+-(void)testZscale {
+    NSString* docFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *videoFile = [docFolder stringByAppendingPathComponent: @"video.mp4"];
+    NSString *zscaledVideoFile = [docFolder stringByAppendingPathComponent: @"video.zscaled.mp4"];
+
+    NSLog(@"Testing 'zscale' filter with video file created on the Video tab\n");
+
+    NSString *ffmpegCommand = [Video generateZscaleVideoScript:videoFile:zscaledVideoFile];
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 

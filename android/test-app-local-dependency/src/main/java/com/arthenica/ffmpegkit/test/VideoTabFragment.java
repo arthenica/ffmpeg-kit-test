@@ -142,7 +142,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
             ResourcesUtil.resourceToFile(getResources(), R.drawable.pyramid, image2File);
             ResourcesUtil.resourceToFile(getResources(), R.drawable.stonehenge, image3File);
 
-            final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath(), getSelectedVideoCodec(), getCustomOptions());
+            final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath(), getSelectedVideoCodec(), getPixelFormat(), getCustomOptions());
 
             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
@@ -213,6 +213,19 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
             }
         });
         videoView.start();
+    }
+
+    public String getPixelFormat() {
+        String videoCodec = selectedCodec;
+
+        final String pixelFormat;
+        if ("x265".equals(videoCodec)) {
+            pixelFormat = "yuv420p10le";
+        } else {
+            pixelFormat = "yuv420p";
+        }
+
+        return pixelFormat;
     }
 
     public String getSelectedVideoCodec() {
