@@ -164,7 +164,7 @@ public class SafTabFragment extends Fragment {
         final File image1File = new File(requireContext().getCacheDir(), "machupicchu.jpg");
         final File image2File = new File(requireContext().getCacheDir(), "pyramid.jpg");
         final File image3File = new File(requireContext().getCacheDir(), "stonehenge.jpg");
-        final String videoPath = FFmpegKitConfig.getSafParameter(requireContext(), outUri, "w");
+        final String videoPath = FFmpegKitConfig.getSafParameter(requireContext(), outUri, "rw");
 
         try {
             String selectedCodec = getCodec(videoPath);

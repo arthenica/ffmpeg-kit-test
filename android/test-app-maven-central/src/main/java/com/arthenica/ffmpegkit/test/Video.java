@@ -53,6 +53,10 @@ public class Video {
     }
 
     static String generateEncodeVideoScript(final String image1Path, final String image2Path, final String image3Path, final String videoFilePath, final String videoCodec, final String customOptions) {
+        return generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFilePath, videoCodec, "yuv420p", customOptions);
+    }
+
+    static String generateEncodeVideoScript(final String image1Path, final String image2Path, final String image3Path, final String videoFilePath, final String videoCodec, final String pixelFormat, final String customOptions) {
         return
                 "-hide_banner -y -loop 1 -i \"" + image1Path + "\" " +
                         "-loop 1 -i '" + image2Path + "' " +
@@ -69,7 +73,7 @@ public class Video {
                         "[stream3out2]pad=width=640:height=427:x=(640-iw)/2:y=(427-ih)/2:color=#00000000,trim=duration=1,select=lte(n\\,30)[stream3starting];" +
                         "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
                         "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
-                        "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
+                        "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=" + pixelFormat + "[video]\"" +
                         " -map [video] -vsync 2 -async 1 " + customOptions + "-c:v " + videoCodec.toLowerCase(Locale.ENGLISH) + " -r 30 " + videoFilePath;
     }
 
@@ -91,6 +95,13 @@ public class Video {
                         "[3:v][stream3overlaid]overlay=x=\'2*mod(n,4)\':y=\'2*mod(n,2)\',trim=duration=3[stream3shaking];" +
                         "[stream1shaking][stream2shaking][stream3shaking]concat=n=3:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
                         " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+    }
+
+    static String generateZscaleVideoScript(final String inputVideoFilePath, final String outputVideoFilePath) {
+        return "-y -i " +
+                inputVideoFilePath +
+                " -vf zscale=tin=smpte2084:min=bt2020nc:pin=bt2020:rin=tv:t=smpte2084:m=bt2020nc:p=bt2020:r=tv,zscale=t=linear,tonemap=tonemap=clip,zscale=t=bt709,format=yuv420p " +
+                outputVideoFilePath;
     }
 
 }

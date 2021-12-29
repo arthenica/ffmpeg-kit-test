@@ -129,7 +129,7 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
         addUIAction(^{
@@ -147,7 +147,7 @@
 
             NSLog(@"FFmpeg process started with arguments\n'%@'.\n", analyzeVideoCommand);
 
-            [FFmpegKit executeAsync:analyzeVideoCommand withExecuteCallback:^(id<Session> secondSession) {
+            [FFmpegKit executeAsync:analyzeVideoCommand withCompleteCallback:^(id<Session> secondSession) {
 
                 NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[secondSession getState]], [secondSession getReturnCode], notNull([secondSession getFailStackTrace], @"\n"));
 
@@ -157,7 +157,7 @@
                     
                     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", stabilizeVideoCommand);
 
-                    [FFmpegKit executeAsync:stabilizeVideoCommand withExecuteCallback:^(id<Session> thirdSession) {
+                    [FFmpegKit executeAsync:stabilizeVideoCommand withCompleteCallback:^(id<Session> thirdSession) {
 
                         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[thirdSession getState]], [thirdSession getReturnCode], notNull([thirdSession getFailStackTrace], @"\n"));
 

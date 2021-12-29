@@ -179,7 +179,13 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
                 @Override
                 public void apply(Statistics statistics) {
                     VideoTabFragment.this.statistics = statistics;
-                    updateProgressDialog();
+                    MainActivity.addUIAction(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            updateProgressDialog();
+                        }
+                    });
                 }
             });
 
