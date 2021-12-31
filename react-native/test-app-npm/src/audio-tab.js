@@ -67,7 +67,7 @@ export default class AudioTab extends React.Component {
 
         ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
 
-        FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
+        FFmpegKit.execute(ffmpegCommand).then(async (session) => {
                 const state = FFmpegKitConfig.sessionStateToString(await session.getState());
                 const returnCode = await session.getReturnCode();
                 const failStackTrace = await session.getFailStackTrace();
@@ -96,7 +96,7 @@ export default class AudioTab extends React.Component {
 
         ffprint(`Creating audio sample with '${ffmpegCommand}'.`);
 
-        FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
+        FFmpegKit.execute(ffmpegCommand).then(async (session) => {
                 const state = FFmpegKitConfig.sessionStateToString(await session.getState());
                 const returnCode = await session.getReturnCode();
                 const failStackTrace = await session.getFailStackTrace();

@@ -20,7 +20,7 @@ export function notNull(string, valuePrefix) {
 }
 
 export function listFFprobeSessions() {
-    FFprobeKit.listSessions().then(sessionList => {
+    FFprobeKit.listFFprobeSessions().then(sessionList => {
         ffprint(`Listing ${sessionList.length} FFprobe sessions asynchronously.`);
 
         let count = 0;

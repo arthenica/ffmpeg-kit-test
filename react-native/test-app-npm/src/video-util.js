@@ -69,6 +69,10 @@ export default class VideoUtil {
     }
 
     static generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFilePath, videoCodec, customOptions) {
+        return VideoUtil.generateEncodeVideoScriptWithCustomPixelFormat(image1Path, image2Path, image3Path, videoFilePath, videoCodec, "yuv420p", customOptions);
+    }
+
+    static generateEncodeVideoScriptWithCustomPixelFormat(image1Path, image2Path, image3Path, videoFilePath, videoCodec, pixelFormat, customOptions) {
         return "-hide_banner -y -loop 1 -i '" + image1Path + "'   " +
             "-loop 1 -i   \"" + image2Path + "\" " +
             "-loop 1 -i  \"" + image3Path + "\" " +
@@ -84,7 +88,7 @@ export default class VideoUtil {
             "[stream3out2]pad=width=640:height=427:x=(640-iw)/2:y=(427-ih)/2:color=#00000000,trim=duration=1,select=lte(n\\,30)[stream3starting];" +
             "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
             "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
-            "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
+            "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=" + pixelFormat + "[video]\"" +
             " -map [video] -vsync 2 -async 1 " + customOptions + "-c:v " + videoCodec.toLowerCase() + " -r 30 " + videoFilePath;
     }
 
@@ -137,6 +141,13 @@ export default class VideoUtil {
             "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
             "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
             " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+    }
+
+    static generateZscaleVideoScript(inputVideoFilePath, outputVideoFilePath) {
+        return "-y -i " +
+            inputVideoFilePath +
+            " -vf zscale=tin=smpte2084:min=bt2020nc:pin=bt2020:rin=tv:t=smpte2084:m=bt2020nc:p=bt2020:r=tv,zscale=t=linear,tonemap=tonemap=clip,zscale=t=bt709,format=yuv420p " +
+            outputVideoFilePath;
     }
 
 }

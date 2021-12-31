@@ -83,7 +83,7 @@ export default class SafTab extends React.Component {
     encodeVideo = () => {
         FFmpegKitConfig.selectDocumentForWrite('video.mp4', 'video/*')
             .then(uri => {
-                FFmpegKitConfig.getSafParameterForWrite(uri)
+                FFmpegKitConfig.getSafParameter(uri, "rw")
                     .then(safUrl => {
                         let image1Path = VideoUtil.assetPath(VideoUtil.ASSET_1);
                         let image2Path = VideoUtil.assetPath(VideoUtil.ASSET_2);
