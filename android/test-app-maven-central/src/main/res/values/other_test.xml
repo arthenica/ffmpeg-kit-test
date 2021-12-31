@@ -4,5 +4,6 @@
         <item>chromaprint</item>
         <item>dav1d</item>
         <item>webp</item>
+        <item>zscale</item>
     </string-array>
 </resources>

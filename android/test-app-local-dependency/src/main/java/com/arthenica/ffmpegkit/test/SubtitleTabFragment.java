@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,12 +39,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
+import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.Statistics;
 import com.arthenica.ffmpegkit.StatisticsCallback;
 import com.arthenica.ffmpegkit.util.DialogUtil;
@@ -51,10 +54,6 @@ import com.arthenica.smartexception.java.Exceptions;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class SubtitleTabFragment extends Fragment {
 
@@ -118,13 +117,12 @@ public class SubtitleTabFragment extends Fragment {
 
             @Override
             public void apply(final Statistics newStatistics) {
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         SubtitleTabFragment.this.statistics = newStatistics;
                         updateProgressDialog();
-                        return null;
                     }
                 });
             }
@@ -158,20 +156,20 @@ public class SubtitleTabFragment extends Fragment {
 
             state = State.CREATING;
 
-            sessionId = FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            sessionId = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(final Session session) {
+                public void apply(final FFmpegSession session) {
                     Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
                     hideCreateProgressDialog();
 
                     if (ReturnCode.isSuccess(session.getReturnCode())) {
 
-                        MainActivity.addUIAction(new Callable<Object>() {
+                        MainActivity.addUIAction(new Runnable() {
 
                             @Override
-                            public Object call() {
+                            public void run() {
 
                                 Log.d(TAG, "Create completed successfully; burning subtitles.");
 
@@ -183,17 +181,17 @@ public class SubtitleTabFragment extends Fragment {
 
                                 state = State.BURNING;
 
-                                FFmpegKit.executeAsync(burnSubtitlesCommand, new ExecuteCallback() {
+                                FFmpegKit.executeAsync(burnSubtitlesCommand, new FFmpegSessionCompleteCallback() {
 
                                     @Override
-                                    public void apply(final Session secondSession) {
+                                    public void apply(final FFmpegSession secondSession) {
 
                                         hideBurnProgressDialog();
 
-                                        MainActivity.addUIAction(new Callable<Object>() {
+                                        MainActivity.addUIAction(new Runnable() {
 
                                             @Override
-                                            public Object call() {
+                                            public void run() {
                                                 if (ReturnCode.isSuccess(secondSession.getReturnCode())) {
                                                     Log.d(TAG, "Burn subtitles completed successfully; playing video.");
                                                     playVideo();
@@ -204,14 +202,10 @@ public class SubtitleTabFragment extends Fragment {
                                                     Popup.show(requireContext(), "Burn subtitles failed. Please check logs for the details.");
                                                     Log.d(TAG, String.format("Burn subtitles failed with state %s and rc %s.%s", secondSession.getState(), secondSession.getReturnCode(), notNull(secondSession.getFailStackTrace(), "\n")));
                                                 }
-
-                                                return null;
                                             }
                                         });
                                     }
                                 });
-
-                                return null;
                             }
                         });
                     }

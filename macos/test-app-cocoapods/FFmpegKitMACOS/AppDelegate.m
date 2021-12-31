@@ -31,7 +31,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 @implementation AppDelegate
 
 + (void)listFFprobeSessions {
-    NSArray* ffprobeSessions = [FFprobeKit listSessions];
+    NSArray* ffprobeSessions = [FFprobeKit listFFprobeSessions];
 
     NSLog(@"Listing FFprobe sessions.\n");
 

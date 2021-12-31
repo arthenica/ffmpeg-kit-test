@@ -106,7 +106,7 @@
         [self clearOutput];
     }
 
-    [FFprobeKit getMediaInformationAsync:testUrl withExecuteCallback:[self createNewExecuteCallback]];
+    [FFprobeKit getMediaInformationAsync:testUrl withCompleteCallback:[self createNewCompleteCallback]];
 }
 
 - (void)setActive {
@@ -135,11 +135,11 @@
     }
 }
 
-- (ExecuteCallback)createNewExecuteCallback {
-    return ^(id<Session> session){
+- (MediaInformationSessionCompleteCallback)createNewCompleteCallback {
+    return ^(MediaInformationSession* session){
         addUIAction(^{
             @synchronized (self->outputLock) {
-                MediaInformation *information = [((MediaInformationSession*) session) getMediaInformation];
+                MediaInformation *information = [session getMediaInformation];
                 if (information == nil) {
                     [self appendOutput:@"Get media information failed\n"];
                     [self appendOutput:[NSString stringWithFormat:@"State: %@\n", [FFmpegKitConfig sessionStateToString:[session getState]]]];
@@ -165,7 +165,7 @@
                     if ([information getTags] != nil) {
                         NSDictionary* tags = [information getTags];
                         for(NSString *key in [tags allKeys]) {
-                            [self appendOutput:[NSString stringWithFormat:@"Tag: %@:%@", key, [tags objectForKey:key]]];
+                            [self appendOutput:[NSString stringWithFormat:@"Tag: %@:%@\n", key, [tags objectForKey:key]]];
                         }
                     }
                     if ([information getStreams] != nil) {
@@ -228,7 +228,35 @@
                             if ([stream getTags] != nil) {
                                 NSDictionary* tags = [stream getTags];
                                 for(NSString *key in [tags allKeys]) {
-                                    [self appendOutput:[NSString stringWithFormat:@"Stream tag: %@:%@", key, [tags objectForKey:key]]];
+                                    [self appendOutput:[NSString stringWithFormat:@"Stream tag: %@:%@\n", key, [tags objectForKey:key]]];
+                                }
+                            }
+                        }
+                    }
+                    if ([information getChapters] != nil) {
+                        for (Chapter* chapter in [information getChapters]) {
+                            if ([chapter getId] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter id: %@\n", [chapter getId]]];
+                            }
+                            if ([chapter getTimeBase] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter time base: %@\n", [chapter getTimeBase]]];
+                            }
+                            if ([chapter getStart] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter start: %@\n", [chapter getStart]]];
+                            }
+                            if ([chapter getStartTime] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter start time: %@\n", [chapter getStartTime]]];
+                            }
+                            if ([chapter getEnd] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter end: %@\n", [chapter getEnd]]];
+                            }
+                            if ([chapter getEndTime] != nil) {
+                                [self appendOutput:[NSString stringWithFormat:@"Chapter end time: %@\n", [chapter getEndTime]]];
+                            }
+                            if ([chapter getTags] != nil) {
+                                NSDictionary* tags = [chapter getTags];
+                                for(NSString *key in [tags allKeys]) {
+                                    [self appendOutput:[NSString stringWithFormat:@"Chapter tag: %@:%@\n", key, [tags objectForKey:key]]];
                                 }
                             }
                         }

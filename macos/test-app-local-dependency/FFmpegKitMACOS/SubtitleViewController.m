@@ -115,7 +115,7 @@ typedef enum {
     
     self->state = CreatingState;
     
-    sessionId = [[FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    sessionId = [[FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
@@ -136,7 +136,7 @@ typedef enum {
 
             self->state = BurningState;
             
-            [FFmpegKit executeAsync:burnSubtitlesCommand withExecuteCallback:^(id<Session> secondSession) {
+            [FFmpegKit executeAsync:burnSubtitlesCommand withCompleteCallback:^(id<Session> secondSession) {
                 
                 addUIAction(^{
                     [self hideProgressDialog];

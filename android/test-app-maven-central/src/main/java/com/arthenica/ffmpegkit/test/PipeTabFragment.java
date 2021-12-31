@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -37,12 +40,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
+import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.SessionState;
 import com.arthenica.ffmpegkit.Statistics;
 import com.arthenica.ffmpegkit.StatisticsCallback;
@@ -54,10 +57,6 @@ import com.arthenica.smartexception.java.Exceptions;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class PipeTabFragment extends Fragment {
     private VideoView videoView;
@@ -113,13 +112,12 @@ public class PipeTabFragment extends Fragment {
 
             @Override
             public void apply(final Statistics newStatistics) {
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         PipeTabFragment.this.statistics = newStatistics;
                         updateProgressDialog();
-                        return null;
                     }
                 });
             }
@@ -162,10 +160,10 @@ public class PipeTabFragment extends Fragment {
 
             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-            FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(final Session session) {
+                public void apply(final FFmpegSession session) {
                     final SessionState state = session.getState();
                     final ReturnCode returnCode = session.getReturnCode();
 
@@ -178,18 +176,16 @@ public class PipeTabFragment extends Fragment {
                     FFmpegKitConfig.closeFFmpegPipe(pipe2);
                     FFmpegKitConfig.closeFFmpegPipe(pipe3);
 
-                    MainActivity.addUIAction(new Callable<Object>() {
+                    MainActivity.addUIAction(new Runnable() {
 
                         @Override
-                        public Object call() {
+                        public void run() {
                             if (ReturnCode.isSuccess(returnCode)) {
                                 Log.d(TAG, "Create completed successfully; playing video.");
                                 playVideo();
                             } else {
                                 Popup.show(requireContext(), "Create failed. Please check logs for the details.");
                             }
-
-                            return null;
                         }
                     });
                 }
@@ -270,12 +266,11 @@ public class PipeTabFragment extends Fragment {
     protected void hideProgressDialog() {
         progressDialog.dismiss();
 
-        MainActivity.addUIAction(new Callable<Object>() {
+        MainActivity.addUIAction(new Runnable() {
 
             @Override
-            public Object call() {
+            public void run() {
                 PipeTabFragment.this.progressDialog = DialogUtil.createProgressDialog(requireContext(), "Creating video");
-                return null;
             }
         });
     }
