@@ -22,6 +22,8 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -33,20 +35,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
+import com.arthenica.ffmpegkit.Chapter;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
 import com.arthenica.ffmpegkit.FFprobeKit;
 import com.arthenica.ffmpegkit.MediaInformation;
 import com.arthenica.ffmpegkit.MediaInformationSession;
-import com.arthenica.ffmpegkit.Session;
+import com.arthenica.ffmpegkit.MediaInformationSessionCompleteCallback;
 import com.arthenica.ffmpegkit.StreamInformation;
 
 import org.json.JSONObject;
 
 import java.util.Iterator;
 import java.util.Random;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class HttpsTabFragment extends Fragment {
 
@@ -165,7 +165,7 @@ public class HttpsTabFragment extends Fragment {
         }
 
         // EXECUTE
-        FFprobeKit.getMediaInformationAsync(testUrl, createNewExecuteCallback());
+        FFprobeKit.getMediaInformationAsync(testUrl, createNewCompleteCallback());
     }
 
     public void setActive() {
@@ -199,15 +199,15 @@ public class HttpsTabFragment extends Fragment {
         }
     }
 
-    private ExecuteCallback createNewExecuteCallback() {
-        return new ExecuteCallback() {
+    private MediaInformationSessionCompleteCallback createNewCompleteCallback() {
+        return new MediaInformationSessionCompleteCallback() {
 
             @Override
-            public void apply(Session session) {
+            public void apply(MediaInformationSession session) {
 
                 // SYNC THE OUTPUT SO WE CAN IDENTIFY THE FILES
                 synchronized (outputLock) {
-                    final MediaInformation information = ((MediaInformationSession) session).getMediaInformation();
+                    final MediaInformation information = session.getMediaInformation();
                     if (information == null) {
                         appendOutput("Get media information failed\n");
                         appendOutput(String.format("State: %s\n", session.getState()));
@@ -232,12 +232,10 @@ public class HttpsTabFragment extends Fragment {
                         }
                         if (information.getTags() != null) {
                             JSONObject tags = information.getTags();
-                            if (tags != null) {
-                                Iterator<String> keys = tags.keys();
-                                while (keys.hasNext()) {
-                                    String next = keys.next();
-                                    appendOutput("Tag: " + next + ":" + tags.optString(next) + "\n");
-                                }
+                            Iterator<String> keys = tags.keys();
+                            while (keys.hasNext()) {
+                                String next = keys.next();
+                                appendOutput("Tag: " + next + ":" + tags.optString(next) + "\n");
                             }
                         }
                         if (information.getStreams() != null) {
@@ -299,14 +297,45 @@ public class HttpsTabFragment extends Fragment {
 
                                 if (stream.getTags() != null) {
                                     JSONObject tags = stream.getTags();
+                                    Iterator<String> keys = tags.keys();
+                                    while (keys.hasNext()) {
+                                        String next = keys.next();
+                                        appendOutput(String.format("Stream tag: %s:%s\n", next, tags.optString(next)));
+                                    }
+                                }
+                            }
+                        }
+                        if (information.getChapters() != null) {
+                            for (Chapter chapter : information.getChapters()) {
+                                if (chapter.getId() != null) {
+                                    appendOutput("Chapter id: " + chapter.getId() + "\n");
+                                }
+                                if (chapter.getTimeBase() != null) {
+                                    appendOutput("Chapter time base: " + chapter.getTimeBase() + "\n");
+                                }
+                                if (chapter.getStart() != null) {
+                                    appendOutput("Chapter start: " + chapter.getStart() + "\n");
+                                }
+                                if (chapter.getStartTime() != null) {
+                                    appendOutput("Chapter start time: " + chapter.getStartTime() + "\n");
+                                }
+                                if (chapter.getEnd() != null) {
+                                    appendOutput("Chapter end: " + chapter.getEnd() + "\n");
+                                }
+                                if (chapter.getEndTime() != null) {
+                                    appendOutput("Chapter end time: " + chapter.getEndTime() + "\n");
+                                }
+                                if (chapter.getTags() != null) {
+                                    JSONObject tags = chapter.getTags();
                                     if (tags != null) {
                                         Iterator<String> keys = tags.keys();
                                         while (keys.hasNext()) {
                                             String next = keys.next();
-                                            appendOutput(String.format("Stream tag: %s:%s\n", next, tags.optString(next)));
+                                            appendOutput(String.format("Chapter tag: %s:%s\n", next, tags.optString(next)));
                                         }
                                     }
                                 }
+
                             }
                         }
                     }

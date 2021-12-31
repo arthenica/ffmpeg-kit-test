@@ -22,6 +22,8 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AndroidRuntimeException;
@@ -34,19 +36,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
+import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.FFprobeSession;
+import com.arthenica.ffmpegkit.FFprobeSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.LogRedirectionStrategy;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.SessionState;
-
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class CommandTabFragment extends Fragment {
     private EditText commandText;
@@ -105,22 +104,21 @@ public class CommandTabFragment extends Fragment {
 
         android.util.Log.d(MainActivity.TAG, String.format("FFmpeg process started with arguments:\n'%s'", ffmpegCommand));
 
-        FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
             @Override
-            public void apply(final Session session) {
+            public void apply(final FFmpegSession session) {
                 final SessionState state = session.getState();
                 final ReturnCode returnCode = session.getReturnCode();
 
-                android.util.Log.d(MainActivity.TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", state, returnCode, notNull(session.getFailStackTrace(), "\n")));
+                android.util.Log.d(MainActivity.TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", FFmpegKitConfig.sessionStateToString(state), returnCode, notNull(session.getFailStackTrace(), "\n")));
 
-                if (state == SessionState.FAILED || !returnCode.isSuccess()) {
-                    MainActivity.addUIAction(new Callable<Object>() {
+                if (state == SessionState.FAILED || !returnCode.isValueSuccess()) {
+                    MainActivity.addUIAction(new Runnable() {
 
                         @Override
-                        public Object call() {
+                        public void run() {
                             Popup.show(requireContext(), "Command failed. Please check output for the details.");
-                            return null;
                         }
                     });
                 }
@@ -129,12 +127,11 @@ public class CommandTabFragment extends Fragment {
 
             @Override
             public void apply(final com.arthenica.ffmpegkit.Log log) {
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         appendOutput(log.getMessage());
-                        return null;
                     }
                 });
 
@@ -152,31 +149,29 @@ public class CommandTabFragment extends Fragment {
 
         android.util.Log.d(MainActivity.TAG, String.format("FFprobe process started with arguments:\n'%s'", ffprobeCommand));
 
-        FFprobeSession session = new FFprobeSession(FFmpegKitConfig.parseArguments(ffprobeCommand), new ExecuteCallback() {
+        FFprobeSession session = new FFprobeSession(FFmpegKitConfig.parseArguments(ffprobeCommand), new FFprobeSessionCompleteCallback() {
 
             @Override
-            public void apply(final Session session) {
+            public void apply(final FFprobeSession session) {
                 final SessionState state = session.getState();
                 final ReturnCode returnCode = session.getReturnCode();
 
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         appendOutput(session.getOutput());
-                        return null;
                     }
                 });
 
-                android.util.Log.d(MainActivity.TAG, String.format("FFprobe process exited with state %s and rc %s.%s", state, returnCode, notNull(session.getFailStackTrace(), "\n")));
+                android.util.Log.d(MainActivity.TAG, String.format("FFprobe process exited with state %s and rc %s.%s", FFmpegKitConfig.sessionStateToString(state), returnCode, notNull(session.getFailStackTrace(), "\n")));
 
-                if (state == SessionState.FAILED || !session.getReturnCode().isSuccess()) {
-                    MainActivity.addUIAction(new Callable<Object>() {
+                if (state == SessionState.FAILED || !session.getReturnCode().isValueSuccess()) {
+                    MainActivity.addUIAction(new Runnable() {
 
                         @Override
-                        public Object call() {
+                        public void run() {
                             Popup.show(requireContext(), "Command failed. Please check output for the details.");
-                            return null;
                         }
                     });
                 }

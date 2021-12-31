@@ -256,6 +256,7 @@
 				34FAE20E209F7DDD005CE2AE /* Resources */,
 				34F9744020A1A200004A1F68 /* Headers */,
 				3452D8CF20A373640045E6B0 /* Embed Frameworks */,
+				0EA381B86EFACCCDB603F8E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,6 +322,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0EA381B86EFACCCDB603F8E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FFmpegKitIOS/Pods-FFmpegKitIOS-frameworks.sh",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/ffmpegkit.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libavcodec.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libavdevice.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libavfilter.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libavformat.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libavutil.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libswresample.framework",
+				"${PODS_ROOT}/ffmpeg-kit-ios-full/libswscale.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ffmpegkit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavcodec.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavdevice.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavfilter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavformat.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libavutil.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libswresample.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libswscale.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FFmpegKitIOS/Pods-FFmpegKitIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9DA4995DAAB336867DC608F0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

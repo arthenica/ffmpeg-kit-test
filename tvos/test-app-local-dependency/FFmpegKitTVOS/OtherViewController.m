@@ -23,6 +23,7 @@
 #include <ffmpegkit/FFmpegKitConfig.h>
 #include <ffmpegkit/FFmpegKit.h>
 #include "OtherViewController.h"
+#include "Video.h"
 
 @interface OtherViewController ()
 
@@ -64,6 +65,8 @@
         [self testDav1d];
     } else if ([selectedTest isEqualToString:@"webp"]) {
         [self testWebp];
+    } else if ([selectedTest isEqualToString:@"zscale"]) {
+        [self testZscale];
     }
 }
 
@@ -77,7 +80,7 @@
 
     NSLog(@"Creating audio sample with '%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
@@ -89,7 +92,7 @@
 
             NSLog(@"FFmpeg process started with arguments\n'%@'.\n", chromaprintCommand);
             
-            [FFmpegKit executeAsync:chromaprintCommand withExecuteCallback:^(id<Session> session) {
+            [FFmpegKit executeAsync:chromaprintCommand withCompleteCallback:^(FFmpegSession* session) {
                 
                 NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 
@@ -109,7 +112,7 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
     } withLogCallback:^(Log *log) {
         addUIAction(^{
@@ -130,7 +133,29 @@
 
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
+
+        NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
+
+    } withLogCallback:^(Log *log) {
+        addUIAction(^{
+            [self appendOutput: [log getMessage]];
+        });
+    } withStatisticsCallback:nil];
+}
+
+-(void)testZscale {
+    NSString* docFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *videoFile = [docFolder stringByAppendingPathComponent: @"video.mp4"];
+    NSString *zscaledVideoFile = [docFolder stringByAppendingPathComponent: @"video.zscaled.mp4"];
+
+    NSLog(@"Testing 'zscale' filter with video file created on the Video tab\n");
+
+    NSString *ffmpegCommand = [Video generateZscaleVideoScript:videoFile:zscaledVideoFile];
+
+    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
 

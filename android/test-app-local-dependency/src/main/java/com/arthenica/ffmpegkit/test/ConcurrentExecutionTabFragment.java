@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -32,13 +35,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
 import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.SessionState;
 import com.arthenica.ffmpegkit.util.ResourcesUtil;
 import com.arthenica.smartexception.java.Exceptions;
@@ -46,10 +48,6 @@ import com.arthenica.smartexception.java.Exceptions;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class ConcurrentExecutionTabFragment extends Fragment {
     private TextView outputText;
@@ -161,12 +159,11 @@ public class ConcurrentExecutionTabFragment extends Fragment {
 
             @Override
             public void apply(final com.arthenica.ffmpegkit.Log log) {
-                MainActivity.addUIAction(new Callable<Object>() {
+                MainActivity.addUIAction(new Runnable() {
 
                     @Override
-                    public Object call() {
+                    public void run() {
                         appendOutput(String.format(Locale.getDefault(), "%d -> %s", log.getSessionId(), log.getMessage()));
-                        return null;
                     }
                 });
             }
@@ -191,10 +188,10 @@ public class ConcurrentExecutionTabFragment extends Fragment {
 
             Log.d(TAG, String.format("FFmpeg process starting for button %d with arguments\n'%s'.", buttonNumber, ffmpegCommand));
 
-            final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(final Session session) {
+                public void apply(final FFmpegSession session) {
                     final SessionState state = session.getState();
                     final ReturnCode returnCode = session.getReturnCode();
 

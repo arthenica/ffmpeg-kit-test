@@ -75,6 +75,85 @@ static void initTests() {
                           "             }\n"
                           "         }\n"
                           "     ],\n"
+                          "     \"chapters\": [\n"
+                          "         {\n"
+                          "             \"id\": 0,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 0,\n"
+                          "             \"start_time\": \"0.000000\",\n"
+                          "             \"end\": 11158238,\n"
+                          "             \"end_time\": \"506.042540\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"1 Laying Plans - 2 Waging War\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 1,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 11158238,\n"
+                          "             \"start_time\": \"506.042540\",\n"
+                          "             \"end\": 21433051,\n"
+                          "             \"end_time\": \"972.020454\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"3 Attack By Stratagem - 4 Tactical Dispositions\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 2,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 21433051,\n"
+                          "             \"start_time\": \"972.020454\",\n"
+                          "             \"end\": 35478685,\n"
+                          "             \"end_time\": \"1609.010658\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"5 Energy - 6 Weak Points and Strong\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 3,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 35478685,\n"
+                          "             \"start_time\": \"1609.010658\",\n"
+                          "             \"end\": 47187043,\n"
+                          "             \"end_time\": \"2140.001950\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"7 Maneuvering - 8 Variation in Tactics\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 4,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 47187043,\n"
+                          "             \"start_time\": \"2140.001950\",\n"
+                          "             \"end\": 66635594,\n"
+                          "             \"end_time\": \"3022.022404\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"9 The Army on the March - 10 Terrain\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 5,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 66635594,\n"
+                          "             \"start_time\": \"3022.022404\",\n"
+                          "             \"end\": 83768105,\n"
+                          "             \"end_time\": \"3799.007029\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"11 The Nine Situations\"\n"
+                          "            }\n"
+                          "         },\n"
+                          "         {\n"
+                          "             \"id\": 6,\n"
+                          "             \"time_base\": \"1/22050\",\n"
+                          "             \"start\": 83768105,\n"
+                          "             \"start_time\": \"3799.007029\",\n"
+                          "             \"end\": 95659008,\n"
+                          "             \"end_time\": \"4338.277007\",\n"
+                          "             \"tags\": {\n"
+                          "                \"title\": \"12 The Attack By Fire - 13 The Use of Spies\"\n"
+                          "            }\n"
+                          "         }\n"
+                          "     ],\n"
                           "     \"format\": {\n"
                           "         \"filename\": \"sample.mp3\",\n"
                           "         \"nb_streams\": 1,\n"
@@ -448,6 +527,10 @@ static void initTests() {
 
 }
 
+void assertNotNull(NSObject *object) {
+    assert(object != nil);
+}
+
 void assertNumber(NSNumber *expected, NSNumber *real) {
     if (expected == nil) {
         assert(real == nil);
@@ -501,8 +584,21 @@ void assertAudioStream(StreamInformation *stream, NSNumber *index, NSString *cod
     assertString(bitrate, [stream getBitrate]);
 }
 
-void assertNotNull(NSObject *object) {
-    assert(object != nil);
+void assertChapter(Chapter *chapter, NSNumber *id, NSString *timeBase, NSNumber *start, NSString * startTime, NSNumber *end, NSString *endTime) {
+    assert(chapter != nil);
+    assertNumber(id, [chapter getId]);
+    assertString(timeBase, [chapter getTimeBase]);
+
+    assertNumber(start, [chapter getStart]);
+    assertString(startTime, [chapter getStartTime]);
+
+    assertNumber(end, [chapter getEnd]);
+    assertString(endTime, [chapter getEndTime]);
+
+    NSDictionary *tags = [chapter getTags];
+    assertNotNull(tags);
+
+    assert(1 == [tags count]);
 }
 
 void assertMediaInput(MediaInformation *mediaInformation, NSString *expectedFormat, NSString *expectedFilename) {
@@ -579,6 +675,13 @@ void testMediaInformationMp3() {
     assert(1 == [streams count]);
 
     assertAudioStream([streams objectAtIndex:0], [[NSNumber alloc] initWithInt:0], @"mp3", @"MP3 (MPEG audio layer 3)", @"44100", @"stereo", @"fltp", @"320000");
+
+    NSArray *chapters = [mediaInformation getChapters];
+    assertNotNull(chapters);
+    assert(7 == [chapters count]);
+
+    assertChapter([chapters objectAtIndex:0], [[NSNumber alloc] initWithInt:0], @"1/22050", [[NSNumber alloc] initWithInt:0], @"0.000000", [[NSNumber alloc] initWithInt:11158238], @"506.042540");
+    assertChapter([chapters objectAtIndex:1], [[NSNumber alloc] initWithInt:1], @"1/22050", [[NSNumber alloc] initWithInt:11158238], @"506.042540", [[NSNumber alloc] initWithInt:21433051], @"972.020454");
 }
 
 void testMediaInformationJpg() {

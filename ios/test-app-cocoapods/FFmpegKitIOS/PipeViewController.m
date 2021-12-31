@@ -83,7 +83,7 @@
 }
 
 - (void)enableLogCallback {
-    [FFmpegKitConfig enableLogCallback:^(Log* log){
+    [FFmpegKitConfig enableLogCallback: ^(Log* log){
         addUIAction(^{
             NSLog(@"%@", [log getMessage]);
         });
@@ -173,7 +173,7 @@
     
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 

@@ -39,16 +39,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
+import com.arthenica.ffmpegkit.FFmpegKitConfig;
+import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.util.ResourcesUtil;
 import com.arthenica.smartexception.java.Exceptions;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.Callable;
 
 public class OtherTabFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -119,6 +119,9 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
             case "webp":
                 testWebp();
                 break;
+            case "zscale":
+                testZscale();
+                break;
         }
     }
 
@@ -134,10 +137,10 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
         android.util.Log.d(TAG, String.format("Creating audio sample with '%s'.", ffmpegCommand));
 
-        FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
             @Override
-            public void apply(Session session) {
+            public void apply(FFmpegSession session) {
                 Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
                 if (ReturnCode.isSuccess(session.getReturnCode())) {
@@ -147,14 +150,14 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
                     Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", chromaprintCommand));
 
-                    FFmpegKit.executeAsync(chromaprintCommand, new ExecuteCallback() {
+                    FFmpegKit.executeAsync(chromaprintCommand, new FFmpegSessionCompleteCallback() {
 
                         @Override
-                        public void apply(final Session session) {
-                            MainActivity.addUIAction(new Callable<Object>() {
+                        public void apply(final FFmpegSession session) {
+                            MainActivity.addUIAction(new Runnable() {
 
                                 @Override
-                                public Object call() {
+                                public void run() {
                                     Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
                                     if (ReturnCode.isSuccess(session.getReturnCode())) {
@@ -162,13 +165,11 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
                                     } else {
                                         Popup.show(requireContext(), "Testing chromaprint failed. Please check logs for the details.");
                                     }
-                                    return null;
                                 }
                             });
                         }
                     }, log -> MainActivity.addUIAction(() -> {
                         appendOutput(log.getMessage());
-                        return null;
                     }), null);
 
                 } else {
@@ -185,15 +186,14 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
         Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-        FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
             @Override
-            public void apply(final Session session) {
+            public void apply(final FFmpegSession session) {
                 Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
             }
         }, log -> MainActivity.addUIAction(() -> {
             appendOutput(log.getMessage());
-            return null;
         }), null);
     }
 
@@ -210,27 +210,57 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-            FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(Session session) {
+                public void apply(FFmpegSession session) {
                     Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
-                    if (ReturnCode.isSuccess(session.getReturnCode())) {
-                        Popup.show(requireContext(), "Encode webp completed successfully.");
-                    } else {
-                        Popup.show(requireContext(), "Encode webp failed. Please check logs for the details.");
-                    }
+                    MainActivity.addUIAction(() -> {
+                        if (ReturnCode.isSuccess(session.getReturnCode())) {
+                            Popup.show(requireContext(), "Encode webp completed successfully.");
+                        } else {
+                            Popup.show(requireContext(), "Encode webp failed. Please check logs for the details.");
+                        }
+                    });
                 }
             }, log -> MainActivity.addUIAction(() -> {
                 appendOutput(log.getMessage());
-                return null;
             }), null);
 
         } catch (IOException e) {
             Log.e(TAG, String.format("Encode webp failed %s.", Exceptions.getStackTraceString(e)));
             Popup.show(requireContext(), "Encode webp failed");
         }
+    }
+
+    protected void testZscale() {
+        final File videoFile = new File(requireContext().getFilesDir(), "video.mp4");
+        final File zscaledVideoFile = new File(requireContext().getFilesDir(), "video.zscaled.mp4");
+
+        Log.d(TAG, "Testing 'zscale' filter with video file created on the Video tab");
+
+        final String ffmpegCommand = Video.generateZscaleVideoScript(videoFile.getAbsolutePath(), zscaledVideoFile.getAbsolutePath());
+
+        Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+
+        FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
+
+            @Override
+            public void apply(FFmpegSession session) {
+                Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
+
+                MainActivity.addUIAction(() -> {
+                    if (ReturnCode.isSuccess(session.getReturnCode())) {
+                        Popup.show(requireContext(), "zscale completed successfully.");
+                    } else {
+                        Popup.show(requireContext(), "zscale failed. Please check logs for the details.");
+                    }
+                });
+            }
+        }, log -> MainActivity.addUIAction(() -> {
+            appendOutput(log.getMessage());
+        }), null);
     }
 
     public File getChromaprintSampleFile() {
