@@ -19,28 +19,37 @@ demonstrate how SAF uris can be used with `FFmpegKit`.
 
 Test applications are tagged with `ffmpeg-kit` release they depend on.
 
-|  Platform |  FFmpegKit Version | Tag|
-| :----: | :----: |:----: |
-| Flutter | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0) |
-| Flutter | 4.5.0-LTS | [4.5.0-LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0.lts) |
-| React Native | 4.5.0 | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.0) |
-| Android | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5) |
-| Android | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.lts) |
-| iOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5) |
-| iOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.lts) |
-| macOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5) |
-| macOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5.lts) |
-| tvOS | 4.5 | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5) |
-| tvOS | 4.5.LTS | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5.lts) |
-| - | - | - |
-| Android | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4) |
-| Android | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4.lts) |
-| iOS | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4) |
-| iOS | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4.lts) |
-| macOS | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.4) |
-| macOS | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.4.lts) |
-| tvOS | 4.4 | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.4) |
-| tvOS | 4.4.LTS | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.4.lts) |
+|  Platform | FFmpegKit Version | Tag|
+| :----: |:-----------------:|:----: |
+| Android |        4.5.1        | [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.1) |
+| Android |      4.5.1.LTS      | [4.5.1.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.1.lts) |
+| iOS |        4.5.1        | [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.1) |
+| iOS |      4.5.1.LTS      | [4.5.1.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.1.lts) |
+| macOS |        4.5.1        | [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5.1) |
+| macOS |      4.5.1.LTS      | [4.5.1.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5.1.lts) |
+| tvOS |       4.5.1       | [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5.1) |
+| tvOS |     4.5.1.LTS     | [4.5.1.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5.1.lts) |
+| - |         -         | - |
+| Flutter |       4.5.0       | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0) |
+| Flutter |     4.5.0-LTS     | [4.5.0-LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.0.lts) |
+| React Native |       4.5.0       | [4.5.0](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.0) |
+| Android |        4.5        | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5) |
+| Android |      4.5.LTS      | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.5.lts) |
+| iOS |        4.5        | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5) |
+| iOS |      4.5.LTS      | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.5.lts) |
+| macOS |        4.5        | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5) |
+| macOS |      4.5.LTS      | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.5.lts) |
+| tvOS |        4.5        | [4.5](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5) |
+| tvOS |      4.5.LTS      | [4.5.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.5.lts) |
+| - |         -         | - |
+| Android |        4.4        | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4) |
+| Android |      4.4.LTS      | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/android.v4.4.lts) |
+| iOS |        4.4        | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4) |
+| iOS |      4.4.LTS      | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/ios.v4.4.lts) |
+| macOS |        4.4        | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.4) |
+| macOS |      4.4.LTS      | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/macos.v4.4.lts) |
+| tvOS |        4.4        | [4.4](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.4) |
+| tvOS |      4.4.LTS      | [4.4.LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/tvos.v4.4.lts) |
 
 ### License
 

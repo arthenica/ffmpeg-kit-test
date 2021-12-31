@@ -71,13 +71,13 @@
     
     NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
 
-    [FFmpegKit executeAsync:ffmpegCommand withExecuteCallback:^(id<Session> session) {
+    [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:state], returnCode, notNull([session getFailStackTrace], @"\n"));
 
-        if (state == SessionStateFailed || !returnCode.isSuccess) {
+        if (state == SessionStateFailed || !returnCode.isValueSuccess) {
             addUIAction(^{
                 [Util alert:self withTitle:@"Error" message:@"Command failed. Please check output for the details." andButtonText:@"OK"];
             });
@@ -100,7 +100,7 @@
     
     NSLog(@"FFprobe process started with arguments\n'%@'.\n", ffprobeCommand);
     
-    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withExecuteCallback:^(id<Session> session) {
+    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 
@@ -110,7 +110,7 @@
 
         NSLog(@"FFprobe process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:state], returnCode, notNull([session getFailStackTrace], @"\n"));
 
-        if (state == SessionStateFailed || !returnCode.isSuccess) {
+        if (state == SessionStateFailed || !returnCode.isValueSuccess) {
             addUIAction(^{
                 [Util alert:self withTitle:@"Error" message:@"Command failed. Please check output for the details." andButtonText:@"OK"];
             });

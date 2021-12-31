@@ -22,6 +22,9 @@
 
 package com.arthenica.ffmpegkit.test;
 
+import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
+import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
+
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,22 +38,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.arthenica.ffmpegkit.ExecuteCallback;
 import com.arthenica.ffmpegkit.FFmpegKit;
 import com.arthenica.ffmpegkit.FFmpegKitConfig;
+import com.arthenica.ffmpegkit.FFmpegSession;
+import com.arthenica.ffmpegkit.FFmpegSessionCompleteCallback;
 import com.arthenica.ffmpegkit.LogCallback;
 import com.arthenica.ffmpegkit.ReturnCode;
-import com.arthenica.ffmpegkit.Session;
 import com.arthenica.ffmpegkit.util.DialogUtil;
 import com.arthenica.ffmpegkit.util.ResourcesUtil;
 import com.arthenica.smartexception.java.Exceptions;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.Callable;
-
-import static com.arthenica.ffmpegkit.test.MainActivity.TAG;
-import static com.arthenica.ffmpegkit.test.MainActivity.notNull;
 
 public class VidStabTabFragment extends Fragment {
     private VideoView videoView;
@@ -138,18 +137,18 @@ public class VidStabTabFragment extends Fragment {
 
             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
 
-            FFmpegKit.executeAsync(ffmpegCommand, new ExecuteCallback() {
+            FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
                 @Override
-                public void apply(final Session session) {
+                public void apply(final FFmpegSession session) {
                     Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", session.getState(), session.getReturnCode(), notNull(session.getFailStackTrace(), "\n")));
 
                     hideCreateProgressDialog();
 
-                    MainActivity.addUIAction(new Callable<Object>() {
+                    MainActivity.addUIAction(new Runnable() {
 
                         @Override
-                        public Object call() {
+                        public void run() {
                             if (ReturnCode.isSuccess(session.getReturnCode())) {
 
                                 Log.d(TAG, "Create completed successfully; stabilizing video.");
@@ -160,10 +159,10 @@ public class VidStabTabFragment extends Fragment {
 
                                 Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", analyzeVideoCommand));
 
-                                FFmpegKit.executeAsync(analyzeVideoCommand, new ExecuteCallback() {
+                                FFmpegKit.executeAsync(analyzeVideoCommand, new FFmpegSessionCompleteCallback() {
 
                                     @Override
-                                    public void apply(final Session secondSession) {
+                                    public void apply(final FFmpegSession secondSession) {
                                         Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", secondSession.getState(), secondSession.getReturnCode(), notNull(secondSession.getFailStackTrace(), "\n")));
 
                                         if (ReturnCode.isSuccess(secondSession.getReturnCode())) {
@@ -171,18 +170,18 @@ public class VidStabTabFragment extends Fragment {
 
                                             Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", stabilizeVideoCommand));
 
-                                            FFmpegKit.executeAsync(stabilizeVideoCommand, new ExecuteCallback() {
+                                            FFmpegKit.executeAsync(stabilizeVideoCommand, new FFmpegSessionCompleteCallback() {
 
                                                 @Override
-                                                public void apply(final Session thirdSession) {
+                                                public void apply(final FFmpegSession thirdSession) {
                                                     Log.d(TAG, String.format("FFmpeg process exited with state %s and rc %s.%s", thirdSession.getState(), thirdSession.getReturnCode(), notNull(thirdSession.getFailStackTrace(), "\n")));
 
                                                     hideStabilizeProgressDialog();
 
-                                                    MainActivity.addUIAction(new Callable<Object>() {
+                                                    MainActivity.addUIAction(new Runnable() {
 
                                                         @Override
-                                                        public Object call() {
+                                                        public void run() {
                                                             if (ReturnCode.isSuccess(thirdSession.getReturnCode())) {
                                                                 Log.d(TAG, "Stabilize video completed successfully; playing videos.");
                                                                 playVideo();
@@ -190,16 +189,16 @@ public class VidStabTabFragment extends Fragment {
                                                             } else {
                                                                 Popup.show(requireContext(), "Stabilize video failed. Please check logs for the details.");
                                                             }
-
-                                                            return null;
                                                         }
                                                     });
                                                 }
                                             });
 
                                         } else {
-                                            hideStabilizeProgressDialog();
-                                            Popup.show(requireContext(), "Stabilize video failed. Please check logs for the details.");
+                                            MainActivity.addUIAction(() -> {
+                                                hideStabilizeProgressDialog();
+                                                Popup.show(requireContext(), "Stabilize video failed. Please check logs for the details.");
+                                            });
                                         }
                                     }
                                 });
@@ -207,8 +206,6 @@ public class VidStabTabFragment extends Fragment {
                             } else {
                                 Popup.show(requireContext(), "Create video failed. Please check logs for the details.");
                             }
-
-                            return null;
                         }
                     });
                 }

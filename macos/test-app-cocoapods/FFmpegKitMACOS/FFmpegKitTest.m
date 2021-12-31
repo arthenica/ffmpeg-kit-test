@@ -193,9 +193,9 @@ void testParseDoubleQuotesAndEscapesInCommand() {
 void getSessionIdTest() {
     NSArray *TEST_ARGUMENTS = [[NSArray alloc] initWithObjects:@"argument1", @"argument2", nil];
 
-    FFmpegSession *sessions1 = [[FFmpegSession alloc] init:TEST_ARGUMENTS withExecuteCallback:nil];
-    FFprobeSession *sessions2 = [[FFprobeSession alloc] init:TEST_ARGUMENTS withExecuteCallback:nil];
-    MediaInformationSession *sessions3 = [[MediaInformationSession alloc] init:TEST_ARGUMENTS withExecuteCallback:nil];
+    FFmpegSession *sessions1 = [[FFmpegSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
+    FFprobeSession *sessions2 = [[FFprobeSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
+    MediaInformationSession *sessions3 = [[MediaInformationSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
 
     assert([sessions3 getSessionId] > [sessions2 getSessionId]);
     assert([sessions3 getSessionId] > [sessions1 getSessionId]);
