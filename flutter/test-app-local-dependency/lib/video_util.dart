@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -98,6 +98,24 @@ class VideoUtil {
       String videoFilePath,
       String videoCodec,
       String customOptions) {
+    return generateEncodeVideoScriptWithCustomPixelFormat(
+        image1Path,
+        image2Path,
+        image3Path,
+        videoFilePath,
+        videoCodec,
+        "yuv420p",
+        customOptions);
+  }
+
+  static generateEncodeVideoScriptWithCustomPixelFormat(
+      String image1Path,
+      String image2Path,
+      String image3Path,
+      String videoFilePath,
+      String videoCodec,
+      String pixelFormat,
+      String customOptions) {
     return "-hide_banner -y -loop 1 -i '" +
         image1Path +
         "' " +
@@ -119,7 +137,9 @@ class VideoUtil {
         "[stream3out2]pad=width=640:height=427:x=(640-iw)/2:y=(427-ih)/2:color=#00000000,trim=duration=1,select=lte(n\\,30)[stream3starting];" +
         "[stream2starting][stream1ending]blend=all_expr='if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)':shortest=1[stream2blended];" +
         "[stream3starting][stream2ending]blend=all_expr='if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)':shortest=1[stream3blended];" +
-        "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
+        "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=" +
+        pixelFormat +
+        "[video]\"" +
         " -map [video] -vsync 2 -async 1 " +
         customOptions +
         "-c:v " +
@@ -187,5 +207,12 @@ class VideoUtil {
         "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
         " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " +
         videoFilePath;
+  }
+
+  static generateZscaleVideoScript(inputVideoFilePath, outputVideoFilePath) {
+    return "-y -i " +
+        inputVideoFilePath +
+        " -vf zscale=tin=smpte2084:min=bt2020nc:pin=bt2020:rin=tv:t=smpte2084:m=bt2020nc:p=bt2020:r=tv,zscale=t=linear,tonemap=tonemap=clip,zscale=t=bt709,format=yuv420p " +
+        outputVideoFilePath;
   }
 }
