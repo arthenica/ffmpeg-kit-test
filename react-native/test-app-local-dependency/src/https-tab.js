@@ -96,112 +96,141 @@ export default class HttpsTab extends React.Component {
         }
 
         // EXECUTE
-        FFprobeKit.getMediaInformationAsync(testUrl, this.createNewExecuteCallback);
-    };
+        FFprobeKit.getMediaInformation(testUrl).then(async (session) => {
+            const information = await session.getMediaInformation();
 
-    createNewExecuteCallback = async (session) => {
-        const information = await session.getMediaInformation();
+            if (information === undefined) {
+                const state = FFmpegKitConfig.sessionStateToString(await session.getState());
+                const returnCode = await session.getReturnCode();
+                const failStackTrace = await session.getFailStackTrace();
+                const duration = await session.getDuration();
+                const output = await session.getOutput();
 
-        if (information === undefined) {
-            const state = FFmpegKitConfig.sessionStateToString(await session.getState());
-            const returnCode = await session.getReturnCode();
-            const failStackTrace = await session.getFailStackTrace();
-            const duration = await session.getDuration();
-            const output = await session.getOutput();
+                this.appendOutput(`Get media information failed\n`);
+                this.appendOutput(`State: ${state}\n`);
+                this.appendOutput(`Duration: ${duration}\n`);
+                this.appendOutput(`Return Code: ${returnCode}\n`);
+                this.appendOutput(`Fail stack trace: ${notNull(failStackTrace, "\\n")}\n`);
+                this.appendOutput(`Output: ${output}\n`);
+            } else {
+                this.appendOutput(`Media information for ${information.getFilename()}\n`);
 
-            this.appendOutput(`Get media information failed\n`);
-            this.appendOutput(`State: ${state}\n`);
-            this.appendOutput(`Duration: ${duration}\n`);
-            this.appendOutput(`Return Code: ${returnCode}\n`);
-            this.appendOutput(`Fail stack trace: ${notNull(failStackTrace, "\\n")}\n`);
-            this.appendOutput(`Output: ${output}\n`);
-        } else {
-            this.appendOutput(`Media information for ${information.getFilename()}\n`);
+                if (information.getFormat() !== undefined) {
+                    this.appendOutput(`Format: ${information.getFormat()}\n`);
+                }
+                if (information.getBitrate() !== undefined) {
+                    this.appendOutput(`Bitrate: ${information.getBitrate()}\n`);
+                }
+                if (information.getDuration() !== undefined) {
+                    this.appendOutput(`Duration: ${information.getDuration()}\n`);
+                }
+                if (information.getStartTime() !== undefined) {
+                    this.appendOutput(`Start time: ${information.getStartTime()}\n`);
+                }
+                if (information.getTags() !== undefined) {
+                    let tags = information.getTags();
+                    Object.keys(tags).forEach((key) => {
+                        this.appendOutput(`Tag: ${key}:${tags[key]}\n`);
+                    });
+                }
 
-            if (information.getFormat() !== undefined) {
-                this.appendOutput(`Format: ${information.getFormat()}\n`);
-            }
-            if (information.getBitrate() !== undefined) {
-                this.appendOutput(`Bitrate: ${information.getBitrate()}\n`);
-            }
-            if (information.getDuration() !== undefined) {
-                this.appendOutput(`Duration: ${information.getDuration()}\n`);
-            }
-            if (information.getStartTime() !== undefined) {
-                this.appendOutput(`Start time: ${information.getStartTime()}\n`);
-            }
-            if (information.getTags() !== undefined) {
-                let tags = information.getTags();
-                Object.keys(tags).forEach((key) => {
-                    this.appendOutput(`Tag: ${key}:${tags[key]}\n`);
-                });
-            }
+                let streams = information.getStreams();
+                if (streams !== undefined) {
+                    for (let i = 0; i < streams.length; ++i) {
+                        let stream = streams[i];
+                        if (stream.getIndex() != null) {
+                            this.appendOutput(`Stream index: ${stream.getIndex()}\n`);
+                        }
+                        if (stream.getType() != null) {
+                            this.appendOutput(`Stream type: ${stream.getType()}\n`);
+                        }
+                        if (stream.getCodec() != null) {
+                            this.appendOutput(`Stream codec: ${stream.getCodec()}\n`);
+                        }
+                        if (stream.getCodecLong() != null) {
+                            this.appendOutput(`Stream codec long: ${stream.getCodecLong()}\n`);
+                        }
+                        if (stream.getFormat() != null) {
+                            this.appendOutput(`Stream format: ${stream.getFormat()}\n`);
+                        }
+                        if (stream.getWidth() != null) {
+                            this.appendOutput(`Stream width: ${stream.getWidth()}\n`);
+                        }
+                        if (stream.getHeight() != null) {
+                            this.appendOutput(`Stream height: ${stream.getHeight()}\n`);
+                        }
+                        if (stream.getBitrate() != null) {
+                            this.appendOutput(`Stream bitrate: ${stream.getBitrate()}\n`);
+                        }
+                        if (stream.getSampleRate() != null) {
+                            this.appendOutput(`Stream sample rate: ${stream.getSampleRate()}\n`);
+                        }
+                        if (stream.getSampleFormat() != null) {
+                            this.appendOutput(`Stream sample format: ${stream.getSampleFormat()}\n`);
+                        }
+                        if (stream.getChannelLayout() != null) {
+                            this.appendOutput(`Stream channel layout: ${stream.getChannelLayout()}\n`);
+                        }
+                        if (stream.getSampleAspectRatio() != null) {
+                            this.appendOutput(`Stream sample aspect ratio: ${stream.getSampleAspectRatio()}\n`);
+                        }
+                        if (stream.getDisplayAspectRatio() != null) {
+                            this.appendOutput(`Stream display ascpect ratio: ${stream.getDisplayAspectRatio()}\n`);
+                        }
+                        if (stream.getAverageFrameRate() != null) {
+                            this.appendOutput(`Stream average frame rate: ${stream.getAverageFrameRate()}\n`);
+                        }
+                        if (stream.getRealFrameRate() != null) {
+                            this.appendOutput(`Stream real frame rate: ${stream.getRealFrameRate()}\n`);
+                        }
+                        if (stream.getTimeBase() != null) {
+                            this.appendOutput(`Stream time base: ${stream.getTimeBase()}\n`);
+                        }
+                        if (stream.getCodecTimeBase() != null) {
+                            this.appendOutput(`Stream codec time base: ${stream.getCodecTimeBase()}\n`);
+                        }
+                        if (stream.getTags() !== undefined) {
+                            let tags = stream.getTags();
+                            Object.keys(tags).forEach((key) => {
+                                this.appendOutput(`Stream tag: ${key}:${tags[key]}\n`);
+                            });
+                        }
+                    }
+                }
 
-            let streams = information.getStreams();
-            if (streams !== undefined) {
-                for (let i = 0; i < streams.length; ++i) {
-                    let stream = streams[i];
-                    if (stream.getIndex() != null) {
-                        this.appendOutput(`Stream index: ${stream.getIndex()}\n`);
-                    }
-                    if (stream.getType() != null) {
-                        this.appendOutput(`Stream type: ${stream.getType()}\n`);
-                    }
-                    if (stream.getCodec() != null) {
-                        this.appendOutput(`Stream codec: ${stream.getCodec()}\n`);
-                    }
-                    if (stream.getCodecLong() != null) {
-                        this.appendOutput(`Stream codec long: ${stream.getCodecLong()}\n`);
-                    }
-                    if (stream.getFormat() != null) {
-                        this.appendOutput(`Stream format: ${stream.getFormat()}\n`);
-                    }
-                    if (stream.getWidth() != null) {
-                        this.appendOutput(`Stream width: ${stream.getWidth()}\n`);
-                    }
-                    if (stream.getHeight() != null) {
-                        this.appendOutput(`Stream height: ${stream.getHeight()}\n`);
-                    }
-                    if (stream.getBitrate() != null) {
-                        this.appendOutput(`Stream bitrate: ${stream.getBitrate()}\n`);
-                    }
-                    if (stream.getSampleRate() != null) {
-                        this.appendOutput(`Stream sample rate: ${stream.getSampleRate()}\n`);
-                    }
-                    if (stream.getSampleFormat() != null) {
-                        this.appendOutput(`Stream sample format: ${stream.getSampleFormat()}\n`);
-                    }
-                    if (stream.getChannelLayout() != null) {
-                        this.appendOutput(`Stream channel layout: ${stream.getChannelLayout()}\n`);
-                    }
-                    if (stream.getSampleAspectRatio() != null) {
-                        this.appendOutput(`Stream sample aspect ratio: ${stream.getSampleAspectRatio()}\n`);
-                    }
-                    if (stream.getDisplayAspectRatio() != null) {
-                        this.appendOutput(`Stream display ascpect ratio: ${stream.getDisplayAspectRatio()}\n`);
-                    }
-                    if (stream.getAverageFrameRate() != null) {
-                        this.appendOutput(`Stream average frame rate: ${stream.getAverageFrameRate()}\n`);
-                    }
-                    if (stream.getRealFrameRate() != null) {
-                        this.appendOutput(`Stream real frame rate: ${stream.getRealFrameRate()}\n`);
-                    }
-                    if (stream.getTimeBase() != null) {
-                        this.appendOutput(`Stream time base: ${stream.getTimeBase()}\n`);
-                    }
-                    if (stream.getCodecTimeBase() != null) {
-                        this.appendOutput(`Stream codec time base: ${stream.getCodecTimeBase()}\n`);
-                    }
-                    if (stream.getTags() !== undefined) {
-                        let tags = stream.getTags();
-                        Object.keys(tags).forEach((key) => {
-                            this.appendOutput(`Stream tag: ${key}:${tags[key]}\n`);
-                        });
+                let chapters = information.getChapters();
+                if (chapters !== undefined) {
+                    for (let i = 0; i < chapters.length; ++i) {
+                        let chapter = chapters[i];
+                        if (chapter.getId() != null) {
+                            this.appendOutput(`Chapter id: ${chapter.getId()}\n`);
+                        }
+                        if (chapter.getTimeBase() != null) {
+                            this.appendOutput(`Chapter time base: ${chapter.getTimeBase()}\n`);
+                        }
+                        if (chapter.getStart() != null) {
+                            this.appendOutput(`Chapter start: ${chapter.getStart()}\n`);
+                        }
+                        if (chapter.getStartTime() != null) {
+                            this.appendOutput(`Chapter start time: ${chapter.getStartTime()}\n`);
+                        }
+                        if (chapter.getEnd() != null) {
+                            this.appendOutput(`Chapter end: ${chapter.getEnd()}\n`);
+                        }
+                        if (chapter.getEndTime() != null) {
+                            this.appendOutput(`Chapter end time: ${chapter.getEndTime()}\n`);
+                        }
+                        if (chapter.getTags() !== undefined) {
+                            let tags = chapter.getTags();
+                            Object.keys(tags).forEach((key) => {
+                                this.appendOutput(`Chapter tag: ${key}:${tags[key]}\n`);
+                            });
+                        }
                     }
                 }
             }
-        }
-    }
+        });
+    };
 
     render() {
         return (
