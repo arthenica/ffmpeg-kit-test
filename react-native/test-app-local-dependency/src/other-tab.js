@@ -64,6 +64,9 @@ export default class OtherTab extends React.Component {
             case "webp":
                 this.testWebp();
                 break;
+            case "zscale":
+                this.testZscale();
+                break;
         }
     }
 
@@ -156,6 +159,33 @@ export default class OtherTab extends React.Component {
         });
     }
 
+    testZscale() {
+        let videoFile = `${RNFS.CachesDirectoryPath}/video.mp4`;
+        let zscaledVideoFile = `${RNFS.CachesDirectoryPath}/video.zscaled.mp4`;
+
+        ffprint("Testing 'zscale' filter with video file created on the Video tab");
+
+        let ffmpegCommand = VideoUtil.generateZscaleVideoScript(videoFile, zscaledVideoFile);
+
+        ffprint(`FFmpeg process started with arguments \'${ffmpegCommand}\'.`);
+
+        FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
+            const state = FFmpegKitConfig.sessionStateToString(await session.getState());
+            const returnCode = await session.getReturnCode();
+            const failStackTrace = await session.getFailStackTrace();
+
+            ffprint(`FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
+
+            if (ReturnCode.isSuccess(returnCode)) {
+                showPopup(this.popupReference, "zscale completed successfully.");
+            } else {
+                showPopup(this.popupReference, "zscale failed. Please check logs for the details.");
+            }
+        }, log => {
+            this.appendOutput(log.getMessage());
+        });
+    }
+
     getChromaprintSampleFile() {
         return `${RNFS.CachesDirectoryPath}/audio-sample.wav`;
     }
@@ -186,6 +216,7 @@ export default class OtherTab extends React.Component {
                         <Picker.Item label="chromaprint" value="chromaprint"/>
                         <Picker.Item label="dav1d" value="dav1d"/>
                         <Picker.Item label="webp" value="webp"/>
+                        <Picker.Item label="zscale" value="zscale"/>
                     </Picker>
                 </View>
                 <View style={styles.buttonViewStyle}>

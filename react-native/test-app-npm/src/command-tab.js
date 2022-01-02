@@ -18,8 +18,7 @@ export default class CommandTab extends React.Component {
         super(props);
 
         this.state = {
-            commandText: '',
-            outputText: ''
+            commandText: '', outputText: ''
         };
 
         this.popupReference = React.createRef();
@@ -58,18 +57,19 @@ export default class CommandTab extends React.Component {
 
         ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
 
-        FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
+        FFmpegKit.execute(ffmpegCommand).then(async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
             const returnCode = await session.getReturnCode();
             const failStackTrace = await session.getFailStackTrace();
+            const output = await session.getOutput();
 
             ffprint(`FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
+
+            this.appendOutput(output);
 
             if (state === SessionState.FAILED || !returnCode.isValueSuccess()) {
                 showPopup(this.popupReference, "Command failed. Please check output for the details.");
             }
-        }, log => {
-            this.appendOutput(log.getMessage());
         });
     };
 
@@ -102,51 +102,49 @@ export default class CommandTab extends React.Component {
     };
 
     render() {
-        return (
-            <View style={styles.screenStyle}>
-                <View style={styles.headerViewStyle}>
-                    <Text style={styles.headerTextStyle}>
-                        FFmpegKit ReactNative
-                    </Text>
-                </View>
-                <View style={styles.textInputViewStyle}>
-                    <TextInput
-                        style={styles.textInputStyle}
-                        autoCapitalize='none'
-                        autoCorrect={false}
-                        placeholder="Enter command"
-                        underlineColorAndroid="transparent"
-                        onChangeText={(commandText) => this.setState({commandText})}
-                        value={this.state.commandText}
-                    />
-                </View>
-                <View style={styles.buttonViewStyle}>
-                    <TouchableOpacity
-                        style={styles.buttonStyle}
-                        onPress={this.runFFmpeg}>
-                        <Text style={styles.buttonTextStyle}>RUN FFMPEG</Text>
-                    </TouchableOpacity>
-                </View>
-                <Toast ref={this.popupReference} position="center"/>
-                <View style={styles.buttonViewStyle}>
-                    <TouchableOpacity
-                        style={styles.buttonStyle}
-                        onPress={this.runFFprobe}>
-                        <Text style={styles.buttonTextStyle}>RUN FFPROBE</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.outputViewStyle}>
-                    <ScrollView
-                        ref={(view) => {
-                            this.scrollViewReference = view;
-                        }}
-                        onContentSizeChange={(width, height) => this.scrollViewReference.scrollTo({y: height})}
-                        style={styles.outputScrollViewStyle}>
-                        <Text style={styles.outputTextStyle}>{this.state.outputText}</Text>
-                    </ScrollView>
-                </View>
+        return (<View style={styles.screenStyle}>
+            <View style={styles.headerViewStyle}>
+                <Text style={styles.headerTextStyle}>
+                    FFmpegKit ReactNative
+                </Text>
             </View>
-        );
+            <View style={styles.textInputViewStyle}>
+                <TextInput
+                    style={styles.textInputStyle}
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    placeholder="Enter command"
+                    underlineColorAndroid="transparent"
+                    onChangeText={(commandText) => this.setState({commandText})}
+                    value={this.state.commandText}
+                />
+            </View>
+            <View style={styles.buttonViewStyle}>
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={this.runFFmpeg}>
+                    <Text style={styles.buttonTextStyle}>RUN FFMPEG</Text>
+                </TouchableOpacity>
+            </View>
+            <Toast ref={this.popupReference} position="center"/>
+            <View style={styles.buttonViewStyle}>
+                <TouchableOpacity
+                    style={styles.buttonStyle}
+                    onPress={this.runFFprobe}>
+                    <Text style={styles.buttonTextStyle}>RUN FFPROBE</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.outputViewStyle}>
+                <ScrollView
+                    ref={(view) => {
+                        this.scrollViewReference = view;
+                    }}
+                    onContentSizeChange={(width, height) => this.scrollViewReference.scrollTo({y: height})}
+                    style={styles.outputScrollViewStyle}>
+                    <Text style={styles.outputTextStyle}>{this.state.outputText}</Text>
+                </ScrollView>
+            </View>
+        </View>);
     };
 
 }
