@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ import 'dart:io';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:ffmpeg_kit_flutter/return_code.dart';
-import 'package:ffmpeg_kit_flutter/session.dart';
 import 'package:ffmpeg_kit_flutter/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -80,20 +79,22 @@ class VideoTab implements PlayerTab {
             this.hideProgressDialog();
             this.showProgressDialog();
 
-            final ffmpegCommand = VideoUtil.generateEncodeVideoScript(
-                image1Path,
-                image2Path,
-                image3Path,
-                videoFile.path,
-                videoCodec,
-                this.getCustomOptions());
+            final ffmpegCommand =
+                VideoUtil.generateEncodeVideoScriptWithCustomPixelFormat(
+                    image1Path,
+                    image2Path,
+                    image3Path,
+                    videoFile.path,
+                    videoCodec,
+                    this.getPixelFormat(),
+                    this.getCustomOptions());
 
             ffprint(
                 "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
 
             FFmpegKit.executeAsync(
                     ffmpegCommand,
-                    (FFmpegSession session) async {
+                    (session) async {
                       final state = FFmpegKitConfig.sessionStateToString(
                           await session.getState());
                       final returnCode = await session.getReturnCode();
@@ -143,6 +144,19 @@ class VideoTab implements PlayerTab {
       }
       _refreshablePlayerDialogFactory.refresh();
     }
+  }
+
+  getPixelFormat() {
+    String videoCodec = _selectedCodec;
+
+    String pixelFormat;
+    if (videoCodec == "x265") {
+      pixelFormat = "yuv420p10le";
+    } else {
+      pixelFormat = "yuv420p";
+    }
+
+    return pixelFormat;
   }
 
   String getSelectedVideoCodec() {

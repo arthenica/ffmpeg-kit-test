@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@ import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:ffmpeg_kit_flutter/ffprobe_kit.dart';
 import 'package:ffmpeg_kit_flutter/log.dart';
 import 'package:ffmpeg_kit_flutter/return_code.dart';
-import 'package:ffmpeg_kit_flutter/session.dart';
 import 'package:ffmpeg_kit_flutter/statistics.dart';
 
 import 'abstract.dart';
@@ -128,7 +127,7 @@ class SafTab {
               ffprint(
                   "FFmpeg process started with arguments:\n'${ffmpegCommand}'.");
 
-              FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
+              FFmpegKit.executeAsync(ffmpegCommand, (session) async {
                 final state = FFmpegKitConfig.sessionStateToString(
                     await session.getState());
                 final returnCode = await session.getReturnCode();

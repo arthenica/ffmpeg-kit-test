@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -97,7 +97,7 @@ class SubtitleTab implements PlayerTab {
 
                 _state = _State.CREATING;
 
-                FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
+                FFmpegKit.executeAsync(ffmpegCommand, (session) async {
                   final state = FFmpegKitConfig.sessionStateToString(
                       await session.getState());
                   final returnCode = await session.getReturnCode();
