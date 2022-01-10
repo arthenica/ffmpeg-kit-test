@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ void deleteFile(File file) {
 }
 
 void listFFprobeSessions() {
-  FFprobeKit.listSessions().then((sessionList) {
+  FFprobeKit.listFFprobeSessions().then((sessionList) {
     ffprint("Listing ${sessionList.length} FFprobe sessions asynchronously.");
 
     int count = 0;

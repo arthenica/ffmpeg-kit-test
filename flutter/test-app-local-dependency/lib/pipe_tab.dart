@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ class PipeTab implements PlayerTab {
             ffprint(
                 "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
 
-            FFmpegKit.executeAsync(ffmpegCommand, (Session session) async {
+            FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
               final state = FFmpegKitConfig.sessionStateToString(
                   await session.getState());
               final returnCode = await session.getReturnCode();
