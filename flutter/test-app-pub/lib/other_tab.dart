@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -88,6 +88,9 @@ class OtherTab {
         break;
       case "webp":
         this.testWebp();
+        break;
+      case "zscale":
+        this.testZscale();
         break;
     }
   }
@@ -198,6 +201,38 @@ class OtherTab {
     });
   }
 
+  testZscale() {
+    getVideoFile().then((videoFile) {
+      getZscaledVideoFile().then((zscaledVideoFile) {
+        this.getWebpOutputFile().then((outputPath) {
+          ffprint(
+              "Testing 'zscale' filter with video file created on the Video tab");
+
+          final ffmpegCommand = VideoUtil.generateZscaleVideoScript(
+              videoFile.path, zscaledVideoFile.path);
+
+          ffprint("FFmpeg process started with arguments '${ffmpegCommand}'.");
+
+          FFmpegKit.executeAsync(ffmpegCommand, (session) async {
+            final state =
+                FFmpegKitConfig.sessionStateToString(await session.getState());
+            final returnCode = await session.getReturnCode();
+            final failStackTrace = await session.getFailStackTrace();
+
+            ffprint(
+                "FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}");
+
+            if (ReturnCode.isSuccess(returnCode)) {
+              showPopup("zscale completed successfully.");
+            } else {
+              showPopup("zscale failed. Please check logs for the details.");
+            }
+          }, (log) => this.appendOutput(log.getMessage()));
+        });
+      });
+    });
+  }
+
   Future<File> getChromaprintSampleFile() async {
     Directory documentsDirectory = await VideoUtil.documentsDirectory;
     return new File("${documentsDirectory.path}/audio-sample.wav");
@@ -218,6 +253,16 @@ class OtherTab {
     return new File("${documentsDirectory.path}/video.webp");
   }
 
+  Future<File> getVideoFile() async {
+    Directory documentsDirectory = await VideoUtil.documentsDirectory;
+    return new File("${documentsDirectory.path}/video.mp4");
+  }
+
+  Future<File> getZscaledVideoFile() async {
+    Directory documentsDirectory = await VideoUtil.documentsDirectory;
+    return new File("${documentsDirectory.path}/video.zscaled.mp4");
+  }
+
   List<DropdownMenuItem<String>> getTestList() {
     List<DropdownMenuItem<String>> list = List.empty(growable: true);
 
@@ -231,6 +276,9 @@ class OtherTab {
     list.add(new DropdownMenuItem(
         value: "webp",
         child: SizedBox(width: 100, child: Center(child: new Text("webp")))));
+    list.add(new DropdownMenuItem(
+        value: "zscale",
+        child: SizedBox(width: 100, child: Center(child: new Text("zscale")))));
 
     return list;
   }

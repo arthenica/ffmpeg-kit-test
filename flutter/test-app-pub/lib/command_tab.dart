@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,8 +56,10 @@ class CommandTab {
     showPopup(COMMAND_TEST_TOOLTIP_TEXT);
   }
 
-  void appendOutput(String logMessage) {
-    _outputText += logMessage;
+  void appendOutput(String? logMessage) {
+    if (logMessage != null) {
+      _outputText += logMessage;
+    }
     _refreshable.refresh();
   }
 
@@ -82,20 +84,21 @@ class CommandTab {
 
     ffprint("FFmpeg process started with arguments:\n\'$ffmpegCommand\'");
 
-    FFmpegKit.executeAsync(ffmpegCommand, (session) async {
+    FFmpegKit.execute(ffmpegCommand).then((session) async {
       final state =
           FFmpegKitConfig.sessionStateToString(await session.getState());
       final returnCode = await session.getReturnCode();
       final failStackTrace = await session.getFailStackTrace();
+      final output = await session.getOutput();
 
       ffprint(
           "FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}");
 
+      appendOutput(output);
+
       if (state == SessionState.failed || !ReturnCode.isSuccess(returnCode)) {
         showPopup("Command failed. Please check output for the details.");
       }
-    }, (log) {
-      appendOutput(log.getMessage());
     });
   }
 

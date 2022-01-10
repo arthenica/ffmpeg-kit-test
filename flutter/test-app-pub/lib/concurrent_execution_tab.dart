@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ import 'package:ffmpeg_kit_flutter_video/ffmpeg_kit.dart';
 import 'package:ffmpeg_kit_flutter_video/ffmpeg_kit_config.dart';
 import 'package:ffmpeg_kit_flutter_video/log.dart';
 import 'package:ffmpeg_kit_flutter_video/return_code.dart';
-import 'package:ffmpeg_kit_flutter_video/session.dart';
 
 import 'abstract.dart';
 import 'popup.dart';
@@ -87,7 +86,7 @@ class ConcurrentExecutionTab {
                 "mpeg4",
                 "");
 
-            FFmpegKit.executeAsync(ffmpegCommand, (Session session) async {
+            FFmpegKit.executeAsync(ffmpegCommand, (session) async {
               final sessionId = await session.getSessionId();
               final state = FFmpegKitConfig.sessionStateToString(
                   await session.getState());
