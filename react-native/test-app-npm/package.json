@@ -1,6 +1,6 @@
 {
   "name": "ffmpeg-kit-react-native-test",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -13,7 +13,7 @@
     "@react-native-picker/picker": "^2.1.0",
     "@react-navigation/material-top-tabs": "^5.3.10",
     "@react-navigation/native": "^5.8.10",
-    "ffmpeg-kit-react-native": "4.5.1",
+    "ffmpeg-kit-react-native": "4.5.2",
     "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
