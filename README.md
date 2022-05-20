@@ -21,6 +21,7 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform | FFmpegKit Version |                                        Tag                                         |
 | :----: |:-----------------:|:----------------------------------------------------------------------------------:|
+| React Native |       4.5.2       |  [4.5.2](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.2)   |
 | Flutter |       4.5.1       |     [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.1)     |
 | Flutter |     4.5.1-LTS     | [4.5.1-LTS](https://github.com/tanersener/ffmpeg-kit-test/tree/flutter.v4.5.1.lts) |
 | React Native |       4.5.1       |  [4.5.1](https://github.com/tanersener/ffmpeg-kit-test/tree/react.native.v4.5.1)   |
