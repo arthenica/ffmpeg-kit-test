@@ -1,6 +1,6 @@
 # FFmpegKit Test
 
-Test applications for [FFmpegKit](https://github.com/tanersener/ffmpeg-kit)
+Test applications for [FFmpegKit](https://github.com/tanersener/ffmpeg-kit).
 
 - `Android` under the [android](https://github.com/tanersener/ffmpeg-kit-test/tree/main/android) folder
 - `Flutter` under the [flutter](https://github.com/tanersener/ffmpeg-kit-test/tree/main/flutter) folder
