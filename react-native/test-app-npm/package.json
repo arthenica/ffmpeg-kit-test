@@ -10,20 +10,21 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-picker/picker": "^2.1.0",
-    "@react-navigation/material-top-tabs": "^5.3.10",
-    "@react-navigation/native": "^5.8.10",
+    "@react-native-picker/picker": "^2.4.1",
+    "@react-navigation/material-top-tabs": "^6.2.1",
+    "@react-navigation/native": "^6.0.10",
     "ffmpeg-kit-react-native": "4.5.2",
     "node-fetch": "^2.6.7",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
-    "react-native": "^0.65.1",
-    "react-native-fs": "^2.16.6",
-    "react-native-gesture-handler": "^1.9.0",
-    "react-native-reanimated": "^1.13.2",
-    "react-native-screens": "^2.16.1",
-    "react-native-tab-view": "^2.15.2",
-    "react-native-video": "^5.1.0-alpha8"
+    "react-native": "^0.68.2",
+    "react-native-fs": "^2.18.0",
+    "react-native-gesture-handler": "^2.4.2",
+    "react-native-pager-view": "^5.4.24",
+    "react-native-reanimated": "^2.8.0",
+    "react-native-screens": "^3.13.1",
+    "react-native-tab-view": "^3.1.1",
+    "react-native-video": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
