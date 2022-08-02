@@ -1,0 +1,11 @@
+1
+00:00:00,021 --> 00:00:04,000
+Machu Picchu is a 15th-century Inca citadel, located in the Eastern Cordillera of southern Peru.
+
+2
+00:00:04,001 --> 00:00:06,927
+大金字塔和哈夫拉金字塔是古埃及最大的金字塔。
+
+3
+00:00:06,928 --> 00:00:09,000
+Stonehenge هو نصب ما قبل التاريخ في ويلتشير ، إنجلترا ، على بعد ميلين (3 كم) غرب Amesbury.

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FFmpegKit Linux Test
+_Comment=FFmpeg for applications
+Icon=ffmpeg-kit-linux-test
+Exec=@CMAKE_INSTALL_PREFIX@/bin/ffmpeg-kit-linux-test-app.sh
+Categories=GNOME;GTK;Utility
+Type=Application
+StartupNotify=true
+Terminal=false
