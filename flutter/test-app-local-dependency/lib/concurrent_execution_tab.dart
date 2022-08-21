@@ -120,6 +120,7 @@ class ConcurrentExecutionTab {
                 default:
                   {
                     _sessionId3 = sessionId;
+                    FFmpegKitConfig.setSessionHistorySize(3);
                   }
               }
 
