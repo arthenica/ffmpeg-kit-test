@@ -141,6 +141,7 @@
         break;
         default: {
             sessionId3 = sessionId;
+            [FFmpegKitConfig setSessionHistorySize:3];
         }
     }
 

@@ -218,6 +218,7 @@ public class ConcurrentExecutionTabFragment extends Fragment {
                 break;
                 default: {
                     sessionId3 = sessionId;
+                    FFmpegKitConfig.setSessionHistorySize(3);
                 }
             }
 
