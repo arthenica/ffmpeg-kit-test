@@ -202,17 +202,15 @@ export default class VideoTab extends React.Component {
 
     updateProgressDialog() {
         let statistics = this.state.statistics;
-        if (statistics === undefined) {
+        if (statistics === undefined || statistics.getTime() < 0) {
             return;
         }
 
         let timeInMilliseconds = statistics.getTime();
 
-        if (timeInMilliseconds > 0) {
-            let totalVideoDuration = 9000;
-            let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
-            this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
-        }
+        let totalVideoDuration = 9000;
+        let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
+        this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
     }
 
     hideProgressDialog() {

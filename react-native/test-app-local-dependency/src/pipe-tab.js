@@ -121,16 +121,14 @@ export default class PipeTab extends React.Component {
 
     updateProgressDialog() {
         let statistics = this.state.statistics;
-        if (statistics === undefined) {
+        if (statistics === undefined || statistics.getTime() < 0) {
             return;
         }
 
-        let timeInMilliseconds = statistics.time;
-        if (timeInMilliseconds > 0) {
-            let totalVideoDuration = 9000;
-            let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
-            this.progressModalReference.current.update(`Creating video % ${completePercentage}`);
-        }
+        let timeInMilliseconds = statistics.getTime();
+        let totalVideoDuration = 9000;
+        let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
+        this.progressModalReference.current.update(`Creating video % ${completePercentage}`);
     }
 
     hideProgressDialog() {
