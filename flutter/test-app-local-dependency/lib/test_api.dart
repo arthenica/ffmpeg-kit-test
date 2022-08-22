@@ -193,5 +193,4 @@ class Test {
       assert((await FFmpegKitConfig.getSessions()).length <= newSize);
     }
   }
-
 }

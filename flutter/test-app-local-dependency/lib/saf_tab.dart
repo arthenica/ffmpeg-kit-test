@@ -160,20 +160,18 @@ class SafTab {
 
   void updateProgressDialog() {
     var statistics = this._statistics;
-    if (statistics == null) {
+    if (statistics == null || statistics.getTime() < 0) {
       return;
     }
 
     int timeInMilliseconds = statistics.getTime();
-    if (timeInMilliseconds > 0) {
-      int totalVideoDuration = 9000;
+    int totalVideoDuration = 9000;
 
-      int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
+    int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
 
-      _refreshablePlayerDialogFactory
-          .dialogUpdate("Encoding video % $completePercentage");
-      _refreshablePlayerDialogFactory.refresh();
-    }
+    _refreshablePlayerDialogFactory
+        .dialogUpdate("Encoding video % $completePercentage");
+    _refreshablePlayerDialogFactory.refresh();
   }
 
   void hideProgressDialog() {
