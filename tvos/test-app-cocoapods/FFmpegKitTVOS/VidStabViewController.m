@@ -228,6 +228,7 @@
     [FFmpegKitConfig enableLogCallback:^(Log *log){
         NSLog(@"%@", [log getMessage]);
     }];
+    [FFmpegKitConfig enableStatisticsCallback:nil];
 }
 
 - (void)showProgressDialog:(NSString*) dialogMessage {

@@ -101,6 +101,10 @@ public class VidStabTabFragment extends Fragment {
         });
     }
 
+    public void disableStatisticsCallback() {
+        FFmpegKitConfig.enableStatisticsCallback(null);
+    }
+
     public void stabilizeVideo() {
         final File image1File = new File(requireContext().getCacheDir(), "machupicchu.jpg");
         final File image2File = new File(requireContext().getCacheDir(), "pyramid.jpg");
@@ -280,6 +284,7 @@ public class VidStabTabFragment extends Fragment {
     public void setActive() {
         Log.i(MainActivity.TAG, "VidStab Tab Activated");
         enableLogCallback();
+        disableStatisticsCallback();
         Popup.show(requireContext(), getString(R.string.vidstab_test_tooltip_text));
     }
 
