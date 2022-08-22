@@ -118,7 +118,7 @@ class SubtitleTab implements PlayerTab {
                     this.showBurnProgressDialog();
 
                     ffprint(
-                        "FFmpeg process started with arguments:\n\'$burnSubtitlesCommand\'.");
+                        "FFmpeg process started with arguments: \'$burnSubtitlesCommand\'.");
 
                     _state = _State.BURNING;
 

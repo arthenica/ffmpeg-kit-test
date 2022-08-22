@@ -90,7 +90,7 @@ class VideoTab implements PlayerTab {
                     this.getCustomOptions());
 
             ffprint(
-                "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
+                "FFmpeg process started with arguments: \'${ffmpegCommand}\'.");
 
             FFmpegKit.executeAsync(
                     ffmpegCommand,

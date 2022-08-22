@@ -89,7 +89,7 @@ class AudioTab {
 
         clearOutput();
 
-        ffprint("FFmpeg process started with arguments:\n'${ffmpegCommand}'.");
+        ffprint("FFmpeg process started with arguments: '${ffmpegCommand}'.");
 
         FFmpegKit.execute(ffmpegCommand).then((session) async {
           final state =

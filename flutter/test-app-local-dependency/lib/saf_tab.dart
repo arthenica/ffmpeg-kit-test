@@ -81,7 +81,7 @@ class SafTab {
 
         ffprint("Testing FFprobe COMMAND asynchronously.");
 
-        ffprint("FFprobe process started with arguments:\n'$ffprobeCommand'");
+        ffprint("FFprobe process started with arguments: '$ffprobeCommand'");
 
         FFprobeKit.execute(ffprobeCommand).then((session) async {
           final state =
@@ -125,7 +125,7 @@ class SafTab {
                   "");
 
               ffprint(
-                  "FFmpeg process started with arguments:\n'${ffmpegCommand}'.");
+                  "FFmpeg process started with arguments: '${ffmpegCommand}'.");
 
               FFmpegKit.executeAsync(ffmpegCommand, (session) async {
                 final state = FFmpegKitConfig.sessionStateToString(

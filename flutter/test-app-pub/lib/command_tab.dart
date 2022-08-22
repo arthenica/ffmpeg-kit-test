@@ -82,7 +82,7 @@ class CommandTab {
 
     ffprint("Testing FFmpeg COMMAND asynchronously.");
 
-    ffprint("FFmpeg process started with arguments:\n\'$ffmpegCommand\'");
+    ffprint("FFmpeg process started with arguments: \'$ffmpegCommand\'");
 
     FFmpegKit.execute(ffmpegCommand).then((session) async {
       final state =
@@ -109,7 +109,7 @@ class CommandTab {
 
     ffprint("Testing FFprobe COMMAND asynchronously.");
 
-    ffprint("FFprobe process started with arguments:\n\'$ffprobeCommand\'");
+    ffprint("FFprobe process started with arguments: \'$ffprobeCommand\'");
 
     FFprobeSession.create(FFmpegKitConfig.parseArguments(ffprobeCommand),
             (session) async {

@@ -83,7 +83,7 @@ class PipeTab implements PlayerTab {
                 pipe1!, pipe2!, pipe3!, videoFile.path);
 
             ffprint(
-                "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
+                "FFmpeg process started with arguments: \'${ffmpegCommand}\'.");
 
             FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
               final state = FFmpegKitConfig.sessionStateToString(
