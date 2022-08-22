@@ -15,7 +15,7 @@ import SafTab from "./saf-tab";
 import OtherTab from "./other-tab";
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {registerAppFont} from "./util";
+import {registerApplicationFonts} from "./util";
 import {FFmpegKitConfig} from "ffmpeg-kit-react-native";
 
 LogBox.ignoreLogs([
@@ -130,7 +130,7 @@ export default class Main extends React.Component {
 
         FFmpegKitConfig.init().then(() => {
             VideoUtil.prepareAssets();
-            registerAppFont();
+            registerApplicationFonts();
 
             Test.testCommonApiMethods();
             Test.testParseArguments();
