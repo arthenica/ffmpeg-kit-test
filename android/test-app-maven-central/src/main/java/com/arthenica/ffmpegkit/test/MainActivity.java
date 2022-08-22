@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
-            registerAppFont();
+            registerApplicationFonts();
             Log.d(TAG, "Application fonts registered.");
         } catch (final IOException e) {
             Log.e(TAG, String.format("Font registration failed.%s.", Exceptions.getStackTraceString(e)));
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         handler.post(runnable);
     }
 
-    protected void registerAppFont() throws IOException {
+    protected void registerApplicationFonts() throws IOException {
         final File cacheDirectory = getCacheDir();
         final File fontDirectory = new File(cacheDirectory, "fonts");
 
