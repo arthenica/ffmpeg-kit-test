@@ -332,20 +332,18 @@ public class SafTabFragment extends Fragment {
     }
 
     private void updateProgressDialog() {
-        if (statistics == null) {
+        if (statistics == null || statistics->getTime() < 0) {
             return;
         }
 
         int timeInMilliseconds = this.statistics.getTime();
-        if (timeInMilliseconds > 0) {
-            int totalVideoDuration = 9000;
+        int totalVideoDuration = 9000;
 
-            String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();
+        String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();
 
-            TextView textView = progressDialog.findViewById(R.id.progressDialogText);
-            if (textView != null) {
-                textView.setText(String.format("Encoding video: %% %s.", completePercentage));
-            }
+        TextView textView = progressDialog.findViewById(R.id.progressDialogText);
+        if (textView != null) {
+            textView.setText(String.format("Encoding video: %% %s.", completePercentage));
         }
     }
 

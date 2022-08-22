@@ -260,19 +260,17 @@
 }
 
 - (void)updateProgressDialog {
-    if (statistics == nil) {
+    if (statistics == nil || [statistics getTime] < 0) {
         return;
     }
 
     if (alertController != nil) {
         int timeInMilliseconds = [statistics getTime];
-        if (timeInMilliseconds > 0) {
-            int totalVideoDuration = 9000;
+        int totalVideoDuration = 9000;
 
-            int percentage = timeInMilliseconds*100/totalVideoDuration;
+        int percentage = timeInMilliseconds*100/totalVideoDuration;
 
-            [alertController setMessage:[NSString stringWithFormat:@"Creating video  %% %d \n\n", percentage]];
-        }
+        [alertController setMessage:[NSString stringWithFormat:@"Creating video  %% %d \n\n", percentage]];
     }
 }
 

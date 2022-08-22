@@ -96,18 +96,16 @@ void ffmpegkittest::VideoTab::appendOutput(const std::string& string) {
 }
 
 void ffmpegkittest::VideoTab::updateProgressDialog(const std::shared_ptr<ffmpegkit::Statistics> statistics) {
-    if (statistics == nullptr) {
+    if (statistics == nullptr || statistics->getTime() < 0) {
         return;
     }
 
     this->statistics = statistics;
     int timeInMilliseconds = this->statistics->getTime();
-    if (timeInMilliseconds > 0) {
-        int totalVideoDuration = 9000;
-        double completePercentage = timeInMilliseconds*100/totalVideoDuration;
-        // progressDialog.update(completePercentage);
-        std::cout << "Encoding completed " << completePercentage << "%" << std::endl;
-    }
+    int totalVideoDuration = 9000;
+    double completePercentage = timeInMilliseconds*100/totalVideoDuration;
+    // progressDialog.update(completePercentage);
+    std::cout << "Encoding completed " << completePercentage << "%" << std::endl;
 }
 
 void ffmpegkittest::VideoTab::clearOutput() {

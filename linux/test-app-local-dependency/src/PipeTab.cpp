@@ -104,18 +104,16 @@ void ffmpegkittest::PipeTab::appendOutput(const std::string& string) {
 }
 
 void ffmpegkittest::PipeTab::updateProgressDialog(const std::shared_ptr<ffmpegkit::Statistics> statistics) {
-    if (statistics == nullptr) {
+    if (statistics == nullptr || statistics->getTime() < 0) {
         return;
     }
 
     this->statistics = statistics;
     int timeInMilliseconds = this->statistics->getTime();
-    if (timeInMilliseconds > 0) {
-        int totalVideoDuration = 9000;
-        double completePercentage = timeInMilliseconds*100/totalVideoDuration;
-        // progressDialog.update(completePercentage);
-        std::cout << "Creating video: " << completePercentage << "%" << std::endl;
-    }
+    int totalVideoDuration = 9000;
+    double completePercentage = timeInMilliseconds*100/totalVideoDuration;
+    // progressDialog.update(completePercentage);
+    std::cout << "Creating video: " << completePercentage << "%" << std::endl;
 }
 
 void ffmpegkittest::PipeTab::clearOutput() {
