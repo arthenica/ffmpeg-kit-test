@@ -41,17 +41,17 @@ namespace ffmpegkittest {
 
             static constexpr const char* AudioTestTooltipText = "Select an audio codec and press the ENCODE button";
 
-            static constexpr const char* SubtitleTestEncodeTooltipText = "Click the button to burn subtitles.";
+            static constexpr const char* SubtitleTestEncodeTooltipText = "Click the button to burn subtitles";
 
-            static constexpr const char* SubtitleTestCancelTooltipText = "Click cancel to stop.";
+            static constexpr const char* SubtitleTestCancelTooltipText = "Click cancel to stop";
 
-            static constexpr const char* VidStabTestTooltipText = "Click the button to stabilize video.";
+            static constexpr const char* VidStabTestTooltipText = "Click the button to stabilize video";
 
-            static constexpr const char* PipeTestTooltipText = "Click the button to create a video using pipe redirection.";
+            static constexpr const char* PipeTestTooltipText = "Click the button to create a video using pipe redirection";
 
-            static constexpr const char* ConcurrentExecutionTestTooltipText = "Use ENCODE and CANCEL buttons to start/stop multiple executions.";
+            static constexpr const char* ConcurrentExecutionTestTooltipText = "Use ENCODE and CANCEL buttons to start/stop multiple executions";
 
-            static constexpr const char* OtherTestTooltipText = "Select a test and press the RUN button.";
+            static constexpr const char* OtherTestTooltipText = "Select a test and press the RUN button";
 
     };
 

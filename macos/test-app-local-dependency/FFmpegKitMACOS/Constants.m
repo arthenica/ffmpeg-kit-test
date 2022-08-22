@@ -23,11 +23,11 @@
 #include "Constants.h"
 
 // COMMAND TEST
-NSString *const COMMAND_TEST_TOOLTIP_TEXT = @"Enter an FFmpeg command without 'ffmpeg' at the beginning and click one of the RUN buttons";
+NSString *const COMMAND_TEST_TOOLTIP_TEXT = @"Enter a command without ffmpeg/ffprobe at the beginning and click one of the RUN buttons";
 NSTimeInterval const COMMAND_TEST_TOOLTIP_DURATION = 4.0;
 
 // VIDEO TEST
-NSString *const VIDEO_TEST_TOOLTIP_TEXT = @"Select a video codec and press ENCODE button";
+NSString *const VIDEO_TEST_TOOLTIP_TEXT = @"Select a video codec and press the ENCODE button";
 NSTimeInterval const VIDEO_TEST_TOOLTIP_DURATION = 4.0;
 
 // HTTPS TEST
@@ -40,7 +40,7 @@ NSString *const HTTPS_TEST_TOOLTIP_TEXT = @"Enter the https url of a media file 
 NSTimeInterval const HTTPS_TEST_TOOLTIP_DURATION = 4.0;
 
 // AUDIO TEST
-NSString *const AUDIO_TEST_TOOLTIP_TEXT = @"Select an audio codec and press ENCODE button";
+NSString *const AUDIO_TEST_TOOLTIP_TEXT = @"Select an audio codec and press the ENCODE button";
 NSTimeInterval const AUDIO_TEST_TOOLTIP_DURATION = 4.0;
 
 // SUBTITLE TEST
