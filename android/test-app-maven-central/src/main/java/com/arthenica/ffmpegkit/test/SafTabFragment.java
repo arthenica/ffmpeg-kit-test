@@ -148,7 +148,7 @@ public class SafTabFragment extends Fragment {
 
         Log.d(TAG, "Testing FFprobe COMMAND synchronously.");
 
-        Log.d(TAG, String.format("FFprobe process started with arguments\n'%s'", ffprobeCommand));
+        Log.d(TAG, String.format("FFprobe process started with arguments: '%s'", ffprobeCommand));
 
         final FFprobeSession session = FFprobeKit.execute(ffprobeCommand);
 
@@ -178,7 +178,7 @@ public class SafTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoPath, selectedCodec, getCustomOptions(selectedCodec));
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 

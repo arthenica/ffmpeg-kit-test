@@ -129,7 +129,7 @@ typedef enum {
 
     NSString* ffmpegCommand = [Video generateVideoEncodeScript:image1:image2:image3:videoFile:@"mpeg4":@""];
     
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
     
     self->state = CreatingState;
     
@@ -150,7 +150,7 @@ typedef enum {
                 [self showProgressDialog:@"Burning subtitles\n\n"];
             });
 
-            NSLog(@"FFmpeg process started with arguments\n'%@'.\n", burnSubtitlesCommand);
+            NSLog(@"FFmpeg process started with arguments '%@'.\n", burnSubtitlesCommand);
 
             self->state = BurningState;
             

@@ -144,7 +144,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
 
             final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath(), getSelectedVideoCodec(), getPixelFormat(), getCustomOptions());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 

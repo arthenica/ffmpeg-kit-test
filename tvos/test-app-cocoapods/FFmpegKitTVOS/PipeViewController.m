@@ -173,7 +173,7 @@
 
     NSString* ffmpegCommand = [Video generateCreateVideoWithPipesScript:pipe1:pipe2:pipe3:videoFile];
     
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];

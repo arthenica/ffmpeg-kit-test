@@ -130,7 +130,7 @@ void ffmpegkittest::ConcurrentExecutionTab::encodeVideo(const int buttonNumber) 
 
     std::string ffmpegCommand = Video::generateEncodeVideoScript(image1File, image2File, image3File, videoFile, "mpeg4", "");
 
-    std::cout << "FFmpeg process starting for button " << buttonNumber << " with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process starting for button " << buttonNumber << " with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this, buttonNumber](auto session) {
         const auto state = session->getState();

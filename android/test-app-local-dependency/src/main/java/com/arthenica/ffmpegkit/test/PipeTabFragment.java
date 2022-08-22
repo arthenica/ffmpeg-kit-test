@@ -158,7 +158,7 @@ public class PipeTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateCreateVideoWithPipesScript(pipe1, pipe2, pipe3, videoFile.getAbsolutePath());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 

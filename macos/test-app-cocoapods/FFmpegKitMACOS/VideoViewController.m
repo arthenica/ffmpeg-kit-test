@@ -128,7 +128,7 @@
 
     NSString* ffmpegCommand = [Video generateVideoEncodeScriptWithCustomPixelFormat:image1:image2:image3:videoFile:[self getSelectedVideoCodec]:[self getPixelFormat]:[self getCustomOptions]];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     FFmpegSession* session = [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session){
         SessionState state = [session getState];

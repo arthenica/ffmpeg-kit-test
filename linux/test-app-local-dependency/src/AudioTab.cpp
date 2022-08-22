@@ -213,7 +213,7 @@ void ffmpegkittest::AudioTab::encodeAudio() {
 
     clearOutput();
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this](auto session) {
         const auto state = session->getState();

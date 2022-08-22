@@ -208,7 +208,7 @@ void ffmpegkittest::VideoTab::encodeVideo() {
 
     std::string ffmpegCommand = Video::generateEncodeVideoScript(image1File, image2File, image3File, videoFile, getSelectedVideoCodec(), getPixelFormat(), getCustomOptions());
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this](auto session) {
         const auto state = session->getState();

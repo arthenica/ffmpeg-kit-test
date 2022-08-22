@@ -154,7 +154,7 @@ void ffmpegkittest::SubtitleTab::burnSubtitles() {
 
     std::string ffmpegCommand = Video::generateEncodeVideoScript(image1File, image2File, image3File, videoFile, "mpeg4", "");
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     state = StateCreating;
 
@@ -170,7 +170,7 @@ void ffmpegkittest::SubtitleTab::burnSubtitles() {
 
             this->showBurnProgressDialog();
 
-            std::cout << "FFmpeg process started with arguments '" << burnSubtitlesCommand << "'." << std::endl;
+            std::cout << "FFmpeg process started with arguments: '" << burnSubtitlesCommand << "'." << std::endl;
 
             state = StateBurning;
 

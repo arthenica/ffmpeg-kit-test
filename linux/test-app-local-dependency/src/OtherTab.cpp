@@ -173,7 +173,7 @@ void ffmpegkittest::OtherTab::testChromaprint() {
 
             std::string chromaprintCommand = "-hide_banner -y -i " + audioSampleFile + " -f chromaprint -fp_format 2 " + getChromaprintOutputFile();
 
-            std::cout << "FFmpeg process started with arguments '" << chromaprintCommand << "'." << std::endl;
+            std::cout << "FFmpeg process started with arguments: '" << chromaprintCommand << "'." << std::endl;
 
             FFmpegKit::executeAsync(chromaprintCommand, [this](auto secondSession) {
                 std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(secondSession->getState()) << " and rc " << secondSession->getReturnCode() << "." << secondSession->getFailStackTrace() << std::endl;
@@ -197,7 +197,7 @@ void ffmpegkittest::OtherTab::testDav1d() {
 
     std::string ffmpegCommand = std::string("-hide_banner -y -i ") + Dav1dTestDefaultUrl + " " + getDav1dOutputFile();
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     FFmpegKit::executeAsync(ffmpegCommand, [this](auto session) {
         std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(session->getState()) << " and rc " << session->getReturnCode() << "." << session->getFailStackTrace() << std::endl;
@@ -214,7 +214,7 @@ void ffmpegkittest::OtherTab::testWebp() {
 
     std::string ffmpegCommand = "-hide_banner -y -i " + imageFile + " " + outputFile;
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this](auto session) {
         std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(session->getState()) << " and rc " << session->getReturnCode() << "." << session->getFailStackTrace() << std::endl;
@@ -237,7 +237,7 @@ void ffmpegkittest::OtherTab::testZscale() {
 
     std::string ffmpegCommand = Video::generateZscaleVideoScript(videoFile, zscaledVideoFile);
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this](auto session) {
         std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(session->getState()) << " and rc " << session->getReturnCode() << "." << session->getFailStackTrace() << std::endl;

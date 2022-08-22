@@ -69,7 +69,7 @@
 
     NSLog(@"Testing FFmpeg COMMAND asynchronously.\n");
     
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];
@@ -98,7 +98,7 @@
     
     NSLog(@"Testing FFprobe COMMAND asynchronously.\n");
     
-    NSLog(@"FFprobe process started with arguments\n'%@'.\n", ffprobeCommand);
+    NSLog(@"FFprobe process started with arguments '%@'.\n", ffprobeCommand);
     
     FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
         SessionState state = [session getState];

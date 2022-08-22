@@ -135,7 +135,7 @@ public class VidStabTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateShakingVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -157,7 +157,7 @@ public class VidStabTabFragment extends Fragment {
 
                                 showStabilizeProgressDialog();
 
-                                Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", analyzeVideoCommand));
+                                Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", analyzeVideoCommand));
 
                                 FFmpegKit.executeAsync(analyzeVideoCommand, new FFmpegSessionCompleteCallback() {
 
@@ -168,7 +168,7 @@ public class VidStabTabFragment extends Fragment {
                                         if (ReturnCode.isSuccess(secondSession.getReturnCode())) {
                                             final String stabilizeVideoCommand = String.format("-y -i %s -vf vidstabtransform=smoothing=30:input=%s -c:v mpeg4 %s", videoFile.getAbsolutePath(), shakeResultsFile.getAbsolutePath(), stabilizedVideoFile.getAbsolutePath());
 
-                                            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", stabilizeVideoCommand));
+                                            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", stabilizeVideoCommand));
 
                                             FFmpegKit.executeAsync(stabilizeVideoCommand, new FFmpegSessionCompleteCallback() {
 

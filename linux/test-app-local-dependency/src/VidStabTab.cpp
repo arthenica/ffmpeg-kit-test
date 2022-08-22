@@ -105,7 +105,7 @@ void ffmpegkittest::VidStabTab::stabilizeVideo() {
 
     std::string ffmpegCommand = Video::generateShakingVideoScript(image1File, image2File, image3File, videoFile);
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     FFmpegKit::executeAsync(ffmpegCommand, [this, videoFile, shakeResultsFile, stabilizedVideoFile](auto session) {
         std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(session->getState()) << " and rc " << session->getReturnCode() << "." << session->getFailStackTrace() << std::endl;
@@ -119,7 +119,7 @@ void ffmpegkittest::VidStabTab::stabilizeVideo() {
 
             this->showStabilizeProgressDialog();
 
-            std::cout << "FFmpeg process started with arguments '" << analyzeVideoCommand << "'." << std::endl;
+            std::cout << "FFmpeg process started with arguments: '" << analyzeVideoCommand << "'." << std::endl;
 
             FFmpegKit::executeAsync(analyzeVideoCommand, [this, videoFile, shakeResultsFile, stabilizedVideoFile](auto secondSession) {
                 std::cout << "FFmpeg process exited with state " << FFmpegKitConfig::sessionStateToString(secondSession->getState()) << " and rc " << secondSession->getReturnCode() << "." << secondSession->getFailStackTrace() << std::endl;
@@ -127,7 +127,7 @@ void ffmpegkittest::VidStabTab::stabilizeVideo() {
                 if (ReturnCode::isSuccess(secondSession->getReturnCode())) {
                     std::string stabilizeVideoCommand = "-y -i " + videoFile + " -vf vidstabtransform=smoothing=30:input=" + shakeResultsFile + " -c:v mpeg4 " + stabilizedVideoFile;
 
-                    std::cout << "FFmpeg process started with arguments '" << stabilizeVideoCommand << "'." << std::endl;
+                    std::cout << "FFmpeg process started with arguments: '" << stabilizeVideoCommand << "'." << std::endl;
 
                     FFmpegKit::executeAsync(stabilizeVideoCommand, [this](auto thirdSession) {
 

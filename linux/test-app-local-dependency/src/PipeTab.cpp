@@ -142,7 +142,7 @@ void ffmpegkittest::PipeTab::createVideo() {
 
     std::string ffmpegCommand = Video::generateCreateVideoWithPipesScript(*pipe1, *pipe2, *pipe3, videoFile);
 
-    std::cout << "FFmpeg process started with arguments '" << ffmpegCommand << "'." << std::endl;
+    std::cout << "FFmpeg process started with arguments: '" << ffmpegCommand << "'." << std::endl;
 
     auto session = FFmpegKit::executeAsync(ffmpegCommand, [this,pipe1,pipe2,pipe3](auto session) {
         const auto state = session->getState();
