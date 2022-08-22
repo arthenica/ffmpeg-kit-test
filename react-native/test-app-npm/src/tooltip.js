@@ -1,10 +1,10 @@
-export const COMMAND_TEST_TOOLTIP_TEXT = "Enter an FFmpeg command without 'ffmpeg' at the beginning and click one of the RUN buttons";
+export const COMMAND_TEST_TOOLTIP_TEXT = "Enter a command without ffmpeg/ffprobe at the beginning and click one of the RUN buttons";
 
-export const VIDEO_TEST_TOOLTIP_TEXT = "Select a video codec and press ENCODE button";
+export const VIDEO_TEST_TOOLTIP_TEXT = "Select a video codec and press the ENCODE button";
 
 export const HTTPS_TEST_TOOLTIP_TEXT = "Enter the https url of a media file and click the button";
 
-export const AUDIO_TEST_TOOLTIP_TEXT = "Select an audio codec and press ENCODE button";
+export const AUDIO_TEST_TOOLTIP_TEXT = "Select an audio codec and press the ENCODE button";
 
 export const SUBTITLE_TEST_TOOLTIP_TEXT = "Click the button to burn subtitles. Created video will play inside the frame below";
 
@@ -16,4 +16,4 @@ export const CONCURRENT_EXECUTION_TEST_TOOLTIP_TEXT = "Use ENCODE and CANCEL but
 
 export const SAF_TEST_TOOLTIP_TEXT = "Use system file picker to test scoped storage extension";
 
-export const OTHER_TEST_TOOLTIP_TEXT = "Select a test and press RUN button";
+export const OTHER_TEST_TOOLTIP_TEXT = "Select a test and press the RUN button";
