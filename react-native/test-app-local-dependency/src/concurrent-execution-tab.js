@@ -59,7 +59,7 @@ export default class ConcurrentExecutionTab extends React.Component {
 
         let ffmpegCommand = VideoUtil.generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFile, "mpeg4", "");
 
-        ffprint(`FFmpeg process starting for button ${buttonNumber} with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process starting for button ${buttonNumber} with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                 const sessionId = await session.getSessionId();

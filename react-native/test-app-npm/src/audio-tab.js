@@ -65,7 +65,7 @@ export default class AudioTab extends React.Component {
 
         this.clearOutput();
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.execute(ffmpegCommand).then(async (session) => {
                 const state = FFmpegKitConfig.sessionStateToString(await session.getState());

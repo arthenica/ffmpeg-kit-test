@@ -62,7 +62,7 @@ export default class SafTab extends React.Component {
 
                         ffprint('Testing FFprobe COMMAND synchronously.');
 
-                        ffprint(`FFprobe process started with arguments:\n\'${ffprobeCommand}\'.`);
+                        ffprint(`FFprobe process started with arguments: \'${ffprobeCommand}\'.`);
 
                         FFprobeKit.execute(ffprobeCommand).then(async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -99,7 +99,7 @@ export default class SafTab extends React.Component {
 
                         let ffmpegCommand = VideoUtil.generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFile, videoCodec, '');
 
-                        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+                        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
                         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());

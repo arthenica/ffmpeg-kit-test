@@ -63,7 +63,7 @@ export default class PipeTab extends React.Component {
 
                     let ffmpegCommand = VideoUtil.generateCreateVideoWithPipesScript(pipe1, pipe2, pipe3, videoFile);
 
-                    ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+                    ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
                     FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());

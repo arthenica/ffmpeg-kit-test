@@ -57,7 +57,7 @@ export default class VideoTab extends React.Component {
 
         let ffmpegCommand = VideoUtil.generateEncodeVideoScriptWithCustomPixelFormat(image1Path, image2Path, image3Path, videoFile, videoCodec, this.getPixelFormat(), this.getCustomOptions());
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());

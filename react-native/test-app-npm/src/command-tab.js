@@ -55,7 +55,7 @@ export default class CommandTab extends React.Component {
 
         ffprint('Testing FFmpeg COMMAND asynchronously.');
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.execute(ffmpegCommand).then(async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -80,7 +80,7 @@ export default class CommandTab extends React.Component {
 
         ffprint('Testing FFprobe COMMAND asynchronously.');
 
-        ffprint(`FFprobe process started with arguments:\n\'${ffprobeCommand}\'.`);
+        ffprint(`FFprobe process started with arguments: \'${ffprobeCommand}\'.`);
 
         FFprobeSession.create(FFmpegKitConfig.parseArguments(ffprobeCommand), async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
