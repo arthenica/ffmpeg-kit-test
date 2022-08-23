@@ -340,7 +340,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
     }
 
     protected void updateProgressDialog() {
-        if (statistics == null || statistics->getTime() < 0) {
+        if (statistics == null || statistics.getTime() < 0) {
             return;
         }
 

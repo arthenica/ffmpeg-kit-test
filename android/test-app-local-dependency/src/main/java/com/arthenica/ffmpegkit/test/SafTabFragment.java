@@ -332,7 +332,7 @@ public class SafTabFragment extends Fragment {
     }
 
     private void updateProgressDialog() {
-        if (statistics == null || statistics->getTime() < 0) {
+        if (statistics == null || statistics.getTime() < 0) {
             return;
         }
 

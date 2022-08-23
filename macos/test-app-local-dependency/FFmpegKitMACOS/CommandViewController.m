@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -93,7 +93,7 @@
     
     NSLog(@"FFprobe process started with arguments '%@'.\n", ffprobeCommand);
     
-    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
+    FFprobeSession *session = [FFprobeSession create:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 
