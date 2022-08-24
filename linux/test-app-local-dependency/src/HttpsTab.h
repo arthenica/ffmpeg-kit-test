@@ -36,11 +36,11 @@ namespace ffmpegkittest {
 
             static constexpr const char* HttpsTestFailUrl = "https://download2.blender.org/peach/trailer/trailer_1080p.ogg";
 
-            static constexpr const char* HttpsTestRandomUrl1 = "https://file-examples.com/storage/fe2ef7477862f581f9ce264/2018/04/file_example_MOV_640_800kB.mov";
+            static constexpr const char* HttpsTestRandomUrl1 = "https://filesamples.com/samples/video/mov/sample_640x360.mov";
 
-            static constexpr const char* HttpsTestRandomUrl2 = "https://file-examples.com/storage/fe2ef7477862f581f9ce264/2017/11/file_example_MP3_700KB.mp3";
+            static constexpr const char* HttpsTestRandomUrl2 = "https://filesamples.com/samples/audio/mp3/sample3.mp3";
 
-            static constexpr const char* HttpsTestRandomUrl3 = "https://file-examples.com/storage/fe2ef7477862f581f9ce264/2020/03/file_example_WEBP_50kB.webp";
+            static constexpr const char* HttpsTestRandomUrl3 = "https://filesamples.com/samples/image/webp/sample1.webp";
 
             HttpsTab();
             void setActive();

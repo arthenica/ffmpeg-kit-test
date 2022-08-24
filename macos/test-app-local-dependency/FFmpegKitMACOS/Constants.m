@@ -33,9 +33,9 @@ NSTimeInterval const VIDEO_TEST_TOOLTIP_DURATION = 4.0;
 // HTTPS TEST
 NSString *const HTTPS_TEST_DEFAULT_URL = @"https://download.blender.org/peach/trailer/trailer_1080p.ogg";
 NSString *const HTTPS_TEST_FAIL_URL = @"https://download2.blender.org/peach/trailer/trailer_1080p.ogg";
-NSString *const HTTPS_TEST_RANDOM_URL_1 = @"https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_640_800kB.mov";
-NSString *const HTTPS_TEST_RANDOM_URL_2 = @"https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
-NSString *const HTTPS_TEST_RANDOM_URL_3 = @"https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp";
+NSString *const HTTPS_TEST_RANDOM_URL_1 = @"https://filesamples.com/samples/video/mov/sample_640x360.mov";
+NSString *const HTTPS_TEST_RANDOM_URL_2 = @"https://filesamples.com/samples/audio/mp3/sample3.mp3";
+NSString *const HTTPS_TEST_RANDOM_URL_3 = @"https://filesamples.com/samples/image/webp/sample1.webp";
 NSString *const HTTPS_TEST_TOOLTIP_TEXT = @"Enter the https url of a media file and click the button";
 NSTimeInterval const HTTPS_TEST_TOOLTIP_DURATION = 4.0;
 
