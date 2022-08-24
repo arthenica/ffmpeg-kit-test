@@ -30,10 +30,9 @@ using namespace ffmpegkit;
 void testParseSimpleCommand() {
     auto argumentList = FFmpegKitConfig::parseArguments("-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -vsync 2 -async 1 video.mp4");
     
-    assert(argumentList);
-    assert(14 == argumentList->size());
+    assert(14 == argumentList.size());
 
-    auto it = argumentList->begin();
+    auto it = argumentList.begin();
     assertString("-hide_banner", *it++);
     assertString("-loop", *it++);
     assertString("1", *it++);
@@ -53,10 +52,9 @@ void testParseSimpleCommand() {
 void testParseSingleQuotesInCommand() {
     auto argumentList = FFmpegKitConfig::parseArguments("-loop 1 'file one.jpg'  -filter_complex  '[0:v]setpts=PTS-STARTPTS[video]'  -map  [video]  video.mp4 ");
     
-    assert(argumentList);
-    assert(8 == argumentList->size());
+    assert(8 == argumentList.size());
 
-    auto it = argumentList->begin();
+    auto it = argumentList.begin();
     assertString("-loop", *it++);
     assertString("1", *it++);
     assertString("file one.jpg", *it++);
@@ -70,10 +68,9 @@ void testParseSingleQuotesInCommand() {
 void testParseDoubleQuotesInCommand() {
     auto argumentList = FFmpegKitConfig::parseArguments("-loop  1 \"file one.jpg\"   -filter_complex \"[0:v]setpts=PTS-STARTPTS[video]\"  -map  [video]  video.mp4 ");
     
-    assert(argumentList);
-    assert(8 == argumentList->size());
+    assert(8 == argumentList.size());
 
-    auto it = argumentList->begin();
+    auto it = argumentList.begin();
     assertString("-loop", *it++);
     assertString("1", *it++);
     assertString("file one.jpg", *it++);
@@ -85,10 +82,9 @@ void testParseDoubleQuotesInCommand() {
     
     argumentList = FFmpegKitConfig::parseArguments(" -i   file:///tmp/input.mp4 -vcodec libx264 -vf \"scale=1024:1024,pad=width=1024:height=1024:x=0:y=0:color=black\"  -acodec copy  -q:v 0  -q:a   0 video.mp4");
     
-    assert(argumentList);
-    assert(13 == argumentList->size());
+    assert(13 == argumentList.size());
 
-    it = argumentList->begin();
+    it = argumentList.begin();
     assertString("-i", *it++);
     assertString("file:///tmp/input.mp4", *it++);
     assertString("-vcodec", *it++);
@@ -107,10 +103,9 @@ void testParseDoubleQuotesInCommand() {
 void testParseDoubleQuotesAndEscapesInCommand() {
     auto argumentList = FFmpegKitConfig::parseArguments("  -i   file:///tmp/input.mp4 -vf \"subtitles=file:///tmp/subtitles.srt:force_style=\'FontSize=16,PrimaryColour=&HFFFFFF&\'\" -vcodec libx264   -acodec copy  -q:v 0 -q:a  0  video.mp4");
     
-    assert(argumentList);
-    assert(13 == argumentList->size());
+    assert(13 == argumentList.size());
 
-    auto it = argumentList->begin();
+    auto it = argumentList.begin();
     assertString("-i", *it++);
     assertString("file:///tmp/input.mp4", *it++);
     assertString("-vf", *it++);
@@ -127,10 +122,9 @@ void testParseDoubleQuotesAndEscapesInCommand() {
     
     argumentList = FFmpegKitConfig::parseArguments("  -i   file:///tmp/input.mp4 -vf \"subtitles=file:///tmp/subtitles.srt:force_style=\\\"FontSize=16,PrimaryColour=&HFFFFFF&\\\"\" -vcodec libx264   -acodec copy  -q:v 0 -q:a  0  video.mp4");
     
-    assert(argumentList);
-    assert(13 == argumentList->size());
+    assert(13 == argumentList.size());
 
-    it = argumentList->begin();
+    it = argumentList.begin();
     assertString("-i", *it++);
     assertString("file:///tmp/input.mp4", *it++);
     assertString("-vf", *it++);
@@ -147,7 +141,7 @@ void testParseDoubleQuotesAndEscapesInCommand() {
 }
 
 void getSessionIdTest() {
-    const std::shared_ptr<std::list<std::string>> TEST_ARGUMENTS = std::make_shared<std::list<std::string>>(std::list<std::string>{"argument1", "argument2"});
+    const std::list<std::string> TEST_ARGUMENTS{"argument1", "argument2"};
 
     auto sessions1 = FFmpegSession::create(TEST_ARGUMENTS);
     auto sessions2 = FFprobeSession::create(TEST_ARGUMENTS);
