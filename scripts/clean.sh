@@ -32,6 +32,11 @@ rm -rf ../react-native/test-app-npm/ios/build
 rm -rf ../react-native/test-app-npm/ios/Pods
 rm -rf ../react-native/test-app-npm/android/.gradle
 rm -rf ../react-native/test-app-npm/android/app/build
+rm -rf ../react-native/test-app-npm-single-view/node_modules
+rm -rf ../react-native/test-app-npm-single-view/ios/build
+rm -rf ../react-native/test-app-npm-single-view/ios/Pods
+rm -rf ../react-native/test-app-npm-single-view/android/.gradle
+rm -rf ../react-native/test-app-npm-single-view/android/app/build
 
 rm -rf ../ios/test-app-cocoapods/Pods
 rm -rf ../ios/test-app-local-dependency/*.framework
