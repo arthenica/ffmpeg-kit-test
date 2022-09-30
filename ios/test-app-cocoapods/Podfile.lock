@@ -1,16 +1,16 @@
 PODS:
-  - ffmpeg-kit-ios-full (4.5.1.LTS)
+  - ffmpeg-kit-ios-full (5.1.LTS)
 
 DEPENDENCIES:
-  - ffmpeg-kit-ios-full (= 4.5.1.LTS)
+  - ffmpeg-kit-ios-full (= 5.1.LTS)
 
 SPEC REPOS:
   trunk:
     - ffmpeg-kit-ios-full
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-ios-full: 341a178eebe25ab54b92e4d040a00231b23b7c30
+  ffmpeg-kit-ios-full: 700cfc7875827573940deb58d00fbc3c48701e42
 
-PODFILE CHECKSUM: 1e27b7ec760ba588f3e33ff311974c6936a35500
+PODFILE CHECKSUM: fe256f51705c33be529bce12006b34c8a29b71eb
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

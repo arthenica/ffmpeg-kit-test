@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.7)
-project(ffmpeg-kit-linux-test VERSION 4.5.1)
+project(ffmpeg-kit-linux-test VERSION 5.1)
 
 include(CTest)
 enable_testing()
 
 set(ENV{PKG_CONFIG_PATH} "${CMAKE_SOURCE_DIR}/../../../ffmpeg-kit/prebuilt/bundle-linux/ffmpeg-kit/pkgconfig")
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(FFMPEG_KIT REQUIRED IMPORTED_TARGET ffmpeg-kit=4.5.1)
+pkg_check_modules(FFMPEG_KIT REQUIRED IMPORTED_TARGET ffmpeg-kit=5.1)
 pkg_check_modules(GTKMM REQUIRED IMPORTED_TARGET gtkmm-3.0>=3.0)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/data/ffmpeg-kit-linux-test-app.sh.in ${CMAKE_CURRENT_BINARY_DIR}/bin/ffmpeg-kit-linux-test-app.sh @ONLY)
