@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ffmpeg_kit_flutter_video: 5.1.0
+  ffmpeg_kit_flutter_video: 5.1.0-LTS
   cupertino_icons: ^1.0.5
   path_provider: ^2.0.11
   path: ^1.8.2
