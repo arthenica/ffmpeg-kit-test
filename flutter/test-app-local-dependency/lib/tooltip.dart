@@ -21,16 +21,16 @@
  */
 
 const String COMMAND_TEST_TOOLTIP_TEXT =
-    "Enter an FFmpeg command without 'ffmpeg' at the beginning and click one of the RUN buttons";
+    "Enter a command without ffmpeg/ffprobe at the beginning and click one of the RUN buttons";
 
 const String VIDEO_TEST_TOOLTIP_TEXT =
-    "Select a video codec and press ENCODE button";
+    "Select a video codec and press the ENCODE button";
 
 const String HTTPS_TEST_TOOLTIP_TEXT =
     "Enter the https url of a media file and click the button";
 
 const String AUDIO_TEST_TOOLTIP_TEXT =
-    "Select an audio codec and press ENCODE button";
+    "Select an audio codec and press the ENCODE button";
 
 const String SUBTITLE_TEST_TOOLTIP_TEXT =
     "Click the button to burn subtitles. Created video will play inside the frame below";
@@ -47,4 +47,4 @@ const String CONCURRENT_EXECUTION_TEST_TOOLTIP_TEXT =
 const String SAF_TEST_TOOLTIP_TEXT =
     "Use system file picker to test scoped storage extension";
 
-const String OTHER_TEST_TOOLTIP_TEXT = "Select a test and press RUN button";
+const String OTHER_TEST_TOOLTIP_TEXT = "Select a test and press the RUN button";

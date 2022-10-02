@@ -21,6 +21,7 @@
  */
 
 import 'package:ffmpeg_kit_flutter_video/ffmpeg_kit_config.dart';
+import 'package:ffmpeg_kit_flutter_video/ffmpeg_session.dart';
 import 'package:ffmpeg_kit_flutter_video/level.dart';
 import 'package:ffmpeg_kit_flutter_video/packages.dart';
 import 'package:ffmpeg_kit_flutter_video/signal.dart';
@@ -173,5 +174,23 @@ class Test {
     assert("-q:a" == argumentArray[10]);
     assert("0" == argumentArray[11]);
     assert("video.mp4" == argumentArray[12]);
+  }
+
+  static void setSessionHistorySizeTest() async {
+    ffprint("Testing setSessionHistorySize.");
+
+    int newSize = 15;
+    await FFmpegKitConfig.setSessionHistorySize(newSize);
+    for (int i = 1; i <= (newSize + 5); i++) {
+      FFmpegSession.create(<String>["argument1", "argument2"]);
+      assert((await FFmpegKitConfig.getSessions()).length <= newSize);
+    }
+
+    newSize = 3;
+    await FFmpegKitConfig.setSessionHistorySize(newSize);
+    for (int i = 1; i <= (newSize + 5); i++) {
+      FFmpegSession.create(<String>["argument1", "argument2"]);
+      assert((await FFmpegKitConfig.getSessions()).length <= newSize);
+    }
   }
 }

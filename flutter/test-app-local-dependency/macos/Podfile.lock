@@ -1,10 +1,10 @@
 PODS:
-  - ffmpeg-kit-macos-https (4.5.1)
-  - ffmpeg_kit_flutter (4.5.1):
-    - ffmpeg_kit_flutter/https (= 4.5.1)
+  - ffmpeg-kit-macos-https (5.1)
+  - ffmpeg_kit_flutter (5.1.0):
+    - ffmpeg_kit_flutter/https (= 5.1.0)
     - FlutterMacOS
-  - ffmpeg_kit_flutter/https (4.5.1):
-    - ffmpeg-kit-macos-https (= 4.5.1)
+  - ffmpeg_kit_flutter/https (5.1.0):
+    - ffmpeg-kit-macos-https (= 5.1)
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - path_provider_macos (0.0.1):
@@ -28,11 +28,11 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-macos-https: 664f1b3518c477dfa8f197f07e44576215c82db4
-  ffmpeg_kit_flutter: 064253e46fed1adf3b6301c58568f06dfe7e9eb9
-  FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
-  path_provider_macos: 160cab0d5461f0c0e02995469a98f24bdb9a3f1f
+  ffmpeg-kit-macos-https: ff9c8479ed36b20a4e07b265e1bddd36d62a7d7b
+  ffmpeg_kit_flutter: de6ad9df446c3b70c34033f49a163d05313eea61
+  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
+  path_provider_macos: 3c0c3b4b0d4a76d2bf989a913c2de869c5641a19
 
 PODFILE CHECKSUM: 0d3963a09fc94f580682bd88480486da345dc3f0
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
