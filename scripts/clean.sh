@@ -49,3 +49,5 @@ rm -rf ../macos/test-app-local-dependency/*.xcframework
 rm -rf ../tvos/test-app-cocoapods/Pods
 rm -rf ../tvos/test-app-local-dependency/*.framework
 rm -rf ../tvos/test-app-local-dependency/*.xcframework
+
+rm -rf ../linux/test-app-local-dependency/build

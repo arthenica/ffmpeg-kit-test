@@ -3,5 +3,5 @@ platform :ios, '12.1'
 use_frameworks!
 
 target "FFmpegKitIOS" do
-    pod 'ffmpeg-kit-ios-full', '4.5.1.LTS'
+    pod 'ffmpeg-kit-ios-full', '5.1'
 end

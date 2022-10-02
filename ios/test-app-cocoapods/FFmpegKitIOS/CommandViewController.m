@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2021 Taner Sener
+ * Copyright (c) 2018-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@
 
     NSLog(@"Testing FFmpeg COMMAND asynchronously.\n");
     
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];
@@ -97,9 +97,9 @@
     
     NSLog(@"Testing FFprobe COMMAND asynchronously.\n");
     
-    NSLog(@"FFprobe process started with arguments\n'%@'.\n", ffprobeCommand);
+    NSLog(@"FFprobe process started with arguments '%@'.\n", ffprobeCommand);
     
-    FFprobeSession *session = [[FFprobeSession alloc] init:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
+    FFprobeSession *session = [FFprobeSession create:[FFmpegKitConfig parseArguments:ffprobeCommand] withCompleteCallback:^(FFprobeSession* session) {
         SessionState state = [session getState];
         ReturnCode* returnCode = [session getReturnCode];
 

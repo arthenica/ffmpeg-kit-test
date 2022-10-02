@@ -152,7 +152,7 @@ public class SubtitleTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath(), "mpeg4", "");
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             state = State.CREATING;
 
@@ -177,7 +177,7 @@ public class SubtitleTabFragment extends Fragment {
 
                                 showBurnProgressDialog();
 
-                                Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", burnSubtitlesCommand));
+                                Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", burnSubtitlesCommand));
 
                                 state = State.BURNING;
 

@@ -101,6 +101,10 @@ public class VidStabTabFragment extends Fragment {
         });
     }
 
+    public void disableStatisticsCallback() {
+        FFmpegKitConfig.enableStatisticsCallback(null);
+    }
+
     public void stabilizeVideo() {
         final File image1File = new File(requireContext().getCacheDir(), "machupicchu.jpg");
         final File image2File = new File(requireContext().getCacheDir(), "pyramid.jpg");
@@ -135,7 +139,7 @@ public class VidStabTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateShakingVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -157,7 +161,7 @@ public class VidStabTabFragment extends Fragment {
 
                                 showStabilizeProgressDialog();
 
-                                Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", analyzeVideoCommand));
+                                Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", analyzeVideoCommand));
 
                                 FFmpegKit.executeAsync(analyzeVideoCommand, new FFmpegSessionCompleteCallback() {
 
@@ -168,7 +172,7 @@ public class VidStabTabFragment extends Fragment {
                                         if (ReturnCode.isSuccess(secondSession.getReturnCode())) {
                                             final String stabilizeVideoCommand = String.format("-y -i %s -vf vidstabtransform=smoothing=30:input=%s -c:v mpeg4 %s", videoFile.getAbsolutePath(), shakeResultsFile.getAbsolutePath(), stabilizedVideoFile.getAbsolutePath());
 
-                                            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", stabilizeVideoCommand));
+                                            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", stabilizeVideoCommand));
 
                                             FFmpegKit.executeAsync(stabilizeVideoCommand, new FFmpegSessionCompleteCallback() {
 
@@ -280,6 +284,7 @@ public class VidStabTabFragment extends Fragment {
     public void setActive() {
         Log.i(MainActivity.TAG, "VidStab Tab Activated");
         enableLogCallback();
+        disableStatisticsCallback();
         Popup.show(requireContext(), getString(R.string.vidstab_test_tooltip_text));
     }
 

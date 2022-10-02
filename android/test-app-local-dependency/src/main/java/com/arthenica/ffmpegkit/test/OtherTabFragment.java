@@ -148,7 +148,7 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
                     String chromaprintCommand = String.format("-hide_banner -y -i %s -f chromaprint -fp_format 2 %s", audioSampleFile, getChromaprintOutputFile().getAbsolutePath());
 
-                    Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", chromaprintCommand));
+                    Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", chromaprintCommand));
 
                     FFmpegKit.executeAsync(chromaprintCommand, new FFmpegSessionCompleteCallback() {
 
@@ -184,7 +184,7 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
         final String ffmpegCommand = String.format("-hide_banner -y -i %s %s", DAV1D_TEST_DEFAULT_URL, getDav1dOutputFile().getAbsolutePath());
 
-        Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+        Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
         FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -208,7 +208,7 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
             final String ffmpegCommand = String.format("-hide_banner -y -i %s %s", imageFile.getAbsolutePath(), outputFile.getAbsolutePath());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -242,7 +242,7 @@ public class OtherTabFragment extends Fragment implements AdapterView.OnItemSele
 
         final String ffmpegCommand = Video.generateZscaleVideoScript(videoFile.getAbsolutePath(), zscaledVideoFile.getAbsolutePath());
 
-        Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+        Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
         FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 

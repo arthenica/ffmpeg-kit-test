@@ -23,12 +23,12 @@
 package com.arthenica.ffmpegkit.test;
 
 import android.content.Context;
-import android.widget.Toast;
 
 public class Popup {
 
     public static void show(final Context context, final String message) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        // DISABLED DUE TO THE java.io.IOException: Failed to load asset path ERROR ON API LEVEL 31
+        // Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
 }

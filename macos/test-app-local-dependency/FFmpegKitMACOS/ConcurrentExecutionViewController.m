@@ -113,7 +113,7 @@
 
     NSString* ffmpegCommand = [Video generateVideoEncodeScript:image1:image2:image3:videoFile:@"mpeg4":@""];
 
-    NSLog(@"FFmpeg process starting for button %d with arguments\n'%@'.\n", buttonNumber, ffmpegCommand);
+    NSLog(@"FFmpeg process starting for button %d with arguments '%@'.\n", buttonNumber, ffmpegCommand);
 
     FFmpegSession* session = [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         SessionState state = [session getState];
@@ -141,6 +141,7 @@
         break;
         default: {
             sessionId3 = sessionId;
+            [FFmpegKitConfig setSessionHistorySize:3];
         }
     }
 
