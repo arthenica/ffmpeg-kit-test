@@ -302,14 +302,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FFmpegKitTVOS/Pods-FFmpegKitTVOS-frameworks.sh",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/ffmpegkit.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libavcodec.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libavdevice.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libavfilter.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libavformat.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libavutil.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libswresample.framework",
-				"${PODS_ROOT}/ffmpeg-kit-tvos-full/libswscale.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/ffmpegkit.framework/ffmpegkit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libavcodec.framework/libavcodec",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libavdevice.framework/libavdevice",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libavfilter.framework/libavfilter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libavformat.framework/libavformat",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libavutil.framework/libavutil",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libswresample.framework/libswresample",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ffmpeg-kit-tvos-full/libswscale.framework/libswscale",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
