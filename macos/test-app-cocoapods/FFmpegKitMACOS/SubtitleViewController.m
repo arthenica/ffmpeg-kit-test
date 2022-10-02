@@ -111,7 +111,7 @@ typedef enum {
 
     NSString* ffmpegCommand = [Video generateVideoEncodeScript:image1:image2:image3:videoFile:@"mpeg4":@""];
     
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
     
     self->state = CreatingState;
     
@@ -132,7 +132,7 @@ typedef enum {
                 [self showProgressDialog:@"Burning subtitles\n\n"];
             });
 
-            NSLog(@"FFmpeg process started with arguments\n'%@'.\n", burnSubtitlesCommand);
+            NSLog(@"FFmpeg process started with arguments '%@'.\n", burnSubtitlesCommand);
 
             self->state = BurningState;
             
@@ -214,21 +214,19 @@ typedef enum {
 }
 
 - (void)updateProgressDialog {
-    if (statistics == nil) {
+    if (statistics == nil || [statistics getTime] < 0) {
         return;
     }
 
     int timeInMilliseconds = [statistics getTime];
-    if (timeInMilliseconds > 0) {
-        int totalVideoDuration = 9000;
+    int totalVideoDuration = 9000;
 
-        int percentage = timeInMilliseconds*100/totalVideoDuration;
+    int percentage = timeInMilliseconds*100/totalVideoDuration;
 
-        if (state == CreatingState) {
-            [indicator updateMessage:@"Creating video" percentage:percentage];
-        } else if (state == BurningState) {
-            [indicator updateMessage:@"Burning subtitles" percentage:percentage];
-        }
+    if (state == CreatingState) {
+        [indicator updateMessage:@"Creating video" percentage:percentage];
+    } else if (state == BurningState) {
+        [indicator updateMessage:@"Burning subtitles" percentage:percentage];
     }
 }
 

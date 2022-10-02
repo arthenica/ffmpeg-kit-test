@@ -158,7 +158,7 @@ public class PipeTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateCreateVideoWithPipesScript(pipe1, pipe2, pipe3, videoFile.getAbsolutePath());
 
-            Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
             FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -246,20 +246,18 @@ public class PipeTabFragment extends Fragment {
     }
 
     protected void updateProgressDialog() {
-        if (statistics == null) {
+        if (statistics == null || statistics.getTime() < 0) {
             return;
         }
 
         int timeInMilliseconds = this.statistics.getTime();
-        if (timeInMilliseconds > 0) {
-            int totalVideoDuration = 9000;
+        int totalVideoDuration = 9000;
 
-            String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();
+        String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();
 
-            TextView textView = progressDialog.findViewById(R.id.progressDialogText);
-            if (textView != null) {
-                textView.setText(String.format("Creating video: %% %s.", completePercentage));
-            }
+        TextView textView = progressDialog.findViewById(R.id.progressDialogText);
+        if (textView != null) {
+            textView.setText(String.format("Creating video: %% %s.", completePercentage));
         }
     }
 

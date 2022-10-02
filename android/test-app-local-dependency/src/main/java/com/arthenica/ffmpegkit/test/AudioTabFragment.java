@@ -148,7 +148,7 @@ public class AudioTabFragment extends Fragment implements AdapterView.OnItemSele
 
         clearOutput();
 
-        android.util.Log.d(TAG, String.format("FFmpeg process started with arguments\n'%s'.", ffmpegCommand));
+        android.util.Log.d(TAG, String.format("FFmpeg process started with arguments: '%s'.", ffmpegCommand));
 
         FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 

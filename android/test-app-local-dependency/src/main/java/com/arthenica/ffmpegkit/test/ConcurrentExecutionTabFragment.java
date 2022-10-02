@@ -186,7 +186,7 @@ public class ConcurrentExecutionTabFragment extends Fragment {
 
             final String ffmpegCommand = Video.generateEncodeVideoScript(image1File.getAbsolutePath(), image2File.getAbsolutePath(), image3File.getAbsolutePath(), videoFile.getAbsolutePath(), "mpeg4", "");
 
-            Log.d(TAG, String.format("FFmpeg process starting for button %d with arguments\n'%s'.", buttonNumber, ffmpegCommand));
+            Log.d(TAG, String.format("FFmpeg process starting for button %d with arguments: '%s'.", buttonNumber, ffmpegCommand));
 
             final FFmpegSession session = FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -218,6 +218,7 @@ public class ConcurrentExecutionTabFragment extends Fragment {
                 break;
                 default: {
                     sessionId3 = sessionId;
+                    FFmpegKitConfig.setSessionHistorySize(3);
                 }
             }
 

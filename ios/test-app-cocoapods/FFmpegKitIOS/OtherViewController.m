@@ -128,7 +128,7 @@
 
             NSString *chromaprintCommand = [NSString stringWithFormat:@"-hide_banner -y -i %@ -f chromaprint -fp_format 2 %@", audioSampleFile, [self getChromaprintOutputPath]];
 
-            NSLog(@"FFmpeg process started with arguments\n'%@'.\n", chromaprintCommand);
+            NSLog(@"FFmpeg process started with arguments '%@'.\n", chromaprintCommand);
             
             [FFmpegKit executeAsync:chromaprintCommand withCompleteCallback:^(FFmpegSession* session) {
                 
@@ -148,7 +148,7 @@
 
     NSString *ffmpegCommand = [NSString stringWithFormat:@"-hide_banner -y -i %@ %@", DAV1D_TEST_DEFAULT_URL, [self getDav1dOutputPath]];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
@@ -169,7 +169,7 @@
 
     NSString *ffmpegCommand = [NSString stringWithFormat:@"-hide_banner -y -i %@ %@", imageFile, outputFile];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 
@@ -191,7 +191,7 @@
 
     NSString *ffmpegCommand = [Video generateZscaleVideoScript:videoFile:zscaledVideoFile];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
 

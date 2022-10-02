@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2021 Taner Sener
+ * Copyright (c) 2019-2022 Taner Sener
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -193,9 +193,9 @@ void testParseDoubleQuotesAndEscapesInCommand() {
 void getSessionIdTest() {
     NSArray *TEST_ARGUMENTS = [[NSArray alloc] initWithObjects:@"argument1", @"argument2", nil];
 
-    FFmpegSession *sessions1 = [[FFmpegSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
-    FFprobeSession *sessions2 = [[FFprobeSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
-    MediaInformationSession *sessions3 = [[MediaInformationSession alloc] init:TEST_ARGUMENTS withCompleteCallback:nil];
+    FFmpegSession *sessions1 = [FFmpegSession create:TEST_ARGUMENTS];
+    FFprobeSession *sessions2 = [FFprobeSession create:TEST_ARGUMENTS];
+    MediaInformationSession *sessions3 = [MediaInformationSession create:TEST_ARGUMENTS];
 
     assert([sessions3 getSessionId] > [sessions2 getSessionId]);
     assert([sessions3 getSessionId] > [sessions1 getSessionId]);
@@ -206,12 +206,31 @@ void getSessionIdTest() {
     assert([sessions3 getSessionId] > 0);
 }
 
+void setSessionHistorySizeTest() {
+    NSArray *TEST_ARGUMENTS = [[NSArray alloc] initWithObjects:@"argument1", @"argument2", nil];
+    int newSize = 15;
+    [FFmpegKitConfig setSessionHistorySize:newSize];
+
+    for (int i = 1; i <= (newSize + 5); i++) {
+        [FFmpegSession create:TEST_ARGUMENTS];
+        assert([[FFmpegKitConfig getSessions] count] <= newSize);
+    }
+
+    newSize = 3;
+    [FFmpegKitConfig setSessionHistorySize:newSize];
+    for (int i = 1; i <= (newSize + 5); i++) {
+        [FFmpegSession create:TEST_ARGUMENTS];
+        assert([[FFmpegKitConfig getSessions] count] <= newSize);
+    }
+}
+
 void testFFmpegKit(void) {
     testParseSimpleCommand();
     testParseSingleQuotesInCommand();
     testParseDoubleQuotesInCommand();
     testParseDoubleQuotesAndEscapesInCommand();
     getSessionIdTest();
+    setSessionHistorySizeTest();
     
-    NSLog(@"FFmpegKitConfigTest passed.");
+    NSLog(@"FFmpegKitTest passed.");
 }
