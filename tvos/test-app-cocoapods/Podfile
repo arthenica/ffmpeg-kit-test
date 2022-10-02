@@ -1,7 +1,7 @@
-platform :tvos, '10.2'
+platform :tvos, '11.0'
 
 use_frameworks!
 
 target "FFmpegKitTVOS" do
-    pod 'ffmpeg-kit-tvos-full', '4.5.1.LTS'
+    pod 'ffmpeg-kit-tvos-full', '5.1'
 end

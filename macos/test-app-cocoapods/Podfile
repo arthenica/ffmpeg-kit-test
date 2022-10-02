@@ -3,5 +3,5 @@ platform :osx, '10.15'
 use_frameworks!
 
 target "FFmpegKitMACOS" do
-    pod 'ffmpeg-kit-macos-full', '4.5.1.LTS'
+    pod 'ffmpeg-kit-macos-full', '5.1'
 end

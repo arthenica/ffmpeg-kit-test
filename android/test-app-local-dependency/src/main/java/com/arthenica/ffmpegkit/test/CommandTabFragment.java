@@ -102,7 +102,7 @@ public class CommandTabFragment extends Fragment {
 
         android.util.Log.d(MainActivity.TAG, "Testing FFmpeg COMMAND asynchronously.");
 
-        android.util.Log.d(MainActivity.TAG, String.format("FFmpeg process started with arguments:\n'%s'", ffmpegCommand));
+        android.util.Log.d(MainActivity.TAG, String.format("FFmpeg process started with arguments: '%s'", ffmpegCommand));
 
         FFmpegKit.executeAsync(ffmpegCommand, new FFmpegSessionCompleteCallback() {
 
@@ -147,9 +147,9 @@ public class CommandTabFragment extends Fragment {
 
         android.util.Log.d(MainActivity.TAG, "Testing FFprobe COMMAND asynchronously.");
 
-        android.util.Log.d(MainActivity.TAG, String.format("FFprobe process started with arguments:\n'%s'", ffprobeCommand));
+        android.util.Log.d(MainActivity.TAG, String.format("FFprobe process started with arguments: '%s'", ffprobeCommand));
 
-        FFprobeSession session = new FFprobeSession(FFmpegKitConfig.parseArguments(ffprobeCommand), new FFprobeSessionCompleteCallback() {
+        FFprobeSession session = FFprobeSession.create(FFmpegKitConfig.parseArguments(ffprobeCommand), new FFprobeSessionCompleteCallback() {
 
             @Override
             public void apply(final FFprobeSession session) {

@@ -9,13 +9,14 @@ android {
             keyPassword 'android'
         }
     }
-    compileSdkVersion 30
+    namespace 'com.arthenica.ffmpegkit.test'
+    compileSdk 31
     defaultConfig {
         applicationId "com.arthenica.ffmpegkit.test"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 240451
-        versionName "4.5.1"
+        minSdk 24
+        targetSdk 31
+        versionCode 240510
+        versionName "5.1"
     }
     buildTypes {
         debug {
@@ -51,7 +52,7 @@ android.applicationVariants.all { variant ->
 }
 
 dependencies {
-    implementation 'com.arthenica:ffmpeg-kit-full:4.5.1-1.LTS'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.arthenica:ffmpeg-kit-full:5.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }

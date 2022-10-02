@@ -128,7 +128,7 @@
 
     NSString* ffmpegCommand = [Video generateVideoEncodeScriptWithCustomPixelFormat:image1:image2:image3:videoFile:[self getSelectedVideoCodec]:[self getPixelFormat]:[self getCustomOptions]];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     FFmpegSession* session = [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session){
         SessionState state = [session getState];
@@ -281,18 +281,16 @@
 }
 
 - (void)updateProgressDialog {
-    if (statistics == nil) {
+    if (statistics == nil || [statistics getTime] < 0) {
         return;
     }
 
     int timeInMilliseconds = [statistics getTime];
-    if (timeInMilliseconds > 0) {
-        int totalVideoDuration = 9000;
+    int totalVideoDuration = 9000;
 
-        int percentage = timeInMilliseconds*100/totalVideoDuration;
+    int percentage = timeInMilliseconds*100/totalVideoDuration;
 
-        [indicator updatePercentage:percentage];
-    }
+    [indicator updatePercentage:percentage];
 }
 
 - (void)hideProgressDialog {

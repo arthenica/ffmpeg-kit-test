@@ -127,7 +127,7 @@
 
     NSString* ffmpegCommand = [Video generateShakingVideoScript:image1:image2:image3:videoFile];
 
-    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", ffmpegCommand);
+    NSLog(@"FFmpeg process started with arguments '%@'.\n", ffmpegCommand);
 
     [FFmpegKit executeAsync:ffmpegCommand withCompleteCallback:^(FFmpegSession* session) {
         NSLog(@"FFmpeg process exited with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[session getState]], [session getReturnCode], notNull([session getFailStackTrace], @"\n"));
@@ -145,7 +145,7 @@
                 [self showProgressDialog:@"Stabilizing video\n\n"];
             });
 
-            NSLog(@"FFmpeg process started with arguments\n'%@'.\n", analyzeVideoCommand);
+            NSLog(@"FFmpeg process started with arguments '%@'.\n", analyzeVideoCommand);
 
             [FFmpegKit executeAsync:analyzeVideoCommand withCompleteCallback:^(id<Session> secondSession) {
 
@@ -155,7 +155,7 @@
 
                     NSString *stabilizeVideoCommand = [NSString stringWithFormat:@"-hide_banner -y -i %@ -vf vidstabtransform=smoothing=30:input=%@ %@", videoFile, shakeResultsFile, stabilizedVideoFile];
                     
-                    NSLog(@"FFmpeg process started with arguments\n'%@'.\n", stabilizeVideoCommand);
+                    NSLog(@"FFmpeg process started with arguments '%@'.\n", stabilizeVideoCommand);
 
                     [FFmpegKit executeAsync:stabilizeVideoCommand withCompleteCallback:^(id<Session> thirdSession) {
 
@@ -232,6 +232,7 @@
     [FFmpegKitConfig enableLogCallback:^(Log *log){
         NSLog(@"%@", [log getMessage]);
     }];
+    [FFmpegKitConfig enableStatisticsCallback:nil];
 }
 
 - (void)showProgressDialog:(NSString*) dialogMessage {
