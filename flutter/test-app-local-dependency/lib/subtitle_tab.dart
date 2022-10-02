@@ -118,7 +118,7 @@ class SubtitleTab implements PlayerTab {
                     this.showBurnProgressDialog();
 
                     ffprint(
-                        "FFmpeg process started with arguments:\n\'$burnSubtitlesCommand\'.");
+                        "FFmpeg process started with arguments: \'$burnSubtitlesCommand\'.");
 
                     _state = _State.BURNING;
 
@@ -207,25 +207,24 @@ class SubtitleTab implements PlayerTab {
   }
 
   void updateProgressDialog() {
-    if (_statistics == null) {
+    var statistics = this._statistics;
+    if (statistics == null || statistics.getTime() < 0) {
       return;
     }
 
     int timeInMilliseconds = this._statistics!.getTime();
-    if (timeInMilliseconds > 0) {
-      int totalVideoDuration = 9000;
+    int totalVideoDuration = 9000;
 
-      int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
+    int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
 
-      if (_state == _State.CREATING) {
-        _refreshablePlayerDialogFactory
-            .dialogUpdate("Creating video % $completePercentage");
-      } else if (_state == _State.BURNING) {
-        _refreshablePlayerDialogFactory
-            .dialogUpdate("Burning subtitles % $completePercentage");
-      }
-      _refreshablePlayerDialogFactory.refresh();
+    if (_state == _State.CREATING) {
+      _refreshablePlayerDialogFactory
+          .dialogUpdate("Creating video % $completePercentage");
+    } else if (_state == _State.BURNING) {
+      _refreshablePlayerDialogFactory
+          .dialogUpdate("Burning subtitles % $completePercentage");
     }
+    _refreshablePlayerDialogFactory.refresh();
   }
 
   void hideProgressDialog() {

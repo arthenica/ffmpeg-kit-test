@@ -178,10 +178,11 @@ class FFmpegKitFlutterAppState extends State<MainPage>
 
     FFmpegKitConfig.init().then((_) {
       VideoUtil.prepareAssets();
-      VideoUtil.registerAppFont();
+      VideoUtil.registerApplicationFonts();
 
       Test.testCommonApiMethods();
       Test.testParseArguments();
+      Test.setSessionHistorySizeTest();
     });
   }
 

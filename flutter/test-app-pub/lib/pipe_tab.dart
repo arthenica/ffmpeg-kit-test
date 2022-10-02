@@ -83,9 +83,10 @@ class PipeTab implements PlayerTab {
                 pipe1!, pipe2!, pipe3!, videoFile.path);
 
             ffprint(
-                "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
+                "FFmpeg process started with arguments: \'${ffmpegCommand}\'.");
 
-            FFmpegKit.executeAsync(ffmpegCommand, (FFmpegSession session) async {
+            FFmpegKit.executeAsync(ffmpegCommand,
+                (FFmpegSession session) async {
               final state = FFmpegKitConfig.sessionStateToString(
                   await session.getState());
               final returnCode = await session.getReturnCode();
@@ -154,20 +155,19 @@ class PipeTab implements PlayerTab {
   }
 
   void updateProgressDialog() {
-    if (_statistics == null) {
+    var statistics = this._statistics;
+    if (statistics == null || statistics.getTime() < 0) {
       return;
     }
 
     int timeInMilliseconds = this._statistics!.getTime();
-    if (timeInMilliseconds > 0) {
-      int totalVideoDuration = 9000;
+    int totalVideoDuration = 9000;
 
-      int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
+    int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
 
-      _refreshablePlayerDialogFactory
-          .dialogUpdate("Creating video % $completePercentage");
-      _refreshablePlayerDialogFactory.refresh();
-    }
+    _refreshablePlayerDialogFactory
+        .dialogUpdate("Creating video % $completePercentage");
+    _refreshablePlayerDialogFactory.refresh();
   }
 
   void hideProgressDialog() {

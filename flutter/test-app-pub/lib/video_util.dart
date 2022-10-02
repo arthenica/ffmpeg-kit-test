@@ -38,7 +38,7 @@ class VideoUtil {
   static const String FONT_ASSET_1 = "doppioone_regular.ttf";
   static const String FONT_ASSET_2 = "truenorg.otf";
 
-  static void registerAppFont() {
+  static void registerApplicationFonts() {
     var fontNameMapping = Map<String, String>();
     fontNameMapping["MyFontName"] = "Doppio One";
     VideoUtil.tempDirectory.then((tempDirectory) {
