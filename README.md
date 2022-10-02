@@ -43,7 +43,7 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 | macOS |     4.5.1.LTS     |  [4.5.1.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v4.5.1.lts)  |
 | tvOS |       4.5.1       |      [4.5.1](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v4.5.1)       |
 | tvOS |     4.5.1.LTS     |  [4.5.1.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v4.5.1.lts)   |
-| - |         -         |                                         -                                         |
+| - |         -         |                                         -                                          |
 | Flutter |       4.5.0       |     [4.5.0](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v4.5.0)     |
 | Flutter |     4.5.0-LTS     | [4.5.0-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v4.5.0.lts) |
 | React Native |       4.5.0       |  [4.5.0](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v4.5.0)   |
@@ -55,7 +55,7 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 | macOS |      4.5.LTS      |    [4.5.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v4.5.lts)    |
 | tvOS |        4.5        |        [4.5](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v4.5)         |
 | tvOS |      4.5.LTS      |    [4.5.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v4.5.lts)     |
-| - |         -         |                                         -                                         |
+| - |         -         |                                         -                                          |
 | Android |        4.4        |       [4.4](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v4.4)       |
 | Android |      4.4.LTS      |   [4.4.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v4.4.lts)   |
 | iOS |        4.4        |         [4.4](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v4.4)         |
