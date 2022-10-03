@@ -1,8 +1,6 @@
 import React from 'react';
 import {styles} from './style';
-import {showPopup, Toast} from './popup';
 import {ffprint, notNull} from './util';
-import {HTTPS_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {FFmpegKitConfig, FFprobeKit} from "ffmpeg-kit-react-native";
 
@@ -10,11 +8,11 @@ const HTTPS_TEST_DEFAULT_URL = "https://download.blender.org/peach/trailer/trail
 
 const HTTPS_TEST_FAIL_URL = "https://download2.blender.org/peach/trailer/trailer_1080p.ogg";
 
-const HTTPS_TEST_RANDOM_URL_1 = "https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_640_800kB.mov";
+const HTTPS_TEST_RANDOM_URL_1 = "https://filesamples.com/samples/video/mov/sample_640x360.mov";
 
-const HTTPS_TEST_RANDOM_URL_2 = "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
+const HTTPS_TEST_RANDOM_URL_2 = "https://filesamples.com/samples/audio/mp3/sample3.mp3";
 
-const HTTPS_TEST_RANDOM_URL_3 = "https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp";
+const HTTPS_TEST_RANDOM_URL_3 = "https://filesamples.com/samples/image/webp/sample1.webp";
 
 export default class HttpsTab extends React.Component {
 
@@ -25,8 +23,6 @@ export default class HttpsTab extends React.Component {
             urlText: '',
             outputText: ''
         };
-
-        this.popupReference = React.createRef();
     }
 
     componentDidMount() {
@@ -40,7 +36,6 @@ export default class HttpsTab extends React.Component {
         ffprint("Https Tab Activated");
         FFmpegKitConfig.enableLogCallback(undefined);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, HTTPS_TEST_TOOLTIP_TEXT);
     }
 
     appendOutput(logMessage) {
@@ -273,7 +268,6 @@ export default class HttpsTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>GET INFO AND FAIL</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <View style={styles.outputViewStyle}>
                     <ScrollView
                         ref={(view) => {

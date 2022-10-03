@@ -5,8 +5,6 @@ import VideoUtil from './video-util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {Picker} from '@react-native-picker/picker';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {VIDEO_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import Video from 'react-native-video';
 import {deleteFile, ffprint, notNull} from './util';
@@ -19,7 +17,6 @@ export default class VideoTab extends React.Component {
             selectedCodec: 'mpeg4', statistics: undefined
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -34,7 +31,6 @@ export default class VideoTab extends React.Component {
         ffprint("Video Tab Activated");
         FFmpegKitConfig.enableLogCallback(undefined);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, VIDEO_TEST_TOOLTIP_TEXT);
     }
 
     encodeVideo = () => {
@@ -57,7 +53,7 @@ export default class VideoTab extends React.Component {
 
         let ffmpegCommand = VideoUtil.generateEncodeVideoScriptWithCustomPixelFormat(image1Path, image2Path, image3Path, videoFile, videoCodec, this.getPixelFormat(), this.getCustomOptions());
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -71,7 +67,7 @@ export default class VideoTab extends React.Component {
                 ffprint(`Encode completed successfully in ${duration} milliseconds; playing video.`);
                 this.playVideo();
             } else {
-                showPopup(this.popupReference, "Encode failed. Please check log for the details.");
+                ffprint("Encode failed. Please check log for the details.");
                 ffprint(`Encode failed with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
             }
         }, log => {
@@ -202,17 +198,15 @@ export default class VideoTab extends React.Component {
 
     updateProgressDialog() {
         let statistics = this.state.statistics;
-        if (statistics === undefined) {
+        if (statistics === undefined || statistics.getTime() < 0) {
             return;
         }
 
         let timeInMilliseconds = statistics.getTime();
 
-        if (timeInMilliseconds > 0) {
-            let totalVideoDuration = 9000;
-            let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
-            this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
-        }
+        let totalVideoDuration = 9000;
+        let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
+        this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
     }
 
     hideProgressDialog() {
@@ -255,7 +249,6 @@ export default class VideoTab extends React.Component {
                     <Text style={styles.buttonTextStyle}>CREATE</Text>
                 </TouchableOpacity>
             </View>
-            <Toast ref={this.popupReference} position="center"/>
             <ProgressModal
                 visible={false}
                 ref={this.progressModalReference}/>

@@ -4,8 +4,6 @@ import RNFS from 'react-native-fs';
 import VideoUtil from './video-util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {PIPE_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import Video from 'react-native-video';
 import {deleteFile, ffprint, listAllStatistics, notNull} from './util';
@@ -18,7 +16,6 @@ export default class PipeTab extends React.Component {
             statistics: undefined
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -33,7 +30,6 @@ export default class PipeTab extends React.Component {
         ffprint("Pipe Tab Activated");
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(this.statisticsCallback);
-        showPopup(this.popupReference, PIPE_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -63,7 +59,7 @@ export default class PipeTab extends React.Component {
 
                     let ffmpegCommand = VideoUtil.generateCreateVideoWithPipesScript(pipe1, pipe2, pipe3, videoFile);
 
-                    ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+                    ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
                     FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -84,7 +80,7 @@ export default class PipeTab extends React.Component {
                                 this.playVideo();
                                 listAllStatistics(session);
                             } else {
-                                showPopup(this.popupReference, "Create failed. Please check log for the details.");
+                                ffprint("Create failed. Please check log for the details.");
                             }
                         }
                     );
@@ -121,16 +117,14 @@ export default class PipeTab extends React.Component {
 
     updateProgressDialog() {
         let statistics = this.state.statistics;
-        if (statistics === undefined) {
+        if (statistics === undefined || statistics.getTime() < 0) {
             return;
         }
 
-        let timeInMilliseconds = statistics.time;
-        if (timeInMilliseconds > 0) {
-            let totalVideoDuration = 9000;
-            let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
-            this.progressModalReference.current.update(`Creating video % ${completePercentage}`);
-        }
+        let timeInMilliseconds = statistics.getTime();
+        let totalVideoDuration = 9000;
+        let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
+        this.progressModalReference.current.update(`Creating video % ${completePercentage}`);
     }
 
     hideProgressDialog() {
@@ -157,7 +151,6 @@ export default class PipeTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>CREATE</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

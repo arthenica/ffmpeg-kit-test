@@ -1,8 +1,6 @@
 import React from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './style';
-import {SAF_TEST_TOOLTIP_TEXT} from './tooltip';
-import {showPopup, Toast} from './popup';
 import {FFmpegKit, FFmpegKitConfig, FFprobeKit, ReturnCode} from 'ffmpeg-kit-react-native';
 import {ffprint, notNull} from './util';
 import VideoUtil from "./video-util";
@@ -16,7 +14,6 @@ export default class SafTab extends React.Component {
             outputText: ''
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -31,7 +28,6 @@ export default class SafTab extends React.Component {
         ffprint("SAF Tab Activated");
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(this.statisticsCallback);
-        showPopup(this.popupReference, SAF_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -62,7 +58,7 @@ export default class SafTab extends React.Component {
 
                         ffprint('Testing FFprobe COMMAND synchronously.');
 
-                        ffprint(`FFprobe process started with arguments:\n\'${ffprobeCommand}\'.`);
+                        ffprint(`FFprobe process started with arguments: \'${ffprobeCommand}\'.`);
 
                         FFprobeKit.execute(ffprobeCommand).then(async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -72,7 +68,7 @@ export default class SafTab extends React.Component {
                             ffprint(`FFprobe process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
 
                             if (!ReturnCode.isSuccess(returnCode)) {
-                                showPopup(this.popupReference, "Command failed. Please check output for the details.");
+                                ffprint("Command failed. Please check output for the details.");
                             }
                         });
                     });
@@ -99,7 +95,7 @@ export default class SafTab extends React.Component {
 
                         let ffmpegCommand = VideoUtil.generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFile, videoCodec, '');
 
-                        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+                        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
                         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -113,7 +109,7 @@ export default class SafTab extends React.Component {
                             if (ReturnCode.isSuccess(returnCode)) {
                                 ffprint(`Encode completed successfully.`);
                             } else {
-                                showPopup(this.popupReference, "Encode failed. Please check log for the details.");
+                                ffprint("Encode failed. Please check log for the details.");
                             }
                         }).then(session => ffprint(`Async FFmpeg process started with sessionId ${session.getSessionId()}.`));
                     });
@@ -129,16 +125,14 @@ export default class SafTab extends React.Component {
 
     updateProgressDialog() {
         let statistics = this.state.statistics;
-        if (statistics === undefined) {
+        if (statistics === undefined || statistics.getTime() < 0) {
             return;
         }
 
-        let timeInMilliseconds = statistics.time;
-        if (timeInMilliseconds > 0) {
-            let totalVideoDuration = 9000;
-            let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
-            this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
-        }
+        let timeInMilliseconds = statistics.getTime();
+        let totalVideoDuration = 9000;
+        let completePercentage = Math.round((timeInMilliseconds * 100) / totalVideoDuration);
+        this.progressModalReference.current.update(`Encoding video % ${completePercentage}`);
     }
 
     hideProgressDialog() {
@@ -159,7 +153,6 @@ export default class SafTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>RUN FFMPEG</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

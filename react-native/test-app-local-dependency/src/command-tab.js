@@ -1,8 +1,6 @@
 import React from 'react';
 import {ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './style';
-import {COMMAND_TEST_TOOLTIP_TEXT} from './tooltip';
-import {showPopup, Toast} from './popup';
 import {ffprint, listFFprobeSessions, notNull} from './util';
 import {
     FFmpegKit,
@@ -20,8 +18,6 @@ export default class CommandTab extends React.Component {
         this.state = {
             commandText: '', outputText: ''
         };
-
-        this.popupReference = React.createRef();
     }
 
     componentDidMount() {
@@ -35,7 +31,6 @@ export default class CommandTab extends React.Component {
         ffprint("Command Tab Activated");
         FFmpegKitConfig.enableLogCallback(undefined);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, COMMAND_TEST_TOOLTIP_TEXT);
     }
 
     appendOutput(logMessage) {
@@ -55,7 +50,7 @@ export default class CommandTab extends React.Component {
 
         ffprint('Testing FFmpeg COMMAND asynchronously.');
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.execute(ffmpegCommand).then(async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -68,7 +63,7 @@ export default class CommandTab extends React.Component {
             this.appendOutput(output);
 
             if (state === SessionState.FAILED || !returnCode.isValueSuccess()) {
-                showPopup(this.popupReference, "Command failed. Please check output for the details.");
+                ffprint("Command failed. Please check output for the details.");
             }
         });
     };
@@ -80,7 +75,7 @@ export default class CommandTab extends React.Component {
 
         ffprint('Testing FFprobe COMMAND asynchronously.');
 
-        ffprint(`FFprobe process started with arguments:\n\'${ffprobeCommand}\'.`);
+        ffprint(`FFprobe process started with arguments: \'${ffprobeCommand}\'.`);
 
         FFprobeSession.create(FFmpegKitConfig.parseArguments(ffprobeCommand), async (session) => {
             const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -91,7 +86,7 @@ export default class CommandTab extends React.Component {
             ffprint(`FFprobe process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
 
             if (state === SessionState.FAILED || !returnCode.isValueSuccess()) {
-                showPopup(this.popupReference, "Command failed. Please check output for the details.");
+                ffprint("Command failed. Please check output for the details.");
             }
 
         }, undefined, LogRedirectionStrategy.NEVER_PRINT_LOGS).then(session => {
@@ -126,7 +121,6 @@ export default class CommandTab extends React.Component {
                     <Text style={styles.buttonTextStyle}>RUN FFMPEG</Text>
                 </TouchableOpacity>
             </View>
-            <Toast ref={this.popupReference} position="center"/>
             <View style={styles.buttonViewStyle}>
                 <TouchableOpacity
                     style={styles.buttonStyle}
