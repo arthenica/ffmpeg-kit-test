@@ -1,5 +1,5 @@
 import React from 'react';
-import {LogBox, Platform} from 'react-native';
+import {LogBox,Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import CommandTab from './command-tab'
 import VideoTab from './video-tab'

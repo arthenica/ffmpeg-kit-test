@@ -4,8 +4,6 @@ import RNFS from 'react-native-fs';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {Picker} from '@react-native-picker/picker';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {OTHER_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import {deleteFile, ffprint, notNull} from './util';
 import VideoUtil from "./video-util";
@@ -21,7 +19,6 @@ export default class OtherTab extends React.Component {
             outputText: ''
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -36,7 +33,6 @@ export default class OtherTab extends React.Component {
         ffprint("Other Tab Activated");
         FFmpegKitConfig.enableLogCallback(undefined);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, OTHER_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -102,14 +98,14 @@ export default class OtherTab extends React.Component {
                     ffprint(`FFmpeg process exited with state ${secondState} and rc ${secondReturnCode}.${notNull(secondFailStackTrace, "\\n")}`);
 
                     if (ReturnCode.isSuccess(secondReturnCode)) {
-                        showPopup(this.popupReference, "Testing chromaprint completed successfully.");
+                        ffprint("Testing chromaprint completed successfully.");
                     } else {
-                        showPopup(this.popupReference, "Testing chromaprint failed. Please check logs for the details.");
+                        ffprint("Testing chromaprint failed. Please check logs for the details.");
                     }
                 }, log => this.appendOutput(log.getMessage()));
 
             } else {
-                showPopup(this.popupReference, "Creating AUDIO sample failed. Please check logs for the details.");
+                ffprint("Creating AUDIO sample failed. Please check logs for the details.");
             }
         });
     }
@@ -150,9 +146,9 @@ export default class OtherTab extends React.Component {
             ffprint(`FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
 
             if (ReturnCode.isSuccess(returnCode)) {
-                showPopup(this.popupReference, "Encode webp completed successfully.");
+                ffprint("Encode webp completed successfully.");
             } else {
-                showPopup(this.popupReference, "Encode webp failed. Please check logs for the details.");
+                ffprint("Encode webp failed. Please check logs for the details.");
             }
         }, log => {
             this.appendOutput(log.getMessage());
@@ -177,9 +173,9 @@ export default class OtherTab extends React.Component {
             ffprint(`FFmpeg process exited with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
 
             if (ReturnCode.isSuccess(returnCode)) {
-                showPopup(this.popupReference, "zscale completed successfully.");
+                ffprint("zscale completed successfully.");
             } else {
-                showPopup(this.popupReference, "zscale failed. Please check logs for the details.");
+                ffprint("zscale failed. Please check logs for the details.");
             }
         }, log => {
             this.appendOutput(log.getMessage());
@@ -226,7 +222,6 @@ export default class OtherTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>RUN</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

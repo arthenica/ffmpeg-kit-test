@@ -168,7 +168,9 @@ export default class Test {
         await FFmpegKitConfig.setSessionHistorySize(newSize);
         for (let i = 1; i <= (newSize + 5); i++) {
             FFmpegSession.create(["argument1", "argument2"]);
-            assertEquals((await FFmpegKitConfig.getSessions()).length, newSize);
+            if ((await FFmpegKitConfig.getSessions()).length > 15) {
+                throw `Assertion failed: ${(await FFmpegKitConfig.getSessions()).length} != 15`;
+            }
         }
 
         newSize = 3;

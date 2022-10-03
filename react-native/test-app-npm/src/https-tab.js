@@ -1,8 +1,6 @@
 import React from 'react';
 import {styles} from './style';
-import {showPopup, Toast} from './popup';
 import {ffprint, notNull} from './util';
-import {HTTPS_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {FFmpegKitConfig, FFprobeKit} from "ffmpeg-kit-react-native";
 
@@ -25,8 +23,6 @@ export default class HttpsTab extends React.Component {
             urlText: '',
             outputText: ''
         };
-
-        this.popupReference = React.createRef();
     }
 
     componentDidMount() {
@@ -40,7 +36,6 @@ export default class HttpsTab extends React.Component {
         ffprint("Https Tab Activated");
         FFmpegKitConfig.enableLogCallback(undefined);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, HTTPS_TEST_TOOLTIP_TEXT);
     }
 
     appendOutput(logMessage) {
@@ -273,7 +268,6 @@ export default class HttpsTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>GET INFO AND FAIL</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <View style={styles.outputViewStyle}>
                     <ScrollView
                         ref={(view) => {

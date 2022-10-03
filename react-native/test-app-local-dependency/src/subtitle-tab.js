@@ -4,8 +4,6 @@ import RNFS from 'react-native-fs';
 import VideoUtil from './video-util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {SUBTITLE_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import Video from 'react-native-video';
 import {deleteFile, ffprint, notNull} from './util';
@@ -20,7 +18,6 @@ export default class SubtitleTab extends React.Component {
             sessionId: 0
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -35,7 +32,6 @@ export default class SubtitleTab extends React.Component {
         ffprint("Subtitle Tab Activated");
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(this.statisticsCallback);
-        showPopup(this.popupReference, SUBTITLE_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -99,10 +95,10 @@ export default class SubtitleTab extends React.Component {
                             ffprint("Burn subtitles completed successfully; playing video.");
                             this.playVideo();
                         } else if (ReturnCode.isCancel(secondReturnCode)) {
-                            showPopup(this.popupReference, "Burn subtitles operation cancelled.");
+                            ffprint("Burn subtitles operation cancelled.");
                             ffprint("Burn subtitles operation cancelled");
                         } else {
-                            showPopup(this.popupReference, "Burn subtitles failed. Please check log for the details.");
+                            ffprint("Burn subtitles failed. Please check log for the details.");
                             ffprint(`Burn subtitles failed with state ${secondState} and rc ${secondReturnCode}.${notNull(secondFailStackTrace, "\\n")}`);
                         }
                     }).then(session => {
@@ -191,7 +187,6 @@ export default class SubtitleTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>BURN SUBTITLES</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

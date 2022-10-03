@@ -4,8 +4,6 @@ import RNFS from 'react-native-fs';
 import VideoUtil from './video-util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {PIPE_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import Video from 'react-native-video';
 import {deleteFile, ffprint, listAllStatistics, notNull} from './util';
@@ -18,7 +16,6 @@ export default class PipeTab extends React.Component {
             statistics: undefined
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -33,7 +30,6 @@ export default class PipeTab extends React.Component {
         ffprint("Pipe Tab Activated");
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(this.statisticsCallback);
-        showPopup(this.popupReference, PIPE_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -84,7 +80,7 @@ export default class PipeTab extends React.Component {
                                 this.playVideo();
                                 listAllStatistics(session);
                             } else {
-                                showPopup(this.popupReference, "Create failed. Please check log for the details.");
+                                ffprint("Create failed. Please check log for the details.");
                             }
                         }
                     );
@@ -155,7 +151,6 @@ export default class PipeTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>CREATE</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>
