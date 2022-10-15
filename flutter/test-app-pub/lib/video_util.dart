@@ -37,6 +37,7 @@ class VideoUtil {
   static const String SUBTITLE_ASSET = "subtitle.srt";
   static const String FONT_ASSET_1 = "doppioone_regular.ttf";
   static const String FONT_ASSET_2 = "truenorg.otf";
+  static const String FONT_ASSET_3 = "Roboto-Black.ttf";
 
   static void registerApplicationFonts() {
     var fontNameMapping = Map<String, String>();
@@ -60,6 +61,7 @@ class VideoUtil {
     await VideoUtil.assetToFile(SUBTITLE_ASSET);
     await VideoUtil.assetToFile(FONT_ASSET_1);
     await VideoUtil.assetToFile(FONT_ASSET_2);
+    await VideoUtil.assetToFile(FONT_ASSET_3);
   }
 
   static Future<File> assetToFile(String assetName) async {

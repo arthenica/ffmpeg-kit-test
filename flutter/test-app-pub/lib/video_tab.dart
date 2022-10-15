@@ -105,8 +105,8 @@ class VideoTab implements PlayerTab {
 
                       if (ReturnCode.isSuccess(returnCode)) {
                         ffprint(
-                            "Encode completed successfully in ${duration} milliseconds; playing video.");
-                        this.playVideo();
+                            "Encode completed successfully in ${duration} milliseconds; starting drawtext video.");
+                        this.drawtextVideo();
                       } else {
                         showPopup(
                             "Encode failed. Please check log for the details.");
@@ -127,14 +127,54 @@ class VideoTab implements PlayerTab {
     });
   }
 
-  Future<void> playVideo() async {
-    if (Platform.isAndroid || Platform.isIOS) {
-      if (_videoPlayerController != null) {
-        await _videoPlayerController!.initialize();
-        await _videoPlayerController!.play();
-      }
-      _refreshablePlayerDialogFactory.refresh();
-    }
+  Future<void> drawtextVideo() async {
+    VideoUtil.assetPath(VideoUtil.FONT_ASSET_3).then((fontPath) {
+      getVideoFile().then((videoFile) {
+        getDrawtextFile().then((drawtextFile) {
+          // EXAMPLE 1: FONT NAME
+          //
+          // final ffmpegCommand = "-y -i " +
+          //     videoFile.path +
+          //     " -filter_complex \"[0]drawtext=font=\'Roboto Black\':text=\'Stack Overflow\':fontcolor=white:fontsize=24:box=1:boxcolor=black@0.5:boxborderw=5:x=(w-text_w)/2:y=(h-text_h)/2\" -shortest -qscale 0 " +
+          //     drawtextFile.path;
+
+          // EXAMPLE 2: FULL FONT PATH
+          //
+          final ffmpegCommand = "-y -i " +
+              videoFile.path +
+              " -filter_complex \"[0]drawtext=fontfile=" + fontPath + ":text=\'Stack Overflow\':fontcolor=white:fontsize=24:box=1:boxcolor=black@0.5:boxborderw=5:x=(w-text_w)/2:y=(h-text_h)/2\" -shortest -qscale 0 " +
+              drawtextFile.path;
+
+          ffprint("FFmpeg process started with arguments: \'${ffmpegCommand}\'.");
+
+          FFmpegKit.executeAsync(
+                  ffmpegCommand,
+                  (session) async {
+                    final state = FFmpegKitConfig.sessionStateToString(
+                        await session.getState());
+                    final returnCode = await session.getReturnCode();
+                    final failStackTrace = await session.getFailStackTrace();
+                    final duration = await session.getDuration();
+
+                    if (ReturnCode.isSuccess(returnCode)) {
+                      ffprint(
+                          "Drawtext completed successfully in ${duration} milliseconds.");
+                    } else {
+                      showPopup(
+                          "Drawtext failed. Please check log for the details.");
+                      ffprint(
+                          "Drawtext failed with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}");
+                    }
+                  },
+                  (log) => ffprint(log.getMessage()),
+                  (statistics) {
+                    this._statistics = statistics;
+                  })
+              .then((session) => ffprint(
+                  "Async FFmpeg process started with sessionId ${session.getSessionId()}."));
+        });
+      });
+    });
   }
 
   Future<void> pause() async {
@@ -222,6 +262,35 @@ class VideoTab implements PlayerTab {
     }
 
     final String video = "video." + extension;
+    Directory documentsDirectory = await VideoUtil.documentsDirectory;
+    return new File("${documentsDirectory.path}/$video");
+  }
+
+  Future<File> getDrawtextFile() async {
+    String videoCodec = _selectedCodec;
+
+    String extension;
+    switch (videoCodec) {
+      case "vp8":
+      case "vp9":
+        extension = "webm";
+        break;
+      case "aom":
+        extension = "mkv";
+        break;
+      case "theora":
+        extension = "ogv";
+        break;
+      case "hap":
+        extension = "mov";
+        break;
+      default:
+        // mpeg4, x264, x265, xvid, kvazaar
+        extension = "mp4";
+        break;
+    }
+
+    final String video = "video-drawtext." + extension;
     Directory documentsDirectory = await VideoUtil.documentsDirectory;
     return new File("${documentsDirectory.path}/$video");
   }
