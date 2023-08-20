@@ -9,14 +9,16 @@ android {
             keyPassword 'android'
         }
     }
-    namespace 'com.arthenica.ffmpegkit.test'
-    compileSdk 31
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.arthenica.ffmpegkit.test'
+    }
+    compileSdk 33
     defaultConfig {
         applicationId "com.arthenica.ffmpegkit.test"
         minSdk 24
-        targetSdk 31
-        versionCode 240510
-        versionName "5.1"
+        targetSdk 33
+        versionCode 240600
+        versionName "6.0"
     }
     buildTypes {
         debug {
@@ -55,6 +57,6 @@ dependencies {
     // implementation files('../../../ffmpeg-kit/prebuilt/bundle-android-aar-lts/ffmpeg-kit/ffmpeg-kit.aar')
     implementation files('../../../ffmpeg-kit/prebuilt/bundle-android-aar/ffmpeg-kit/ffmpeg-kit.aar')
     implementation 'com.arthenica:smart-exception-java:0.2.1'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 }

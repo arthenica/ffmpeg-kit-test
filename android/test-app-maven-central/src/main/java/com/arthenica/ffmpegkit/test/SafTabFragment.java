@@ -336,7 +336,7 @@ public class SafTabFragment extends Fragment {
             return;
         }
 
-        int timeInMilliseconds = this.statistics.getTime();
+        double timeInMilliseconds = this.statistics.getTime();
         int totalVideoDuration = 9000;
 
         String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();

@@ -49,7 +49,7 @@ public class Video {
                         "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
                         "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
                         "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
-                        " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+                        " -map [video] -fps_mode cfr -c:v mpeg4 -r 30 " + videoFilePath;
     }
 
     static String generateEncodeVideoScript(final String image1Path, final String image2Path, final String image3Path, final String videoFilePath, final String videoCodec, final String customOptions) {
@@ -74,7 +74,7 @@ public class Video {
                         "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
                         "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
                         "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=" + pixelFormat + "[video]\"" +
-                        " -map [video] -vsync 2 -async 1 " + customOptions + "-c:v " + videoCodec.toLowerCase(Locale.ENGLISH) + " -r 30 " + videoFilePath;
+                        " -map [video] -fps_mode cfr " + customOptions + "-c:v " + videoCodec.toLowerCase(Locale.ENGLISH) + " -r 30 " + videoFilePath;
     }
 
     static String generateShakingVideoScript(final String image1Path, final String image2Path, final String image3Path, final String videoFilePath) {
@@ -94,7 +94,7 @@ public class Video {
                         "[3:v][stream2overlaid]overlay=x=\'2*mod(n,4)\':y=\'2*mod(n,2)\',trim=duration=3[stream2shaking];" +
                         "[3:v][stream3overlaid]overlay=x=\'2*mod(n,4)\':y=\'2*mod(n,2)\',trim=duration=3[stream3shaking];" +
                         "[stream1shaking][stream2shaking][stream3shaking]concat=n=3:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
-                        " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+                        " -map [video] -fps_mode cfr -c:v mpeg4 -r 30 " + videoFilePath;
     }
 
     static String generateZscaleVideoScript(final String inputVideoFilePath, final String outputVideoFilePath) {

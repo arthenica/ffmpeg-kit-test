@@ -24,12 +24,16 @@
 #include "MediaInformationParserTest.h"
 #include "FFmpegKitTest.h"
 #include <FFmpegKitConfig.h>
+#include <locale.h>
 
 int main(int argc, char** argv) {
     auto app = Gtk::Application::create(argc, argv, "com.arthenica.ffmpegkit");
     ffmpegkittest::Application application;
     application.set_default_icon_name("ffmpeg-kit-linux-test");
     application.set_icon_name("ffmpeg-kit-linux-test");
+
+    // FIX DEFAULT LOCALE AFTER GTK INIT
+    setlocale(LC_ALL, "C");
 
     // RUN UNIT TESTS BEFORE STARTING THE APPLICATION
     testMediaInformationJsonParser();

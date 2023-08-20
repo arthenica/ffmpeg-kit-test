@@ -243,6 +243,12 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
             case "x264":
                 videoCodec = "libx264";
                 break;
+            case "h264_mediacodec":
+                videoCodec = "h264_mediacodec";
+                break;
+            case "hevc_mediacodec":
+                videoCodec = "hevc_mediacodec";
+                break;
             case "openh264":
                 videoCodec = "libopenh264";
                 break;
@@ -292,7 +298,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
                 break;
             default:
 
-                // mpeg4, x264, x265, xvid, kvazaar
+                // mpeg4, x264, h264_mediacodec, hevc_mediacodec, x265, xvid, kvazaar
                 extension = "mp4";
                 break;
         }
@@ -319,7 +325,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
                 return "-format hap_q ";
             default:
 
-                // kvazaar, mpeg4, x264, xvid
+                // kvazaar, mpeg4, x264, h264_mediacodec, hevc_mediacodec, xvid
                 return "";
         }
     }
@@ -344,7 +350,7 @@ public class VideoTabFragment extends Fragment implements AdapterView.OnItemSele
             return;
         }
 
-        int timeInMilliseconds = this.statistics.getTime();
+        double timeInMilliseconds = this.statistics.getTime();
         int totalVideoDuration = 9000;
 
         String completePercentage = new BigDecimal(timeInMilliseconds).multiply(new BigDecimal(100)).divide(new BigDecimal(totalVideoDuration), 0, BigDecimal.ROUND_HALF_UP).toString();

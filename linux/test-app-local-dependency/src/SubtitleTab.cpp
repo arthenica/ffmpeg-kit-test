@@ -124,7 +124,7 @@ void ffmpegkittest::SubtitleTab::updateProgressDialog(const std::shared_ptr<ffmp
     }
 
     this->statistics = statistics;
-    int timeInMilliseconds = this->statistics->getTime();
+    double timeInMilliseconds = this->statistics->getTime();
     int totalVideoDuration = 9000;
     double completePercentage = timeInMilliseconds*100/totalVideoDuration;
     // progressDialog.update(completePercentage);

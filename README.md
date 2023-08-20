@@ -22,6 +22,15 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform | FFmpegKit Version |                                        Tag                                        |
 | :----: |:-----------------:|:---------------------------------------------------------------------------------:|
+| Android |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0)       |
+| Android |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0.lts)   |
+| iOS |        6.0        |         [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0)         |
+| iOS |      6.0.LTS      |    [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0.lts)    |
+| macOS |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0)       |
+| macOS |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0.lts)   |
+| tvOS |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0)        |
+| tvOS |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0.lts)    |
+| - |         -         |                                         -                                         |
 | Android |        5.1        |       [5.1](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v5.1)       |
 | Android |      5.1.LTS      |   [5.1.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v5.1.lts)   |
 | iOS |        5.1        |         [5.1](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v5.1)         |

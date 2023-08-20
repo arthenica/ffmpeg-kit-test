@@ -78,10 +78,10 @@ NSArray *parseArguments(NSString *command) {
 }
 
 void testParseSimpleCommand() {
-    NSArray *argumentArray = parseArguments(@"-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -vsync 2 -async 1 video.mp4");
+    NSArray *argumentArray = parseArguments(@"-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -fps_mode cfr video.mp4");
     
     assert(argumentArray != nil);
-    assertNumber([[NSNumber alloc] initWithInt:14], [[NSNumber alloc] initWithUnsignedLong: [argumentArray count]]);
+    assertNumber([[NSNumber alloc] initWithInt:12], [[NSNumber alloc] initWithUnsignedLong: [argumentArray count]]);
     
     assertString(@"-hide_banner", argumentArray[0]);
     assertString(@"-loop", argumentArray[1]);
@@ -92,11 +92,9 @@ void testParseSimpleCommand() {
     assertString(@"[0:v]setpts=PTS-STARTPTS[video]", argumentArray[6]);
     assertString(@"-map", argumentArray[7]);
     assertString(@"[video]", argumentArray[8]);
-    assertString(@"-vsync", argumentArray[9]);
-    assertString(@"2", argumentArray[10]);
-    assertString(@"-async", argumentArray[11]);
-    assertString(@"1", argumentArray[12]);
-    assertString(@"video.mp4", argumentArray[13]);
+    assertString(@"-fps_mode", argumentArray[9]);
+    assertString(@"cfr", argumentArray[10]);
+    assertString(@"video.mp4", argumentArray[11]);
 }
 
 void testParseSingleQuotesInCommand() {
