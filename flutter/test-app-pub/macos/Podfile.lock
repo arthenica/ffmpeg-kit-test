@@ -1,10 +1,10 @@
 PODS:
-  - ffmpeg-kit-macos-video (4.5.1.LTS)
-  - ffmpeg_kit_flutter_video (4.5.1.LTS):
-    - ffmpeg_kit_flutter_video/video-lts (= 4.5.1.LTS)
+  - ffmpeg-kit-macos-video (5.1.LTS)
+  - ffmpeg_kit_flutter_video (5.1.0.LTS):
+    - ffmpeg_kit_flutter_video/video-lts (= 5.1.0.LTS)
     - FlutterMacOS
-  - ffmpeg_kit_flutter_video/video-lts (4.5.1.LTS):
-    - ffmpeg-kit-macos-video (= 4.5.1.LTS)
+  - ffmpeg_kit_flutter_video/video-lts (5.1.0.LTS):
+    - ffmpeg-kit-macos-video (= 5.1.LTS)
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - path_provider_macos (0.0.1):
@@ -28,11 +28,11 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-macos-video: be3b8ff085d8940d655b696bf773fc6b7dc0caf2
-  ffmpeg_kit_flutter_video: 2a2dc691d97423724666d340ff06d5eec4a9112e
-  FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
-  path_provider_macos: 160cab0d5461f0c0e02995469a98f24bdb9a3f1f
+  ffmpeg-kit-macos-video: 761ececb9e35e5b0b1ec860e139cd6144fc2b1d9
+  ffmpeg_kit_flutter_video: 95174daee4bbcd7590060c3f66838eeaacbfb9de
+  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
+  path_provider_macos: 3c0c3b4b0d4a76d2bf989a913c2de869c5641a19
 
 PODFILE CHECKSUM: 0d3963a09fc94f580682bd88480486da345dc3f0
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

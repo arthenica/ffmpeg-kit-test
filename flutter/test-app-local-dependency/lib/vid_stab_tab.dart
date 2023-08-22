@@ -91,7 +91,7 @@ class VidStabTab {
                     image1Path, image2Path, image3Path, videoFile.path);
 
                 ffprint(
-                    "FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.");
+                    "FFmpeg process started with arguments: \'${ffmpegCommand}\'.");
 
                 FFmpegKit.executeAsync(ffmpegCommand, (session) async {
                   final state = FFmpegKitConfig.sessionStateToString(
@@ -114,7 +114,7 @@ class VidStabTab {
                     this.showStabilizeProgressDialog();
 
                     ffprint(
-                        "FFmpeg process started with arguments:\n\'${analyzeVideoCommand}\'.");
+                        "FFmpeg process started with arguments: \'${analyzeVideoCommand}\'.");
 
                     FFmpegKit.executeAsync(analyzeVideoCommand,
                         (Session secondSession) async {
@@ -133,7 +133,7 @@ class VidStabTab {
                             "-y -i ${videoFile.path} -vf vidstabtransform=smoothing=30:input=${shakeResultsFile.path} -c:v mpeg4 ${stabilizedVideoFile.path}";
 
                         ffprint(
-                            "FFmpeg process started with arguments:\n\'${stabilizeVideoCommand}\'.");
+                            "FFmpeg process started with arguments: \'${stabilizeVideoCommand}\'.");
 
                         FFmpegKit.executeAsync(stabilizeVideoCommand,
                             (thirdSession) async {

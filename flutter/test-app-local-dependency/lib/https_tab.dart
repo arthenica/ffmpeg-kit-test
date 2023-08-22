@@ -42,13 +42,13 @@ class HttpsTab {
       "https://download2.blender.org/peach/trailer/trailer_1080p.ogg";
 
   static const String HTTPS_TEST_RANDOM_URL_1 =
-      "https://file-examples-com.github.io/uploads/2018/04/file_example_MOV_640_800kB.mov";
+      "https://filesamples.com/samples/video/mov/sample_640x360.mov";
 
   static const String HTTPS_TEST_RANDOM_URL_2 =
-      "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
+      "https://filesamples.com/samples/audio/mp3/sample3.mp3";
 
   static const String HTTPS_TEST_RANDOM_URL_3 =
-      "https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp";
+      "https://filesamples.com/samples/image/webp/sample1.webp";
 
   static final Random testUrlRandom = new Random();
 

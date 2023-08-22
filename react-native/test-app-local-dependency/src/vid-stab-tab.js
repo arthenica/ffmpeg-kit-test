@@ -4,8 +4,6 @@ import RNFS from 'react-native-fs';
 import VideoUtil from './video-util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {VIDSTAB_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import Video from 'react-native-video';
 import {deleteFile, ffprint, notNull} from './util';
@@ -16,7 +14,6 @@ export default class VidStabTab extends React.Component {
 
         this.state = {};
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -32,7 +29,6 @@ export default class VidStabTab extends React.Component {
         ffprint("VidStab Tab Activated");
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, VIDSTAB_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -62,7 +58,7 @@ export default class VidStabTab extends React.Component {
 
         let ffmpegCommand = VideoUtil.generateShakingVideoScript(image1Path, image2Path, image3Path, videoFile);
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                 const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -81,7 +77,7 @@ export default class VidStabTab extends React.Component {
 
                     this.showStabilizeProgressDialog();
 
-                    ffprint(`FFmpeg process started with arguments:\n\'${analyzeVideoCommand}\'.`);
+                    ffprint(`FFmpeg process started with arguments: \'${analyzeVideoCommand}\'.`);
 
                     FFmpegKit.executeAsync(analyzeVideoCommand, async (secondSession) => {
                         const secondState = FFmpegKitConfig.sessionStateToString(await secondSession.getState());
@@ -94,7 +90,7 @@ export default class VidStabTab extends React.Component {
 
                             let stabilizeVideoCommand = `-y -i ${videoFile} -vf vidstabtransform=smoothing=30:input=${shakeResultsFile} -c:v mpeg4 ${stabilizedVideoFile}`;
 
-                            ffprint(`FFmpeg process started with arguments:\n\'${stabilizeVideoCommand}\'.`);
+                            ffprint(`FFmpeg process started with arguments: \'${stabilizeVideoCommand}\'.`);
 
                             FFmpegKit.executeAsync(stabilizeVideoCommand, async (thirdSession) => {
                                 const thirdState = FFmpegKitConfig.sessionStateToString(await thirdSession.getState());
@@ -110,16 +106,16 @@ export default class VidStabTab extends React.Component {
                                     this.playVideo();
                                     this.playStabilizedVideo();
                                 } else {
-                                    showPopup(this.popupReference, "Stabilize video failed. Please check log for the details.");
+                                    ffprint("Stabilize video failed. Please check log for the details.");
                                 }
                             });
                         } else {
                             this.hideProgressDialog();
-                            showPopup(this.popupReference, "Stabilize video failed. Please check log for the details.");
+                            ffprint("Stabilize video failed. Please check log for the details.");
                         }
                     });
                 } else {
-                    showPopup(this.popupReference, "Create video failed. Please check log for the details.");
+                    ffprint("Create video failed. Please check log for the details.");
                 }
             }
         );
@@ -203,7 +199,6 @@ export default class VidStabTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>STABILIZE VIDEO</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

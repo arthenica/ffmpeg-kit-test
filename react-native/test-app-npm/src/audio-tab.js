@@ -3,8 +3,6 @@ import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import RNFS from 'react-native-fs';
 import {Picker} from '@react-native-picker/picker';
 import {styles} from './style';
-import {showPopup, Toast} from "./popup";
-import {AUDIO_TEST_TOOLTIP_TEXT} from "./tooltip";
 import {ProgressModal} from "./progress_modal";
 import {deleteFile, ffprint, listAllLogs, notNull} from './util';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
@@ -18,7 +16,6 @@ export default class AudioTab extends React.Component {
             outputText: ''
         };
 
-        this.popupReference = React.createRef();
         this.progressModalReference = React.createRef();
     }
 
@@ -35,7 +32,6 @@ export default class AudioTab extends React.Component {
         FFmpegKitConfig.enableStatisticsCallback(undefined);
         this.createAudioSample();
         FFmpegKitConfig.enableLogCallback(this.logCallback);
-        showPopup(this.popupReference, AUDIO_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -65,7 +61,7 @@ export default class AudioTab extends React.Component {
 
         this.clearOutput();
 
-        ffprint(`FFmpeg process started with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process started with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.execute(ffmpegCommand).then(async (session) => {
                 const state = FFmpegKitConfig.sessionStateToString(await session.getState());
@@ -75,11 +71,11 @@ export default class AudioTab extends React.Component {
                 this.hideProgressDialog();
 
                 if (ReturnCode.isSuccess(returnCode)) {
-                    showPopup(this.popupReference, "Encode completed successfully.");
+                    ffprint("Encode completed successfully.");
                     ffprint("Encode completed successfully.");
                     listAllLogs(session);
                 } else {
-                    showPopup(this.popupReference, "Encode failed. Please check log for the details.");
+                    ffprint("Encode failed. Please check log for the details.");
                     ffprint(`Encode failed with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
                 }
             }
@@ -105,7 +101,7 @@ export default class AudioTab extends React.Component {
                     ffprint("AUDIO sample created");
                 } else {
                     ffprint(`Creating AUDIO sample failed with state ${state} and rc ${returnCode}.${notNull(failStackTrace, "\\n")}`);
-                    showPopup(this.popupReference, "Creating AUDIO sample failed. Please check log for the details.");
+                    ffprint("Creating AUDIO sample failed. Please check log for the details.");
                 }
             }
         );
@@ -233,7 +229,6 @@ export default class AudioTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>CREATE</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <ProgressModal
                     visible={false}
                     ref={this.progressModalReference}/>

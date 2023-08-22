@@ -1,6 +1,6 @@
 import React from 'react';
 import {ffprint} from './util';
-import {FFmpegKitConfig, Level, Packages, Signal} from "ffmpeg-kit-react-native";
+import {FFmpegKitConfig, FFmpegSession, Level, Packages, Signal} from "ffmpeg-kit-react-native";
 
 function assertNotNull(condition) {
     if (condition == null) {
@@ -159,6 +159,26 @@ export default class Test {
         testParseSingleQuotesInCommand();
         testParseDoubleQuotesInCommand();
         testParseDoubleQuotesAndEscapesInCommand();
+    }
+
+    static async setSessionHistorySizeTest() {
+        ffprint("Testing setSessionHistorySize.");
+
+        let newSize = 15;
+        await FFmpegKitConfig.setSessionHistorySize(newSize);
+        for (let i = 1; i <= (newSize + 5); i++) {
+            FFmpegSession.create(["argument1", "argument2"]);
+            if ((await FFmpegKitConfig.getSessions()).length > 15) {
+                throw `Assertion failed: ${(await FFmpegKitConfig.getSessions()).length} != 15`;
+            }
+        }
+
+        newSize = 3;
+        await FFmpegKitConfig.setSessionHistorySize(newSize);
+        for (let i = 1; i <= (newSize + 5); i++) {
+            FFmpegSession.create(["argument1", "argument2"]);
+            assertEquals((await FFmpegKitConfig.getSessions()).length, newSize);
+        }
     }
 
 }
