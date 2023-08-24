@@ -263,7 +263,7 @@
     }
 
     if (alertController != nil) {
-        int timeInMilliseconds = [statistics getTime];
+        double timeInMilliseconds = [statistics getTime];
         int totalVideoDuration = 9000;
 
         int percentage = timeInMilliseconds*100/totalVideoDuration;
