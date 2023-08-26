@@ -109,7 +109,7 @@ void ffmpegkittest::PipeTab::updateProgressDialog(const std::shared_ptr<ffmpegki
     }
 
     this->statistics = statistics;
-    int timeInMilliseconds = this->statistics->getTime();
+    double timeInMilliseconds = this->statistics->getTime();
     int totalVideoDuration = 9000;
     double completePercentage = timeInMilliseconds*100/totalVideoDuration;
     // progressDialog.update(completePercentage);

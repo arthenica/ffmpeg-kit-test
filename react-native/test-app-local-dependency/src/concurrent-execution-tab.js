@@ -1,8 +1,6 @@
 import React from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './style';
-import {CONCURRENT_EXECUTION_TEST_TOOLTIP_TEXT} from './tooltip';
-import {showPopup, Toast} from './popup';
 import {FFmpegKit, FFmpegKitConfig, ReturnCode} from 'ffmpeg-kit-react-native';
 import {ffprint, listFFmpegSessions, notNull} from './util';
 import VideoUtil from "./video-util";
@@ -18,8 +16,6 @@ export default class ConcurrentExecutionTab extends React.Component {
             sessionId2: 0,
             sessionId3: 0
         };
-
-        this.popupReference = React.createRef();
     }
 
     componentDidMount() {
@@ -34,7 +30,6 @@ export default class ConcurrentExecutionTab extends React.Component {
         await FFmpegKitConfig.clearSessions();
         FFmpegKitConfig.enableLogCallback(this.logCallback);
         FFmpegKitConfig.enableStatisticsCallback(undefined);
-        showPopup(this.popupReference, CONCURRENT_EXECUTION_TEST_TOOLTIP_TEXT);
     }
 
     logCallback = (log) => {
@@ -59,7 +54,7 @@ export default class ConcurrentExecutionTab extends React.Component {
 
         let ffmpegCommand = VideoUtil.generateEncodeVideoScript(image1Path, image2Path, image3Path, videoFile, "mpeg4", "");
 
-        ffprint(`FFmpeg process starting for button ${buttonNumber} with arguments:\n\'${ffmpegCommand}\'.`);
+        ffprint(`FFmpeg process starting for button ${buttonNumber} with arguments: \'${ffmpegCommand}\'.`);
 
         FFmpegKit.executeAsync(ffmpegCommand, async (session) => {
                 const sessionId = await session.getSessionId();
@@ -87,6 +82,7 @@ export default class ConcurrentExecutionTab extends React.Component {
                     break;
                 default:
                     this.setState({sessionId3: sessionId});
+                    FFmpegKitConfig.setSessionHistorySize(3);
             }
 
             listFFmpegSessions();
@@ -145,7 +141,6 @@ export default class ConcurrentExecutionTab extends React.Component {
                         <Text style={styles.buttonTextStyle}>ENCODE 3</Text>
                     </TouchableOpacity>
                 </View>
-                <Toast ref={this.popupReference} position="center"/>
                 <View style={[styles.buttonViewStyle, {paddingBottom: 0, flexDirection: 'row'}]}>
                     <TouchableOpacity
                         style={[styles.buttonStyle, {width: 86}]}

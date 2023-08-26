@@ -28,9 +28,9 @@
 using namespace ffmpegkit;
 
 void testParseSimpleCommand() {
-    auto argumentList = FFmpegKitConfig::parseArguments("-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -vsync 2 -async 1 video.mp4");
+    auto argumentList = FFmpegKitConfig::parseArguments("-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -fps_mode cfr video.mp4");
     
-    assert(14 == argumentList.size());
+    assert(12 == argumentList.size());
 
     auto it = argumentList.begin();
     assertString("-hide_banner", *it++);
@@ -42,10 +42,8 @@ void testParseSimpleCommand() {
     assertString("[0:v]setpts=PTS-STARTPTS[video]", *it++);
     assertString("-map", *it++);
     assertString("[video]", *it++);
-    assertString("-vsync", *it++);
-    assertString("2", *it++);
-    assertString("-async", *it++);
-    assertString("1", *it++);
+    assertString("-fps_mode", *it++);
+    assertString("cfr", *it++);
     assertString("video.mp4", *it++);
 }
 
