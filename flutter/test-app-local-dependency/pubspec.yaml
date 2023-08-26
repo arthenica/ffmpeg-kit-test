@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   path_provider: ^2.0.11
   path: ^1.8.2
+  flutter_isolate: ^2.0.4
   fluttertoast: ^8.0.9
   video_player: ^2.4.7
 

@@ -44,6 +44,9 @@ const String PIPE_TEST_TOOLTIP_TEXT =
 const String CONCURRENT_EXECUTION_TEST_TOOLTIP_TEXT =
     "Use ENCODE and CANCEL buttons to start/stop concurrent executions";
 
+const String BACKGROUND_TEST_TOOLTIP_TEXT =
+    "Run command in the background";
+
 const String SAF_TEST_TOOLTIP_TEXT =
     "Use system file picker to test scoped storage extension";
 

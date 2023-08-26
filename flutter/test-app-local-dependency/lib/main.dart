@@ -27,6 +27,7 @@ import 'package:flutter/material.dart';
 
 import 'abstract.dart';
 import 'audio_tab.dart';
+import 'background_tab.dart';
 import 'command_tab.dart';
 import 'concurrent_execution_tab.dart';
 import 'decoration.dart';
@@ -92,8 +93,9 @@ class FFmpegKitFlutterAppState extends State<MainPage>
   static final vidStabTabIndex = (Platform.isAndroid ? 5 : 5);
   static final pipeTabIndex = (Platform.isAndroid ? 6 : 6);
   static final concurrentExecutionTabIndex = (Platform.isAndroid ? 7 : 7);
-  static final safTabIndex = (Platform.isAndroid ? 8 : -1);
-  static final otherIndex = (Platform.isAndroid ? 9 : 8);
+  static final backgroundTabIndex = (Platform.isAndroid ? 8 : 8);
+  static final safTabIndex = (Platform.isAndroid ? 9 : -1);
+  static final otherIndex = (Platform.isAndroid ? 10 : 9);
 
   // COMMON COMPONENTS
   late TabController _controller;
@@ -123,6 +125,9 @@ class FFmpegKitFlutterAppState extends State<MainPage>
   // CONCURRENT EXECUTION TAB COMPONENTS
   ConcurrentExecutionTab concurrentExecutionTab = new ConcurrentExecutionTab();
 
+  // BACKGROUND TAB COMPONENTS
+  BackgroundTab backgroundTab = new BackgroundTab();
+
   // SAF TAB COMPONENTS
   SafTab safTab = new SafTab();
 
@@ -146,10 +151,11 @@ class FFmpegKitFlutterAppState extends State<MainPage>
     pipeTab.init(this);
     concurrentExecutionTab.init(this);
     safTab.init(this);
+    backgroundTab.init(this);
     otherTab.init(this);
 
     _controller =
-        TabController(length: (Platform.isAndroid ? 10 : 9), vsync: this);
+        TabController(length: (Platform.isAndroid ? 11 : 10), vsync: this);
     _controller.addListener(() {
       if (_controller.indexIsChanging) {
         if (_controller.index == constantTabIndex) {
@@ -168,6 +174,8 @@ class FFmpegKitFlutterAppState extends State<MainPage>
           pipeTab.setActive();
         } else if (_controller.index == concurrentExecutionTabIndex) {
           concurrentExecutionTab.setActive();
+        } else if (_controller.index == backgroundTabIndex) {
+          backgroundTab.setActive();
         } else if (_controller.index == safTabIndex) {
           safTab.setActive();
         } else if (_controller.index == otherIndex) {
@@ -200,6 +208,7 @@ class FFmpegKitFlutterAppState extends State<MainPage>
         Tab(text: "VID.STAB"),
         Tab(text: "PIPE"),
         Tab(text: "CONCURRENT EXECUTION"),
+        Tab(text: "BACKGROUND"),
         Tab(text: "SAF"),
         Tab(text: "OTHER")
       ];
@@ -213,6 +222,7 @@ class FFmpegKitFlutterAppState extends State<MainPage>
         Tab(text: "VID.STAB"),
         Tab(text: "PIPE"),
         Tab(text: "CONCURRENT EXECUTION"),
+        Tab(text: "BACKGROUND"),
         Tab(text: "OTHER")
       ];
     }
@@ -771,6 +781,37 @@ class FFmpegKitFlutterAppState extends State<MainPage>
         )
       ],
     );
+    final backgroundColumn = Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.only(top: 30, bottom: 20),
+          child: new InkWell(
+            onTap: () => backgroundTab.runInService(),
+            child: new Container(
+              width: 130,
+              height: 38,
+              decoration: buttonDecoration,
+              child: new Center(
+                child: new Text(
+                  'RUN IN SERVICE',
+                  style: buttonTextStyle,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+              alignment: Alignment(-1.0, -1.0),
+              margin: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(4.0),
+              decoration: outputDecoration,
+              child: SingleChildScrollView(
+                  reverse: true, child: Text(backgroundTab.getOutputText()))),
+        )
+      ],
+    );
     var safColumn = Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -877,6 +918,7 @@ class FFmpegKitFlutterAppState extends State<MainPage>
             vidStabColumn,
             pipeColumn,
             concurrentExecutionColumn,
+            backgroundColumn,
             safColumn,
             otherColumn
           ]
@@ -889,6 +931,7 @@ class FFmpegKitFlutterAppState extends State<MainPage>
             vidStabColumn,
             pipeColumn,
             concurrentExecutionColumn,
+            backgroundColumn,
             otherColumn
           ];
 
