@@ -1,19 +1,20 @@
 PODS:
-  - ffmpeg-kit-macos-video (5.1.LTS)
-  - ffmpeg_kit_flutter_video (5.1.0.LTS):
-    - ffmpeg_kit_flutter_video/video-lts (= 5.1.0.LTS)
+  - ffmpeg-kit-macos-video (6.0.LTS)
+  - ffmpeg_kit_flutter_video (6.0.0.LTS):
+    - ffmpeg_kit_flutter_video/video-lts (= 6.0.0.LTS)
     - FlutterMacOS
-  - ffmpeg_kit_flutter_video/video-lts (5.1.0.LTS):
-    - ffmpeg-kit-macos-video (= 5.1.LTS)
+  - ffmpeg_kit_flutter_video/video-lts (6.0.0.LTS):
+    - ffmpeg-kit-macos-video (= 6.0.LTS)
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
-  - path_provider_macos (0.0.1):
+  - path_provider_foundation (0.0.1):
+    - Flutter
     - FlutterMacOS
 
 DEPENDENCIES:
   - ffmpeg_kit_flutter_video (from `Flutter/ephemeral/.symlinks/plugins/ffmpeg_kit_flutter_video/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -24,15 +25,15 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/ffmpeg_kit_flutter_video/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
-  path_provider_macos:
-    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos
+  path_provider_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
 
 SPEC CHECKSUMS:
-  ffmpeg-kit-macos-video: 761ececb9e35e5b0b1ec860e139cd6144fc2b1d9
-  ffmpeg_kit_flutter_video: 95174daee4bbcd7590060c3f66838eeaacbfb9de
-  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
-  path_provider_macos: 3c0c3b4b0d4a76d2bf989a913c2de869c5641a19
+  ffmpeg-kit-macos-video: 77d7dc3ed55acdf79974bd78bfc288cc5c27397a
+  ffmpeg_kit_flutter_video: f006ba216bcfa3704ea9b74ba03bfb105f363bb4
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
 
 PODFILE CHECKSUM: 0d3963a09fc94f580682bd88480486da345dc3f0
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

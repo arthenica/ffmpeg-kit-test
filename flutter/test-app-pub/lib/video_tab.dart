@@ -168,6 +168,12 @@ class VideoTab implements PlayerTab {
       case "x264":
         videoCodec = "libx264";
         break;
+      case "h264_mediacodec":
+        videoCodec = "h264_mediacodec";
+        break;
+      case "hevc_mediacodec":
+        videoCodec = "hevc_mediacodec";
+        break;
       case "openh264":
         videoCodec = "libopenh264";
         break;
@@ -216,7 +222,7 @@ class VideoTab implements PlayerTab {
         extension = "mov";
         break;
       default:
-        // mpeg4, x264, x265, xvid, kvazaar
+        // mpeg4, x264, h264_mediacodec, hevc_mediacodec, x265, xvid, kvazaar
         extension = "mp4";
         break;
     }
@@ -243,7 +249,7 @@ class VideoTab implements PlayerTab {
       case "hap":
         return "-format hap_q ";
       default:
-        // kvazaar, mpeg4, x264, xvid
+        // kvazaar, mpeg4, x264, h264_mediacodec, hevc_mediacodec, xvid
         return "";
     }
   }
@@ -253,39 +259,45 @@ class VideoTab implements PlayerTab {
 
     list.add(new DropdownMenuItem(
         value: "mpeg4",
-        child: SizedBox(width: 100, child: Center(child: new Text("mpeg4")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("mpeg4")))));
     list.add(new DropdownMenuItem(
         value: "x264",
-        child: SizedBox(width: 100, child: Center(child: new Text("x264")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("x264")))));
+    list.add(new DropdownMenuItem(
+        value: "h264_mediacodec",
+        child: SizedBox(width: 130, child: Center(child: new Text("h264_mediacodec")))));
+    list.add(new DropdownMenuItem(
+        value: "hevc_mediacodec",
+        child: SizedBox(width: 130, child: Center(child: new Text("hevc_mediacodec")))));
     list.add(new DropdownMenuItem(
         value: "openh264",
         child:
-            SizedBox(width: 100, child: Center(child: new Text("openh264")))));
+            SizedBox(width: 130, child: Center(child: new Text("openh264")))));
     list.add(new DropdownMenuItem(
         value: "x265",
-        child: SizedBox(width: 100, child: Center(child: new Text("x265")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("x265")))));
     list.add(new DropdownMenuItem(
         value: "xvid",
-        child: SizedBox(width: 100, child: Center(child: new Text("xvid")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("xvid")))));
     list.add(new DropdownMenuItem(
         value: "vp8",
-        child: SizedBox(width: 100, child: Center(child: new Text("vp8")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("vp8")))));
     list.add(new DropdownMenuItem(
         value: "vp9",
-        child: SizedBox(width: 100, child: Center(child: new Text("vp9")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("vp9")))));
     list.add(new DropdownMenuItem(
         value: "aom",
-        child: SizedBox(width: 100, child: Center(child: new Text("aom")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("aom")))));
     list.add(new DropdownMenuItem(
         value: "kvazaar",
         child:
-            SizedBox(width: 100, child: Center(child: new Text("kvazaar")))));
+            SizedBox(width: 130, child: Center(child: new Text("kvazaar")))));
     list.add(new DropdownMenuItem(
         value: "theora",
-        child: SizedBox(width: 100, child: Center(child: new Text("theora")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("theora")))));
     list.add(new DropdownMenuItem(
         value: "hap",
-        child: SizedBox(width: 100, child: Center(child: new Text("hap")))));
+        child: SizedBox(width: 130, child: Center(child: new Text("hap")))));
 
     return list;
   }
@@ -302,7 +314,7 @@ class VideoTab implements PlayerTab {
       return;
     }
 
-    int timeInMilliseconds = statistics.getTime();
+    double timeInMilliseconds = statistics.getTime();
     int totalVideoDuration = 9000;
 
     int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;

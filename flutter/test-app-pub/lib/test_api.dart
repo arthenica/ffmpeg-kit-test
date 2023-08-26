@@ -60,9 +60,9 @@ class Test {
 
   static void _testParseSimpleCommand() {
     var argumentArray = FFmpegKitConfig.parseArguments(
-        "-hide_banner   -loop 1  -i file.jpg  -filter_complex  [0:v]setpts=PTS-STARTPTS[video] -map [video] -vsync 2 -async 1  video.mp4");
+        "-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -fps_mode cfr video.mp4");
 
-    assert(argumentArray.length == 14);
+    assert(argumentArray.length == 12);
 
     assert("-hide_banner" == argumentArray[0]);
     assert("-loop" == argumentArray[1]);
@@ -73,11 +73,9 @@ class Test {
     assert("[0:v]setpts=PTS-STARTPTS[video]" == argumentArray[6]);
     assert("-map" == argumentArray[7]);
     assert("[video]" == argumentArray[8]);
-    assert("-vsync" == argumentArray[9]);
-    assert("2" == argumentArray[10]);
-    assert("-async" == argumentArray[11]);
-    assert("1" == argumentArray[12]);
-    assert("video.mp4" == argumentArray[13]);
+    assert("-fps_mode" == argumentArray[9]);
+    assert("cfr" == argumentArray[10]);
+    assert("video.mp4" == argumentArray[11]);
   }
 
   static void _testParseSingleQuotesInCommand() {

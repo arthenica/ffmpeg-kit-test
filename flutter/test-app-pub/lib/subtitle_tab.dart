@@ -212,7 +212,7 @@ class SubtitleTab implements PlayerTab {
       return;
     }
 
-    int timeInMilliseconds = this._statistics!.getTime();
+    double timeInMilliseconds = this._statistics!.getTime();
     int totalVideoDuration = 9000;
 
     int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;
