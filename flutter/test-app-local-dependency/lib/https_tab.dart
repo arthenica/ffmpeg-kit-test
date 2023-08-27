@@ -182,8 +182,8 @@ class HttpsTab {
           if (stream.getCodec() != null) {
             this.appendOutput("Stream codec: ${stream.getCodec()}\n");
           }
-          if (stream.getFullCodec() != null) {
-            this.appendOutput("Stream full codec: ${stream.getFullCodec()}\n");
+          if (stream.getCodecLong() != null) {
+            this.appendOutput("Stream codec long: ${stream.getCodecLong()}\n");
           }
           if (stream.getFormat() != null) {
             this.appendOutput("Stream format: ${stream.getFormat()}\n");

@@ -164,7 +164,7 @@ class SafTab {
       return;
     }
 
-    int timeInMilliseconds = statistics.getTime();
+    double timeInMilliseconds = statistics.getTime();
     int totalVideoDuration = 9000;
 
     int completePercentage = (timeInMilliseconds * 100) ~/ totalVideoDuration;

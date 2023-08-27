@@ -25,6 +25,10 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.arthenica.ffmpegkit.flutter.android'
+    }
+
     compileSdkVersion 33
 
     lintOptions {
@@ -57,5 +61,5 @@ flutter {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
 }
