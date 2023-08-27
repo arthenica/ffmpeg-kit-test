@@ -22,6 +22,8 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform | FFmpegKit Version |                                        Tag                                        |
 | :----: |:-----------------:|:---------------------------------------------------------------------------------:|
+| Flutter |     6.0.0      |     [6.0.0](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.0)     |
+| Flutter |     6.0.0-LTS     | [6.0.0-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.0.lts) |
 | Android |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0)       |
 | Android |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0.lts)   |
 | iOS |        6.0        |         [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0)         |
