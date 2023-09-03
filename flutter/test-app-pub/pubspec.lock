@@ -85,10 +85,10 @@ packages:
     dependency: "direct main"
     description:
       name: ffmpeg_kit_flutter_video
-      sha256: "720fd9a1362761c6b68b06fb2a9054681e68d7eed1df232607d3142289cd6426"
+      sha256: "5d2ac7b62dd688220ec7bcf19d1e705888d56bc848e94524937fb117f120582d"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0-LTS"
+    version: "6.0.2-LTS"
   flutter:
     dependency: "direct main"
     description: flutter
