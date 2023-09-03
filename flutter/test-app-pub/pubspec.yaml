@@ -1,6 +1,6 @@
 name: ffmpeg_kit_flutter_test
 description: Demonstrates how to use the ffmpeg_kit_flutter plugin.
-version: 6.0.0
+version: 6.0.1
 publish_to: 'none'
 
 environment:
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ffmpeg_kit_flutter_video: 6.0.0-LTS
+  ffmpeg_kit_flutter_video: 6.0.1-LTS
   cupertino_icons: ^1.0.5
   path_provider: ^2.1.0
   path: ^1.8.3
