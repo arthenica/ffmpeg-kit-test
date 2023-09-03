@@ -11,10 +11,10 @@ PODS:
     - React-jsi (= 0.72.4)
     - ReactCommon/turbomodule/core (= 0.72.4)
   - ffmpeg-kit-ios-https (6.0)
-  - ffmpeg-kit-react-native (6.0.0):
-    - ffmpeg-kit-react-native/https (= 6.0.0)
+  - ffmpeg-kit-react-native (6.0.1):
+    - ffmpeg-kit-react-native/https (= 6.0.1)
     - React-Core
-  - ffmpeg-kit-react-native/https (6.0.0):
+  - ffmpeg-kit-react-native/https (6.0.1):
     - ffmpeg-kit-ios-https (= 6.0)
     - React-Core
   - Flipper (0.182.0):
@@ -671,7 +671,7 @@ SPEC CHECKSUMS:
   FBLazyVector: 5d4a3b7f411219a45a6d952f77d2c0a6c9989da5
   FBReactNativeSpec: 3fc2d478e1c4b08276f9dd9128f80ec6d5d85c1f
   ffmpeg-kit-ios-https: f9c838aa5400a6c5ba12324c6b798f52197ba354
-  ffmpeg-kit-react-native: a8aa8b5bed0a53ae573617e790984075bee2c716
+  ffmpeg-kit-react-native: fb8c0d138e852615e13c43f1d94d85aa1050796e
   Flipper: 6edb735e6c3e332975d1b17956bcc584eccf5818
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
