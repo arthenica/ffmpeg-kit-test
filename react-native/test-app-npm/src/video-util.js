@@ -89,7 +89,7 @@ export default class VideoUtil {
             "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
             "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
             "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=" + pixelFormat + "[video]\"" +
-            " -map [video] -vsync 2 -async 1 " + customOptions + "-c:v " + videoCodec.toLowerCase() + " -r 30 " + videoFilePath;
+            " -map [video] -fps_mode cfr " + customOptions + "-c:v " + videoCodec.toLowerCase() + " -r 30 " + videoFilePath;
     }
 
     static generateShakingVideoScript(image1Path, image2Path, image3Path, videoFilePath) {
@@ -114,7 +114,7 @@ export default class VideoUtil {
             "[3:v][stream2overlaid]overlay=x=\'2*mod(n,4)\':y=\'2*mod(n,2)\',trim=duration=3[stream2shaking];" +
             "[3:v][stream3overlaid]overlay=x=\'2*mod(n,4)\':y=\'2*mod(n,2)\',trim=duration=3[stream3shaking];" +
             "[stream1shaking][stream2shaking][stream3shaking]concat=n=3:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
-            " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+            " -map [video] -fps_mode cfr -c:v mpeg4 -r 30 " + videoFilePath;
     }
 
     static generateCreateVideoWithPipesScript(image1Pipe, image2Pipe, image3Pipe, videoFilePath) {
@@ -140,7 +140,7 @@ export default class VideoUtil {
             "[stream2starting][stream1ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream2blended];" +
             "[stream3starting][stream2ending]blend=all_expr=\'if(gte(X,(W/2)*T/1)*lte(X,W-(W/2)*T/1),B,A)\':shortest=1[stream3blended];" +
             "[stream1overlaid][stream2blended][stream2overlaid][stream3blended][stream3overlaid]concat=n=5:v=1:a=0,scale=w=640:h=424,format=yuv420p[video]\"" +
-            " -map [video] -vsync 2 -async 1 -c:v mpeg4 -r 30 " + videoFilePath;
+            " -map [video] -fps_mode cfr -c:v mpeg4 -r 30 " + videoFilePath;
     }
 
     static generateZscaleVideoScript(inputVideoFilePath, outputVideoFilePath) {

@@ -112,6 +112,12 @@ export default class VideoTab extends React.Component {
             case "x264":
                 videoCodec = "libx264";
                 break;
+            case "h264_mediacodec":
+                videoCodec = "h264_mediacodec";
+                break;
+            case "hevc_mediacodec":
+                videoCodec = "hevc_mediacodec";
+                break;
             case "openh264":
                 videoCodec = "libopenh264";
                 break;
@@ -160,7 +166,7 @@ export default class VideoTab extends React.Component {
                 extension = "mov";
                 break;
             default:
-                // mpeg4, x264, x265, xvid, kvazaar
+                // mpeg4, x264, h264_mediacodec, hevc_mediacodec, x265, xvid, kvazaar
                 extension = "mp4";
                 break;
         }
@@ -185,7 +191,7 @@ export default class VideoTab extends React.Component {
             case "hap":
                 return "-format hap_q ";
             default:
-                // kvazaar, mpeg4, x264, xvid
+                // kvazaar, mpeg4, x264, h264_mediacodec, hevc_mediacodec, xvid
                 return "";
         }
     }
@@ -231,6 +237,8 @@ export default class VideoTab extends React.Component {
                     onValueChange={(itemValue, itemIndex) => this.setState({selectedCodec: itemValue})}>
                     <Picker.Item label="mpeg4" value="mpeg4"/>
                     <Picker.Item label="x264" value="x264"/>
+                    <Picker.Item label="h264_mediacodec" value="h264_mediacodec"/>
+                    <Picker.Item label="hevc_mediacodec" value="hevc_mediacodec"/>
                     <Picker.Item label="openh264" value="openh264"/>
                     <Picker.Item label="x265" value="x265"/>
                     <Picker.Item label="xvid" value="xvid"/>
