@@ -22,19 +22,20 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform | FFmpegKit Version |                                        Tag                                        |
 | :----: |:-----------------:|:---------------------------------------------------------------------------------:|
-| React Native |       6.0.0       |     [6.0.0](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v6.0.0)     |
-| Flutter |     6.0.0      |     [6.0.0](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.0)     |
+| React Native |       6.0.1       |  [6.0.1](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v6.0.1)   |
+| React Native |       6.0.0       |  [6.0.0](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v6.0.0)   |
+| Flutter |       6.0.0       |     [6.0.0](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.0)     |
 | Flutter |     6.0.0-LTS     | [6.0.0-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.0.lts) |
 | Android |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0)       |
 | Android |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v6.0.lts)   |
 | iOS |        6.0        |         [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0)         |
-| iOS |      6.0.LTS      |    [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0.lts)    |
-| macOS |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0)       |
-| macOS |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0.lts)   |
-| tvOS |        6.0        |       [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0)        |
-| tvOS |      6.0.LTS      |   [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0.lts)    |
+| iOS |      6.0.LTS      |     [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/ios.v6.0.lts)     |
+| macOS |        6.0        |        [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0)        |
+| macOS |      6.0.LTS      |    [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/macos.v6.0.lts)    |
+| tvOS |        6.0        |        [6.0](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0)         |
+| tvOS |      6.0.LTS      |    [6.0.LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/tvos.v6.0.lts)     |
 | - |         -         |                                         -                                         |
-| React Native |       5.1.0       |     [5.1.0](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v5.1.0)     |
+| React Native |       5.1.0       |  [5.1.0](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v5.1.0)   |
 | Flutter |       5.1.0       |     [5.1.0](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v5.1.0)     |
 | Flutter |     5.1.0-LTS     | [5.1.0-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v5.1.0.lts) |
 | Android |        5.1        |       [5.1](https://github.com/arthenica/ffmpeg-kit-test/tree/android.v5.1)       |

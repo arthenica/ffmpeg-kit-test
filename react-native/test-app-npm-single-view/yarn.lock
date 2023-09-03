@@ -2840,10 +2840,10 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-ffmpeg-kit-react-native@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-6.0.0.tgz#0dafb861092f3535caf0e94aaf4b6a691818986c"
-  integrity sha512-nLpl5fYoHP/o5Jja0Av2Ln6eTITpqy4HLP4eheXnP23ER0Hg05DKIeZ86xcd8pUlxlhPEhjmrXT4wNGL2xkftg==
+ffmpeg-kit-react-native@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-6.0.1.tgz#071bd7ba671624e627b55355ee700c3b4aac650a"
+  integrity sha512-nt5URruAiYydNjisyGfw2hFzDfTayXV2dOfTz3VFtv7h3Umtg7NCRELA0sWKdaoD/nxG+1cnJQ9JUFrvtmsebg==
 
 file-entry-cache@^6.0.1:
   version "6.0.1"
