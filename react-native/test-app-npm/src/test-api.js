@@ -21,11 +21,11 @@ function assertEquals(expected, real) {
 }
 
 function testParseSimpleCommand() {
-    const argumentArray = FFmpegKitConfig.parseArguments("-hide_banner   -loop 1  -i file.jpg  -filter_complex  [0:v]setpts=PTS-STARTPTS[video] -map [video] -vsync 2 -async 1  video.mp4");
+    const argumentArray = FFmpegKitConfig.parseArguments("-hide_banner -loop 1 -i file.jpg -filter_complex [0:v]setpts=PTS-STARTPTS[video] -map [video] -fps_mode cfr video.mp4");
 
     assertNotNull(argumentArray);
     assertIsArray(argumentArray);
-    assertEquals(14, argumentArray.length);
+    assertEquals(12, argumentArray.length);
 
     assertEquals("-hide_banner", argumentArray[0]);
     assertEquals("-loop", argumentArray[1]);
@@ -36,11 +36,9 @@ function testParseSimpleCommand() {
     assertEquals("[0:v]setpts=PTS-STARTPTS[video]", argumentArray[6]);
     assertEquals("-map", argumentArray[7]);
     assertEquals("[video]", argumentArray[8]);
-    assertEquals("-vsync", argumentArray[9]);
-    assertEquals("2", argumentArray[10]);
-    assertEquals("-async", argumentArray[11]);
-    assertEquals("1", argumentArray[12]);
-    assertEquals("video.mp4", argumentArray[13]);
+    assertEquals("-fps_mode", argumentArray[9]);
+    assertEquals("cfr", argumentArray[10]);
+    assertEquals("video.mp4", argumentArray[11]);
 }
 
 function testParseSingleQuotesInCommand() {
