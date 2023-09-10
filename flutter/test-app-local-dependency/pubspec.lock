@@ -104,10 +104,11 @@ packages:
   flutter_isolate:
     dependency: "direct main"
     description:
-      name: flutter_isolate
-      sha256: "994ddec596da4ca12ca52154fd59404077584643eb7e3f1008a55fda9fe0b76b"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: agp8-compat
+      resolved-ref: "2b208e5867d89aca38b6ce0d2d9076a3476a148c"
+      url: "https://github.com/deckerst/flutter_isolate.git"
+    source: git
     version: "2.0.4"
   flutter_test:
     dependency: "direct dev"

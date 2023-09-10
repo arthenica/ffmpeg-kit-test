@@ -14,7 +14,10 @@ dependencies:
   cupertino_icons: ^1.0.5
   path_provider: ^2.1.0
   path: ^1.8.3
-  flutter_isolate: ^2.0.4
+  flutter_isolate:
+    git:
+      url: https://github.com/deckerst/flutter_isolate.git
+      ref: agp8-compat
   fluttertoast:
     git:
       url: https://github.com/ponnamkarthik/FlutterToast.git
