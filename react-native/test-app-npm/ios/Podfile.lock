@@ -11,7 +11,7 @@ PODS:
     - React-jsi (= 0.72.4)
     - ReactCommon/turbomodule/core (= 0.72.4)
   - ffmpeg-kit-ios-video (6.0)
-  - ffmpeg-kit-react-native/video (6.0.1):
+  - ffmpeg-kit-react-native/video (6.0.2):
     - ffmpeg-kit-ios-video (= 6.0)
     - React-Core
   - Flipper (0.182.0):
@@ -379,7 +379,7 @@ PODS:
   - React-jsinspector (0.72.4)
   - React-logger (0.72.4):
     - glog
-  - react-native-pager-view (6.2.0):
+  - react-native-pager-view (6.2.1):
     - React-Core
   - react-native-video (5.2.1):
     - React-Core
@@ -500,9 +500,9 @@ PODS:
     - React-Core
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.12.1):
+  - RNGestureHandler (2.13.0):
     - React-Core
-  - RNScreens (3.24.0):
+  - RNScreens (3.25.0):
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.1)
@@ -702,7 +702,7 @@ SPEC CHECKSUMS:
   FBLazyVector: 5d4a3b7f411219a45a6d952f77d2c0a6c9989da5
   FBReactNativeSpec: 3fc2d478e1c4b08276f9dd9128f80ec6d5d85c1f
   ffmpeg-kit-ios-video: d3a8a535570063b717f88da68f9089e213aa21ba
-  ffmpeg-kit-react-native: fb8c0d138e852615e13c43f1d94d85aa1050796e
+  ffmpeg-kit-react-native: 3cea88c9c5cfad62e1465279ea7d800dfbba3b00
   Flipper: 6edb735e6c3e332975d1b17956bcc584eccf5818
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
@@ -731,7 +731,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7f826e40fa9cab5d37cab6130b1af237332b594
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-pager-view: 0ccb8bf60e2ebd38b1f3669fa3650ecce81db2df
+  react-native-pager-view: d211379f61895b6349bd7e571b44a26d005c2975
   react-native-video: c26780b224543c62d5e1b2a7244a5cd1b50e8253
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
@@ -752,8 +752,8 @@ SPEC CHECKSUMS:
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
   RNCPicker: 32ca102146bc7d34a8b93a998d9938d9f9ec7898
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
-  RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
+  RNGestureHandler: 6e4dc6b7ab3a385386d4e36228bd065e5a611394
+  RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
