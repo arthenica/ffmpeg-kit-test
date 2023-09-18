@@ -1,9 +1,9 @@
 PODS:
   - ffmpeg-kit-macos-https (6.0)
-  - ffmpeg_kit_flutter (6.0.0):
-    - ffmpeg_kit_flutter/https (= 6.0.0)
+  - ffmpeg_kit_flutter (6.0.3):
+    - ffmpeg_kit_flutter/https (= 6.0.3)
     - FlutterMacOS
-  - ffmpeg_kit_flutter/https (6.0.0):
+  - ffmpeg_kit_flutter/https (6.0.3):
     - ffmpeg-kit-macos-https (= 6.0)
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ffmpeg-kit-macos-https: 60de703db964ccca7fd0d4d1611f4c102a8139cc
-  ffmpeg_kit_flutter: 2d707a142ffd3fb37f517faeb67164a68319bcc0
+  ffmpeg_kit_flutter: 5bd75928cf88ec177cea410b027681e4bfe09452
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
 
