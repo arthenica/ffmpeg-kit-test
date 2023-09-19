@@ -1,9 +1,9 @@
 PODS:
   - ffmpeg-kit-ios-video (6.0.LTS)
-  - ffmpeg_kit_flutter_video (6.0.2.LTS):
-    - ffmpeg_kit_flutter_video/video-lts (= 6.0.2.LTS)
+  - ffmpeg_kit_flutter_video (6.0.3.LTS):
+    - ffmpeg_kit_flutter_video/video-lts (= 6.0.3.LTS)
     - Flutter
-  - ffmpeg_kit_flutter_video/video-lts (6.0.2.LTS):
+  - ffmpeg_kit_flutter_video/video-lts (6.0.3.LTS):
     - ffmpeg-kit-ios-video (= 6.0.LTS)
     - Flutter
   - Flutter (1.0.0)
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ffmpeg-kit-ios-video: ca334e2a4b9a6b2c739a531d262384f6e9e0e853
-  ffmpeg_kit_flutter_video: 31467abdaf0a63610befe3f50d4c2f194292011e
+  ffmpeg_kit_flutter_video: d86ecaff9f5a0b104b1f47163748cfae64bad9cf
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
