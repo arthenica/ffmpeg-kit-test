@@ -78,8 +78,8 @@ android {
         applicationId "com.ffmpegkit"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 601
-        versionName "6.0.1"
+        versionCode 602
+        versionName "6.0.2"
     }
     signingConfigs {
         debug {

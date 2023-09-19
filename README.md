@@ -22,6 +22,9 @@ Test applications are tagged with `ffmpeg-kit` release they depend on.
 
 |  Platform | FFmpegKit Version |                                        Tag                                        |
 | :----: |:-----------------:|:---------------------------------------------------------------------------------:|
+| React Native |       6.0.2       |  [6.0.2](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v6.0.2)   |
+| Flutter |       6.0.3       |     [6.0.3](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.3)     |
+| Flutter |     6.0.3-LTS     | [6.0.3-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.3.lts) |
 | React Native |       6.0.1       |  [6.0.1](https://github.com/arthenica/ffmpeg-kit-test/tree/react.native.v6.0.1)   |
 | Flutter |       6.0.2       |     [6.0.2](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.2)     |
 | Flutter |     6.0.2-LTS     | [6.0.2-LTS](https://github.com/arthenica/ffmpeg-kit-test/tree/flutter.v6.0.2.lts) |
