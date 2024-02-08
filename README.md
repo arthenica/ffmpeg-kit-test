@@ -2,13 +2,13 @@
 
 Test applications for [FFmpegKit](https://github.com/arthenica/ffmpeg-kit).
 
-- `Android` under the [android](https://github.com/arthenica/ffmpeg-kit-test/tree/main/android) folder
-- `Flutter` under the [flutter](https://github.com/arthenica/ffmpeg-kit-test/tree/main/flutter) folder
-- `iOS` under the [ios](https://github.com/arthenica/ffmpeg-kit-test/tree/main/ios) folder
-- `Linux` under the [linux](https://github.com/arthenica/ffmpeg-kit-test/tree/main/linux) folder
-- `macOS` under the [macos](https://github.com/arthenica/ffmpeg-kit-test/tree/main/macos) folder
-- `React Native` under the [react-native](https://github.com/arthenica/ffmpeg-kit-test/tree/main/react-native) folder
-- `tvOS` under the [tvos](https://github.com/arthenica/ffmpeg-kit-test/tree/main/tvos) folder
+- `Android` under the [android](android) folder
+- `Flutter` under the [flutter](flutter) folder
+- `iOS` under the [ios](ios) folder
+- `Linux` under the [linux](linux) folder
+- `macOS` under the [macos](macos) folder
+- `React Native` under the [react-native](react-native) folder
+- `tvOS` under the [tvos](tvos) folder
 
 All applications are identical and supports command execution, video encoding, accessing https urls, encoding audio,
 burning subtitles, video stabilisation, pipe operations, concurrent command execution.
