@@ -78,7 +78,6 @@
 		3494910C25E19B1A0017F7CC /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
 		34C06C0522ADA0B10039DF48 /* TvButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvButton.h; sourceTree = "<group>"; };
 		34C06C0622ADA0B10039DF48 /* TvButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvButton.m; sourceTree = "<group>"; };
-		34D678CE25E2DA25004564B7 /* FFmpegKitTVOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = FFmpegKitTVOS.entitlements; sourceTree = "<group>"; };
 		34DC789721215B5800C3486C /* truenorg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = truenorg.otf; sourceTree = "<group>"; };
 		34DC789821215B5800C3486C /* subtitle.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = subtitle.srt; sourceTree = "<group>"; };
 		34DC789921215B5800C3486C /* doppioone_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = doppioone_regular.ttf; sourceTree = "<group>"; };
@@ -105,7 +104,6 @@
 		34695E8722AD292100889D20 /* FFmpegKitTVOS */ = {
 			isa = PBXGroup;
 			children = (
-				34D678CE25E2DA25004564B7 /* FFmpegKitTVOS.entitlements */,
 				34695E8822AD292100889D20 /* AppDelegate.h */,
 				34695E8922AD292100889D20 /* AppDelegate.m */,
 				34695E9122AD292300889D20 /* Assets.xcassets */,
