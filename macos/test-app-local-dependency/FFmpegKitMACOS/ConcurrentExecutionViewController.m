@@ -123,6 +123,9 @@
             NSLog(@"FFmpeg process ended with cancel for button %d with sessionId %ld.", buttonNumber, [session getSessionId]);
         } else {
             NSLog(@"FFmpeg process ended with state %@ and rc %@ for button %d with sessionId %ld.%@", [FFmpegKitConfig sessionStateToString:state], returnCode, buttonNumber, [session getSessionId], notNull([session getFailStackTrace], @"\n"));
+
+            NSLog(@"Deleting the last session %ld\n", [session getSessionId]);
+            [FFmpegKitConfig deleteSession:[session getSessionId]];
         }
     }];
     

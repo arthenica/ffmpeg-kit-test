@@ -199,6 +199,9 @@ public class ConcurrentExecutionTabFragment extends Fragment {
                         Log.d(TAG, String.format("FFmpeg process ended with cancel for button %d with sessionId %d.", buttonNumber, session.getSessionId()));
                     } else {
                         Log.d(TAG, String.format("FFmpeg process ended with state %s and rc %s for button %d with sessionId %d.%s", state, returnCode, buttonNumber, session.getSessionId(), notNull(session.getFailStackTrace(), "\n")));
+
+                        Log.d(TAG, String.format("Deleting session with id %d", session.getSessionId()));
+                        FFmpegKitConfig.deleteSession(session.getSessionId());
                     }
                 }
             });
